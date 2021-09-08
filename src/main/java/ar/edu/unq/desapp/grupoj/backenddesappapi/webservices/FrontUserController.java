@@ -3,10 +3,9 @@ package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationRequest;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationResponse;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserService;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.FrontUserDTO;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RegisterDTO;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentSourceException;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyExistsException;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,13 +46,12 @@ public class FrontUserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> saveUser(@Valid @RequestBody RegisterDTO registerRequest) throws UserAlreadyExistsException, NonExistentSourceException {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody RegisterDTO registerRequest) throws UserAlreadyExistsException {
         return new ResponseEntity(
                 service.save(registerRequest),
                 HttpStatus.CREATED
         );
     }
-
 
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
@@ -61,8 +59,6 @@ public class FrontUserController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
-
-
 
         final UserDetails userDetails = service.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);

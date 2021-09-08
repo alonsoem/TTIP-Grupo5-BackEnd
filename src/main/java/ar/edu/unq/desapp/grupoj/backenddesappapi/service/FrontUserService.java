@@ -1,10 +1,8 @@
 package ar.edu.unq.desapp.grupoj.backenddesappapi.service;
 
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.Source;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.repository.FrontUserRepository;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RegisterDTO;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentSourceException;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -13,6 +11,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.FrontUserDTO;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -23,28 +22,23 @@ public class FrontUserService implements UserDetailsService {
 
     @Autowired
     private FrontUserRepository frontUserRepo;
-    @Autowired
-    private SourceService sourceService;
 
     @EventListener
-    public void appReady(ApplicationReadyEvent event) throws NonExistentSourceException {
-
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b",sourceService.getById(1)));
+    public void appReady(ApplicationReadyEvent event) {
+        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b"));
     }
 
     @Transactional
     public List<FrontUser> findAll() {
-
         return frontUserRepo.findAll();
     }
 
     @Transactional
-    public ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException, NonExistentSourceException {
-        Source source = sourceService.getById(frontuser.getSourceId());
+    public FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException {
         try {
-            FrontUser user = frontuser.toModel(source);
+            FrontUser user = frontuser.toModel();
             frontUserRepo.save(user);
-            return ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO.fromModel(user);
+            return FrontUserDTO.fromModel(user);
         }catch(DuplicateKeyException e){
             throw new UserAlreadyExistsException();
         }

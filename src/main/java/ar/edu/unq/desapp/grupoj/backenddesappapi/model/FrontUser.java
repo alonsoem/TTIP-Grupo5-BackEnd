@@ -27,16 +27,13 @@ public class FrontUser implements UserDetails {
     @Transient
     private List<GrantedAuthority> authorities;
 
-    @ManyToOne
-    private Source source;
 
     protected FrontUser(){}
 
-    public FrontUser(String email, String name, String password, Source source){
+    public FrontUser(String email, String name, String password){
         this.userName=email;
         this.name=name;
         this.password=password;
-        this.source=source;
     }
 
 
@@ -49,8 +46,6 @@ public class FrontUser implements UserDetails {
     public void setId(Integer id) {
         this.id = id;
     }
-//    public void setSource(Source source) { this.source = source;}
-
 
     public String getUsername() {
         return userName;
@@ -87,11 +82,5 @@ public class FrontUser implements UserDetails {
 
     public String getName() {  return name;   }
 
-    public String getPlatform() {
-        return source.getName();
-    }
-    public Integer getPlatformId(){
-        return source.getId();
-    }
 }
 

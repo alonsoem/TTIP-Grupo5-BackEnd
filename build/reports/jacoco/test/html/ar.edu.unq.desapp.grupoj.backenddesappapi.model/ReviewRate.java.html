@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReviewRate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi.model</a> &gt; <span class="el_source">ReviewRate.java</span></div><h1>ReviewRate.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi.model;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.user.User;
+import jdk.jfr.Name;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.GenerationType;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
+@Entity
+@Table (name = &quot;review_rates&quot;,
+        uniqueConstraints = {@UniqueConstraint(columnNames = {&quot;user_id&quot;,&quot;review_id&quot;})}
+)
+
+public class ReviewRate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Name(&quot;idReviewRate&quot;)
+    private Integer id;
+
+    private RateType type;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Review review;
+
+
+<span class="fc" id="L37">    public ReviewRate(RateType type, User user, Review review){</span>
+<span class="fc" id="L38">        this.type=type;</span>
+<span class="fc" id="L39">        this.user=user;</span>
+<span class="fc" id="L40">        this.review=review;</span>
+
+<span class="fc" id="L42">    }</span>
+<span class="fc" id="L43">    protected ReviewRate(){}</span>
+
+    public RateType getType() {
+<span class="fc" id="L46">        return type;</span>
+    }
+
+    public Integer getId() {
+<span class="nc" id="L50">        return id;</span>
+    }
+
+    public User getUser() {
+<span class="nc" id="L54">        return user;</span>
+    }
+
+    public Review getReview() {
+<span class="nc" id="L58">        return review;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

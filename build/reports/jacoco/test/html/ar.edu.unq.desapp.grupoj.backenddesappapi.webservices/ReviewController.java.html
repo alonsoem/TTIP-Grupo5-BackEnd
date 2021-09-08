@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReviewController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi.webservices</a> &gt; <span class="el_source">ReviewController.java</span></div><h1>ReviewController.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.*;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.ReviewService;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RateDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReportDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReviewDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReviewPremiumDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Description;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@CrossOrigin(origins =&quot;*&quot;)
+@RestController
+@EnableAutoConfiguration
+@Validated
+<span class="nc" id="L26">public class ReviewController {</span>
+
+<span class="nc" id="L28">    public final String datePattern = &quot;yyyy/MM/dd&quot;;</span>
+
+    @Autowired
+    private ReviewService service;
+
+    @CrossOrigin(origins =&quot;*&quot;,methods = RequestMethod.GET, allowedHeaders = &quot;*&quot;)
+    @GetMapping(&quot;/review&quot;)
+    @Description(&quot;Full Reviews list&quot;)
+    public ResponseEntity&lt;List&lt;Review&gt;&gt; getAllReviews() {
+<span class="nc" id="L37">        return new ResponseEntity(service.findAll(),HttpStatus.OK);</span>
+    }
+
+    @PostMapping(&quot;/review&quot;)
+    @Description(&quot;Posted Reviews&quot;)
+    public ResponseEntity&lt;?&gt; saveReview(@Valid @RequestBody ReviewDTO aReview) throws NonExistentSourceException, UserAlreadyReviewTitle, NonExistentLanguageException, NonExistentTitleException, NonExistentLocationException {
+<span class="nc" id="L43">        return new ResponseEntity(service.save(aReview),HttpStatus.CREATED);</span>
+    }
+
+
+    @GetMapping(&quot;/review/{idTitle}&quot;)
+    @Description(&quot;Reviews by Id&quot;)
+    public ResponseEntity&lt;List&lt;Review&gt;&gt; getReviewPorId(@PathVariable(value = &quot;idTitle&quot;) Integer idTitle) throws NonExistentTitleException {
+<span class="nc" id="L50">        return new ResponseEntity(service.findAllByIdTitle(idTitle)</span>
+                                ,HttpStatus.OK);
+    }
+
+    @PostMapping(&quot;/review/premium&quot;)
+    @Description(&quot;Posted Premium reviews&quot;)
+    public ResponseEntity&lt;Review&gt; savePremiumReview(@Valid @RequestBody ReviewPremiumDTO aReview) throws NonExistentSourceException, NonExistentLanguageException, NonExistentTitleException, UserAlreadyReviewTitle, NonExistentLocationException, NonExistentCriticException {
+<span class="nc" id="L57">        return new ResponseEntity(service.savePremium(aReview),HttpStatus.CREATED);</span>
+    }
+
+    @PutMapping(&quot;/review/rate&quot;)
+    @Description(&quot;Rated Reviews&quot;)
+    public ResponseEntity&lt;Rates&gt; rateReview(@Valid @RequestBody RateDTO rateDto) throws NonExistentReviewException, NonExistentLocationException, NonExistentSourceException, NonExistentUserException {
+<span class="nc" id="L63">        return new ResponseEntity(</span>
+<span class="nc" id="L64">                                service.rate(rateDto)</span>
+                                ,HttpStatus.CREATED);
+    }
+
+    @PutMapping(&quot;/review/report&quot;)
+    @Description(&quot;Reported Reviews&quot;)
+    public ResponseEntity&lt;?&gt; reportReview(@Valid @RequestBody ReportDTO jsonReport) throws NonExistentReviewException, NonExistentLocationException, NonExistentSourceException {
+<span class="nc" id="L71">        return new ResponseEntity(service.report(jsonReport), HttpStatus.CREATED);</span>
+    }
+
+    @GetMapping(&quot;/review/report&quot;)
+    @Description(&quot;Reported Review List&quot;)
+    public ResponseEntity&lt;List&lt;ReviewReport&gt;&gt; reviewReports(){
+<span class="nc" id="L77">        return ResponseEntity.ok(service.findAllReports());</span>
+    }
+
+
+    @GetMapping(&quot;/review2&quot;)
+    @Description(&quot;Inverse Search&quot;)
+    public ResponseEntity&lt;Page&lt;Review&gt;&gt; getReviews(ReviewPage reviewPage, ReviewSearchCriteria reviewSearchCriteria){
+<span class="nc" id="L84">        return new ResponseEntity&lt;&gt;(service.getReviews(reviewPage,reviewSearchCriteria),HttpStatus.OK);</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

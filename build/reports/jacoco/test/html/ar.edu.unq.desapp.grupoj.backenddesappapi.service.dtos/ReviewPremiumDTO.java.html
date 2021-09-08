@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReviewPremiumDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos</a> &gt; <span class="el_source">ReviewPremiumDTO.java</span></div><h1>ReviewPremiumDTO.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.Language;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewPremium;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewType;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.user.Critic;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.Instant;
+import java.util.Date;
+
+@Validated
+<span class="nc" id="L17">public class ReviewPremiumDTO {</span>
+
+    @NotNull(message = &quot;Title Id cannot be null&quot;)
+    public Integer titleId;
+    @NotBlank(message = &quot;Text cannot be null&quot;)
+    public String text;
+    public String textExtended;
+
+    @Min(value=0,message = &quot;Rating must be between 0..5&quot;)
+    @Max(value=5,message=&quot;Rating must be between 0..5&quot;)
+    public Integer rating;
+<span class="nc" id="L28">    public Boolean spoilerAlert=false;</span>
+<span class="nc" id="L29">    public Date date=Date.from(Instant.now());</span>
+
+    @NotNull(message = &quot;Language Id must be valid&quot;)
+    public Integer languageId;
+<span class="nc" id="L33">    public ReviewType type=ReviewType.NORMAL;</span>
+
+    //Hasta aca es igual a ReviewDTO salvo que tiene un id
+
+    @NotNull(message = &quot;Critic must be provided&quot;)
+    public CriticDTO critic;
+
+    public ReviewPremium toModel(Language language, Critic critic){
+<span class="nc" id="L41">        return new ReviewPremium(titleId, critic, text, textExtended, rating, spoilerAlert,language);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

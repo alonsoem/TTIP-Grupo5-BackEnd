@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TitleServiceTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TitleServiceTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/ar.edu.unq.desapp.grupoj.backenddesappapi.html">ar.edu.unq.desapp.grupoj.backenddesappapi</a> &gt; TitleServiceTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.645s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">getInverseQuery()</td>
+<td class="success">0.478s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">retrieveAllTitlesAndGetNone()</td>
+<td class="success">0.035s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">retrieveAllTitlesAndGetOne()</td>
+<td class="success">0.132s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2021-06-08 12:36:16.458  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.TitleServiceTests], using SpringBootContextLoader
+2021-06-08 12:36:16.460  INFO 22885 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.TitleServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-06-08 12:36:16.460  INFO 22885 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.TitleServiceTests]: TitleServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-06-08 12:36:16.467  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiApplication for test class ar.edu.unq.desapp.grupoj.backenddesappapi.TitleServiceTests
+2021-06-08 12:36:16.476  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-06-08 12:36:16.478  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5a3b82f3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1e8417c4, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1407edef, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@48514d3f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4efb62dc, org.springframework.test.context.support.DirtiesContextTestExecutionListener@707f66f0, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5bbc8585, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@19c60378, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@cbe6f1e, org.springframework.test.context.event.EventPublishingTestExecutionListener@7fdd09f, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@38d2fd48, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1126e4e9, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6e9fbf4c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@78fe328, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2818662c, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@e3fde6a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1dc9753e]
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        review0_.id as id2_11_0_,
+        review0_.date as date3_11_0_,
+        review0_.language_id as languag12_11_0_,
+        review0_.rated_down as rated_do4_11_0_,
+        review0_.rated_up as rated_up5_11_0_,
+        review0_.rating as rating6_11_0_,
+        review0_.spoiler_alert as spoiler_7_11_0_,
+        review0_.text as text8_11_0_,
+        review0_.text_extended as text_ext9_11_0_,
+        review0_.title_id as title_i10_11_0_,
+        review0_.type as type11_11_0_,
+        review0_.user_id as user_id13_11_0_,
+        review0_.dtype as dtype1_11_0_,
+        language1_.id as id1_6_1_,
+        language1_.value as value2_6_1_,
+        critic2_.id as id2_1_2_,
+        critic2_.location_id as location5_1_2_,
+        critic2_.source as source6_1_2_,
+        critic2_.critic_id as critic_i3_1_2_,
+        critic2_.user_nick as user_nic4_1_2_,
+        critic2_.dtype as dtype1_1_2_,
+        location3_.id as id1_7_3_,
+        location3_.city as city2_7_3_,
+        location3_.country as country3_7_3_,
+        source4_.id as id1_14_4_,
+        source4_.name as name2_14_4_ 
+    from
+        reviews review0_ 
+    left outer join
+        language language1_ 
+            on review0_.language_id=language1_.id 
+    left outer join
+        critic critic2_ 
+            on review0_.user_id=critic2_.id 
+    left outer join
+        location location3_ 
+            on critic2_.location_id=location3_.id 
+    left outer join
+        source source4_ 
+            on critic2_.source=source4_.id 
+    where
+        review0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        reviewrate0_.review_id as review_i1_12_0_,
+        reviewrate0_.review_rates_id as review_r2_12_0_,
+        reviewrate1_.id as id1_9_1_,
+        reviewrate1_.review_id as review_i3_9_1_,
+        reviewrate1_.type as type2_9_1_,
+        reviewrate1_.user_id as user_id4_9_1_,
+        review2_.id as id2_11_2_,
+        review2_.date as date3_11_2_,
+        review2_.language_id as languag12_11_2_,
+        review2_.rated_down as rated_do4_11_2_,
+        review2_.rated_up as rated_up5_11_2_,
+        review2_.rating as rating6_11_2_,
+        review2_.spoiler_alert as spoiler_7_11_2_,
+        review2_.text as text8_11_2_,
+        review2_.text_extended as text_ext9_11_2_,
+        review2_.title_id as title_i10_11_2_,
+        review2_.type as type11_11_2_,
+        review2_.user_id as user_id13_11_2_,
+        review2_.dtype as dtype1_11_2_,
+        language3_.id as id1_6_3_,
+        language3_.value as value2_6_3_,
+        critic4_.id as id2_1_4_,
+        critic4_.location_id as location5_1_4_,
+        critic4_.source as source6_1_4_,
+        critic4_.critic_id as critic_i3_1_4_,
+        critic4_.user_nick as user_nic4_1_4_,
+        critic4_.dtype as dtype1_1_4_,
+        user5_.id as id2_1_5_,
+        user5_.location_id as location5_1_5_,
+        user5_.source as source6_1_5_,
+        user5_.critic_id as critic_i3_1_5_,
+        user5_.user_nick as user_nic4_1_5_,
+        location6_.id as id1_7_6_,
+        location6_.city as city2_7_6_,
+        location6_.country as country3_7_6_,
+        source7_.id as id1_14_7_,
+        source7_.name as name2_14_7_ 
+    from
+        reviews_review_rates reviewrate0_ 
+    inner join
+        review_rates reviewrate1_ 
+            on reviewrate0_.review_rates_id=reviewrate1_.id 
+    left outer join
+        reviews review2_ 
+            on reviewrate1_.review_id=review2_.id 
+    left outer join
+        language language3_ 
+            on review2_.language_id=language3_.id 
+    left outer join
+        critic critic4_ 
+            on review2_.user_id=critic4_.id 
+    left outer join
+        critic user5_ 
+            on reviewrate1_.user_id=user5_.id 
+    left outer join
+        location location6_ 
+            on user5_.location_id=location6_.id 
+    left outer join
+        source source7_ 
+            on user5_.source=source7_.id 
+    where
+        reviewrate0_.review_id=?
+Hibernate: 
+    insert 
+    into
+        review_rates
+        (review_id, type, user_id) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    update
+        reviews 
+    set
+        date=?,
+        language_id=?,
+        rated_down=?,
+        rated_up=?,
+        rating=?,
+        spoiler_alert=?,
+        text=?,
+        text_extended=?,
+        title_id=?,
+        type=?,
+        user_id=? 
+    where
+        id=?
+Hibernate: 
+    insert 
+    into
+        reviews_review_rates
+        (review_id, review_rates_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        decade0_.id as id1_2_,
+        decade0_.from_year as from_yea2_2_,
+        decade0_.to_year as to_year3_2_ 
+    from
+        decade decade0_ 
+    where
+        decade0_.id in (
+            ?
+        )
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    inner join
+        titles_reviews reviews1_ 
+            on title0_.title_id=reviews1_.title_title_id 
+    inner join
+        reviews review2_ 
+            on reviews1_.reviews_id=review2_.id 
+    where
+        (
+            0=1 
+            or title0_.start_year&gt;=2010 
+            and title0_.start_year&lt;=2019 
+            or title0_.end_year&gt;=2010 
+            and title0_.end_year&lt;=2019
+        ) 
+        and 1=1 
+        and (
+            ? in (
+                select
+                    genres3_.generos 
+                from
+                    generos_enum genres3_ 
+                where
+                    title0_.title_id=genres3_.title_title_id
+            )
+        ) 
+        and (
+            title0_.title_id not in  (
+                select
+                    review6_.title_id 
+                from
+                    titles title4_ 
+                inner join
+                    titles_reviews reviews5_ 
+                        on title4_.title_id=reviews5_.title_title_id 
+                inner join
+                    reviews review6_ 
+                        on reviews5_.reviews_id=review6_.id 
+                where
+                    review6_.rating&lt;2 
+                group by
+                    review6_.title_id 
+                having
+                    count(review6_.id)&gt;0
+            )
+        ) 
+        and (
+            title0_.title_id not in  (
+                select
+                    review9_.title_id 
+                from
+                    titles title7_ 
+                inner join
+                    titles_reviews reviews8_ 
+                        on title7_.title_id=reviews8_.title_title_id 
+                inner join
+                    reviews review9_ 
+                        on reviews8_.reviews_id=review9_.id 
+                where
+                    review9_.rated_up-review9_.rated_down&lt;0 
+                group by
+                    review9_.title_id
+            )
+        ) 
+        and (
+            title0_.title_id in (
+                select
+                    title10_.title_id 
+                from
+                    titles title10_ 
+                inner join
+                    titles_cast cast11_ 
+                        on title10_.title_id=cast11_.title_title_id 
+                inner join
+                    cast cast12_ 
+                        on cast11_.cast_id=cast12_.id 
+                inner join
+                    person person13_ 
+                        on cast12_.person_id=person13_.id 
+                where
+                    0=1 
+                    or person13_.name like ? 
+                group by
+                    title10_.title_id 
+                having
+                    count(person13_.name)&gt;0
+            )
+        )
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.8.1</a> at 08/06/2021 12:36:22</p>
+</div>
+</div>
+</body>
+</html>

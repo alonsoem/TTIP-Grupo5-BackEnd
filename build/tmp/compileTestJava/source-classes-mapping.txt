@@ -1,0 +1,26 @@
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/BackendDesappApiApplicationTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ModelTest.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ModelTest
+ar/edu/unq/desapp/grupoj/backenddesappapi/DtoTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.DtoTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/BackendDesappApiAuxiliarTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/SuscriptionTest.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.SuscriptionTest
+ar/edu/unq/desapp/grupoj/backenddesappapi/ReviewServiceTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.ReviewServiceTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/controllers/LocationControllerTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.controllers.LocationControllerTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/TitleServiceTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.TitleServiceTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/controllers/LanguageControllerTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.controllers.LanguageControllerTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/BackendDesappApiFronUserTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiFronUserTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/controllers/TitleControllerTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.controllers.TitleControllerTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/controllers/SourceControllerTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.controllers.SourceControllerTests
+ar/edu/unq/desapp/grupoj/backenddesappapi/controllers/FrontUserControllerTests.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.controllers.FrontUserControllerTests

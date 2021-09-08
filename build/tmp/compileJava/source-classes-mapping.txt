@@ -1,0 +1,213 @@
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentCriticException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentCriticException
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/TitleController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.TitleController
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/FrontUser.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/titles/Genre.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.Genre
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Suscription.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Suscription
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/ReviewPremiumDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReviewPremiumDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/SuscriptionDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.SuscriptionDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/SourceRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.SourceRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/DecadeService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.DecadeService
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/UserAlreadyExistsException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyExistsException
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/UserRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.UserRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Location.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Location
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/UserAlreadyReviewTitle.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyReviewTitle
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/SourceService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.SourceService
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/UserDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.UserDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentUserException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentUserException
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/InverseReq.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.InverseReq
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/RateType.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.RateType
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewSearchCriteria.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewSearchCriteria
+ar/edu/unq/desapp/grupoj/backenddesappapi/filters/JwtRequestFilter.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.filters.JwtRequestFilter
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentReviewException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentReviewException
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/user/Critic.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.user.Critic
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/cast/Cast.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.cast.Cast
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentDecadeException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentDecadeException
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/titlesRepository/TitleRepositoryQueries.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.titlesRepository.TitleRepositoryQueries
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/titlesRepository/EpisodeRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.titlesRepository.EpisodeRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/LocationService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.LocationService
+ar/edu/unq/desapp/grupoj/backenddesappapi/Aspect/LogExecutionWebServiceAspect.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.Aspect.LogExecutionWebServiceAspect
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/LanguageService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.LanguageService
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Reason.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Reason
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Language.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Language
+ar/edu/unq/desapp/grupoj/backenddesappapi/Aspect/LogEstatisticsWebServiceAspect.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.Aspect.LogEstatisticsWebServiceAspect
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Decade.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Decade
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/SourceController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.SourceController
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/SuscriptionService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.SuscriptionService
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/DecadeRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.DecadeRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Rates.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Rates
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/FrontUserController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.FrontUserController
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentTitleException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentTitleException
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/titles/Episode.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.Episode
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/LanguageDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.LanguageDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/SourceDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.SourceDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/CriticRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.CriticRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/FrontUserService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserService
+ar/edu/unq/desapp/grupoj/backenddesappapi/SecurityConfiguration.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.SecurityConfiguration
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/TitleDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.TitleDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/config/RedisConfig.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.config.RedisConfig
+ar/edu/unq/desapp/grupoj/backenddesappapi/config/MessagingConfig.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.config.MessagingConfig
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/errorHandling/ApiError.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.errorHandling.ApiError
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/CriticService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.CriticService
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewNotification.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewNotification
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/ReportDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReportDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/swagger/SpringFoxConfig.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.swagger.SpringFoxConfig
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/LanguageRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.LanguageRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/cast/Job.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.cast.Job
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/EstatisticsRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.EstatisticsRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Review.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Review
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentSourceException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentSourceException
+ar/edu/unq/desapp/grupoj/backenddesappapi/Aspect/ExcludeFromMetrics.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.Aspect.ExcludeFromMetrics
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/LanguageController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.LanguageController
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewPage.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewPage
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/EstatisticsController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.EstatisticsController
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/FrontUserRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.FrontUserRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewReport.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewReport
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/standAloneRabbitMQ/RabbitMQConsumer.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.standAloneRabbitMQ.RabbitMQConsumer
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/MetricId.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.MetricId
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/LocationDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.LocationDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/exception/NonExistentLanguageNameException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.exception.NonExistentLanguageNameException
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentLanguageException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentLanguageException
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewRate.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewRate
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/titles/TitleType.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.TitleType
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/SuscriptionRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.SuscriptionRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/CriticDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.CriticDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewType.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewType
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/SuscriptionController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.SuscriptionController
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/user/User.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.user.User
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/titles/Title.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.Title
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/util/JwtUtil.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.util.JwtUtil
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/StatisticsService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.StatisticsService
+ar/edu/unq/desapp/grupoj/backenddesappapi/BackendDesappApiApplication.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiApplication
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/titles/EpisodeBuilder.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.EpisodeBuilder
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/errorHandling/ResponseEntityBuilder.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.errorHandling.ResponseEntityBuilder
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/LocationRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.LocationRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/ReviewDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReviewDTO
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.ReviewDTO$ReviewDTOBuilder
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Statistics.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Statistics
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/Source.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.Source
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/ReviewService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.ReviewService
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/ReviewCriteriaRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.ReviewCriteriaRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/titlesRepository/TitleRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.titlesRepository.TitleRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/ReportRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.ReportRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/LocationController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.LocationController
+ar/edu/unq/desapp/grupoj/backenddesappapi/ServletInitializer.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.ServletInitializer
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/RateDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RateDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/FrontUserDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/repository/ReviewRepository.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.repository.ReviewRepository
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewPremiumNotification.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewPremiumNotification
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/cast/Person.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.cast.Person
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/exceptions/NonExistentLocationException.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentLocationException
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/TitleService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.TitleService
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/dtos/RegisterDTO.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RegisterDTO
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/ReviewController.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.ReviewController
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/ReviewPremium.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.ReviewPremium
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/AuthenticationResponse.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationResponse
+ar/edu/unq/desapp/grupoj/backenddesappapi/webservices/errorHandling/ControllersExceptionHandler.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.errorHandling.ControllersExceptionHandler
+ar/edu/unq/desapp/grupoj/backenddesappapi/service/UserService.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.service.UserService
+ar/edu/unq/desapp/grupoj/backenddesappapi/model/AuthenticationRequest.java
+ ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationRequest

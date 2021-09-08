@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ReviewServiceTests</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ReviewServiceTests</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/ar.edu.unq.desapp.grupoj.backenddesappapi.html">ar.edu.unq.desapp.grupoj.backenddesappapi</a> &gt; ReviewServiceTests</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">9</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.367s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">addOnePremiumReviewAndThenGetAllReviews()</td>
+<td class="success">0.556s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addOneReviewAndThenGetAllReviews()</td>
+<td class="success">0.076s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addOneReviewWithExistentUserAndGetException()</td>
+<td class="success">0.075s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addOneReviewWithNonExistentTitleIdAndGetException()</td>
+<td class="success">0.173s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAllReviewsNotJustTitleNumber1()</td>
+<td class="success">0.145s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rateAReviewThatNotExistsAndGetException()</td>
+<td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rateReviewAndGetEstatistics()</td>
+<td class="success">0.126s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">reportReviewAndMatch()</td>
+<td class="success">0.185s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">retrieveAllReviewsAndGetNone()</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2021-06-08 12:36:17.687  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.ReviewServiceTests], using SpringBootContextLoader
+2021-06-08 12:36:17.688  INFO 22885 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.ReviewServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-06-08 12:36:17.688  INFO 22885 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.ReviewServiceTests]: ReviewServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-06-08 12:36:17.691  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiApplication for test class ar.edu.unq.desapp.grupoj.backenddesappapi.ReviewServiceTests
+2021-06-08 12:36:17.693  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-06-08 12:36:17.694  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@306be039, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6425a713, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@243babeb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@72175d77, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1d121124, org.springframework.test.context.support.DirtiesContextTestExecutionListener@544630aa, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2ddbad3a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@65efa113, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@68f907bb, org.springframework.test.context.event.EventPublishingTestExecutionListener@d5fb96e, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@7d9d6782, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6562a61b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4586a1d3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3562e4c4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@23d5249d, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@53771c82, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@230fa706]
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        review0_.id as id2_11_0_,
+        review0_.date as date3_11_0_,
+        review0_.language_id as languag12_11_0_,
+        review0_.rated_down as rated_do4_11_0_,
+        review0_.rated_up as rated_up5_11_0_,
+        review0_.rating as rating6_11_0_,
+        review0_.spoiler_alert as spoiler_7_11_0_,
+        review0_.text as text8_11_0_,
+        review0_.text_extended as text_ext9_11_0_,
+        review0_.title_id as title_i10_11_0_,
+        review0_.type as type11_11_0_,
+        review0_.user_id as user_id13_11_0_,
+        review0_.dtype as dtype1_11_0_,
+        language1_.id as id1_6_1_,
+        language1_.value as value2_6_1_,
+        critic2_.id as id2_1_2_,
+        critic2_.location_id as location5_1_2_,
+        critic2_.source as source6_1_2_,
+        critic2_.critic_id as critic_i3_1_2_,
+        critic2_.user_nick as user_nic4_1_2_,
+        critic2_.dtype as dtype1_1_2_,
+        location3_.id as id1_7_3_,
+        location3_.city as city2_7_3_,
+        location3_.country as country3_7_3_,
+        source4_.id as id1_14_4_,
+        source4_.name as name2_14_4_ 
+    from
+        reviews review0_ 
+    left outer join
+        language language1_ 
+            on review0_.language_id=language1_.id 
+    left outer join
+        critic critic2_ 
+            on review0_.user_id=critic2_.id 
+    left outer join
+        location location3_ 
+            on critic2_.location_id=location3_.id 
+    left outer join
+        source source4_ 
+            on critic2_.source=source4_.id 
+    where
+        review0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        reviewrate0_.review_id as review_i1_12_0_,
+        reviewrate0_.review_rates_id as review_r2_12_0_,
+        reviewrate1_.id as id1_9_1_,
+        reviewrate1_.review_id as review_i3_9_1_,
+        reviewrate1_.type as type2_9_1_,
+        reviewrate1_.user_id as user_id4_9_1_,
+        review2_.id as id2_11_2_,
+        review2_.date as date3_11_2_,
+        review2_.language_id as languag12_11_2_,
+        review2_.rated_down as rated_do4_11_2_,
+        review2_.rated_up as rated_up5_11_2_,
+        review2_.rating as rating6_11_2_,
+        review2_.spoiler_alert as spoiler_7_11_2_,
+        review2_.text as text8_11_2_,
+        review2_.text_extended as text_ext9_11_2_,
+        review2_.title_id as title_i10_11_2_,
+        review2_.type as type11_11_2_,
+        review2_.user_id as user_id13_11_2_,
+        review2_.dtype as dtype1_11_2_,
+        language3_.id as id1_6_3_,
+        language3_.value as value2_6_3_,
+        critic4_.id as id2_1_4_,
+        critic4_.location_id as location5_1_4_,
+        critic4_.source as source6_1_4_,
+        critic4_.critic_id as critic_i3_1_4_,
+        critic4_.user_nick as user_nic4_1_4_,
+        critic4_.dtype as dtype1_1_4_,
+        user5_.id as id2_1_5_,
+        user5_.location_id as location5_1_5_,
+        user5_.source as source6_1_5_,
+        user5_.critic_id as critic_i3_1_5_,
+        user5_.user_nick as user_nic4_1_5_,
+        location6_.id as id1_7_6_,
+        location6_.city as city2_7_6_,
+        location6_.country as country3_7_6_,
+        source7_.id as id1_14_7_,
+        source7_.name as name2_14_7_ 
+    from
+        reviews_review_rates reviewrate0_ 
+    inner join
+        review_rates reviewrate1_ 
+            on reviewrate0_.review_rates_id=reviewrate1_.id 
+    left outer join
+        reviews review2_ 
+            on reviewrate1_.review_id=review2_.id 
+    left outer join
+        language language3_ 
+            on review2_.language_id=language3_.id 
+    left outer join
+        critic critic4_ 
+            on review2_.user_id=critic4_.id 
+    left outer join
+        critic user5_ 
+            on reviewrate1_.user_id=user5_.id 
+    left outer join
+        location location6_ 
+            on user5_.location_id=location6_.id 
+    left outer join
+        source source7_ 
+            on user5_.source=source7_.id 
+    where
+        reviewrate0_.review_id=?
+Hibernate: 
+    insert 
+    into
+        review_rates
+        (review_id, type, user_id) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    update
+        reviews 
+    set
+        date=?,
+        language_id=?,
+        rated_down=?,
+        rated_up=?,
+        rating=?,
+        spoiler_alert=?,
+        text=?,
+        text_extended=?,
+        title_id=?,
+        type=?,
+        user_id=? 
+    where
+        id=?
+Hibernate: 
+    insert 
+    into
+        reviews_review_rates
+        (review_id, review_rates_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    delete 
+    from
+        titles_reviews 
+    where
+        title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        review0_.id as id2_11_0_,
+        review0_.date as date3_11_0_,
+        review0_.language_id as languag12_11_0_,
+        review0_.rated_down as rated_do4_11_0_,
+        review0_.rated_up as rated_up5_11_0_,
+        review0_.rating as rating6_11_0_,
+        review0_.spoiler_alert as spoiler_7_11_0_,
+        review0_.text as text8_11_0_,
+        review0_.text_extended as text_ext9_11_0_,
+        review0_.title_id as title_i10_11_0_,
+        review0_.type as type11_11_0_,
+        review0_.user_id as user_id13_11_0_,
+        review0_.dtype as dtype1_11_0_,
+        language1_.id as id1_6_1_,
+        language1_.value as value2_6_1_,
+        critic2_.id as id2_1_2_,
+        critic2_.location_id as location5_1_2_,
+        critic2_.source as source6_1_2_,
+        critic2_.critic_id as critic_i3_1_2_,
+        critic2_.user_nick as user_nic4_1_2_,
+        critic2_.dtype as dtype1_1_2_,
+        location3_.id as id1_7_3_,
+        location3_.city as city2_7_3_,
+        location3_.country as country3_7_3_,
+        source4_.id as id1_14_4_,
+        source4_.name as name2_14_4_ 
+    from
+        reviews review0_ 
+    left outer join
+        language language1_ 
+            on review0_.language_id=language1_.id 
+    left outer join
+        critic critic2_ 
+            on review0_.user_id=critic2_.id 
+    left outer join
+        location location3_ 
+            on critic2_.location_id=location3_.id 
+    left outer join
+        source source4_ 
+            on critic2_.source=source4_.id 
+    where
+        review0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    insert 
+    into
+        review_report
+        (reason, review_id, user_id) 
+    values
+        (?, ?, ?)
+Hibernate: 
+    select
+        reviewrepo0_.review_id as review_i1_13_0_,
+        reviewrepo0_.review_reports_id as review_r2_13_0_,
+        reviewrepo1_.id as id1_10_1_,
+        reviewrepo1_.reason as reason2_10_1_,
+        reviewrepo1_.review_id as review_i3_10_1_,
+        reviewrepo1_.user_id as user_id4_10_1_,
+        review2_.id as id2_11_2_,
+        review2_.date as date3_11_2_,
+        review2_.language_id as languag12_11_2_,
+        review2_.rated_down as rated_do4_11_2_,
+        review2_.rated_up as rated_up5_11_2_,
+        review2_.rating as rating6_11_2_,
+        review2_.spoiler_alert as spoiler_7_11_2_,
+        review2_.text as text8_11_2_,
+        review2_.text_extended as text_ext9_11_2_,
+        review2_.title_id as title_i10_11_2_,
+        review2_.type as type11_11_2_,
+        review2_.user_id as user_id13_11_2_,
+        review2_.dtype as dtype1_11_2_,
+        language3_.id as id1_6_3_,
+        language3_.value as value2_6_3_,
+        critic4_.id as id2_1_4_,
+        critic4_.location_id as location5_1_4_,
+        critic4_.source as source6_1_4_,
+        critic4_.critic_id as critic_i3_1_4_,
+        critic4_.user_nick as user_nic4_1_4_,
+        critic4_.dtype as dtype1_1_4_,
+        user5_.id as id2_1_5_,
+        user5_.location_id as location5_1_5_,
+        user5_.source as source6_1_5_,
+        user5_.critic_id as critic_i3_1_5_,
+        user5_.user_nick as user_nic4_1_5_,
+        location6_.id as id1_7_6_,
+        location6_.city as city2_7_6_,
+        location6_.country as country3_7_6_,
+        source7_.id as id1_14_7_,
+        source7_.name as name2_14_7_ 
+    from
+        reviews_review_reports reviewrepo0_ 
+    inner join
+        review_report reviewrepo1_ 
+            on reviewrepo0_.review_reports_id=reviewrepo1_.id 
+    left outer join
+        reviews review2_ 
+            on reviewrepo1_.review_id=review2_.id 
+    left outer join
+        language language3_ 
+            on review2_.language_id=language3_.id 
+    left outer join
+        critic critic4_ 
+            on review2_.user_id=critic4_.id 
+    left outer join
+        critic user5_ 
+            on reviewrepo1_.user_id=user5_.id 
+    left outer join
+        location location6_ 
+            on user5_.location_id=location6_.id 
+    left outer join
+        source source7_ 
+            on user5_.source=source7_.id 
+    where
+        reviewrepo0_.review_id=?
+Hibernate: 
+    insert 
+    into
+        reviews_review_reports
+        (review_id, review_reports_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_0_,
+        language0_.value as value2_6_0_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_,
+        critic0_.location_id as location5_1_,
+        critic0_.source as source6_1_,
+        critic0_.critic_id as critic_i3_1_,
+        critic0_.user_nick as user_nic4_1_,
+        critic0_.dtype as dtype1_1_ 
+    from
+        critic critic0_ 
+    where
+        critic0_.source=? 
+        and critic0_.critic_id=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, dtype) 
+    values
+        (?, ?, ?, 'Critic')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'ReviewPremium')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_
+Hibernate: 
+    select
+        language0_.id as id1_6_0_,
+        language0_.value as value2_6_0_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_0_,
+        language0_.value as value2_6_0_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_0_,
+        location0_.city as city2_7_0_,
+        location0_.country as country3_7_0_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    delete 
+    from
+        titles_reviews 
+    where
+        title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_0_,
+        location0_.city as city2_7_0_,
+        location0_.country as country3_7_0_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_0_,
+        review0_.date as date3_11_0_,
+        review0_.language_id as languag12_11_0_,
+        review0_.rated_down as rated_do4_11_0_,
+        review0_.rated_up as rated_up5_11_0_,
+        review0_.rating as rating6_11_0_,
+        review0_.spoiler_alert as spoiler_7_11_0_,
+        review0_.text as text8_11_0_,
+        review0_.text_extended as text_ext9_11_0_,
+        review0_.title_id as title_i10_11_0_,
+        review0_.type as type11_11_0_,
+        review0_.user_id as user_id13_11_0_,
+        review0_.dtype as dtype1_11_0_,
+        language1_.id as id1_6_1_,
+        language1_.value as value2_6_1_,
+        critic2_.id as id2_1_2_,
+        critic2_.location_id as location5_1_2_,
+        critic2_.source as source6_1_2_,
+        critic2_.critic_id as critic_i3_1_2_,
+        critic2_.user_nick as user_nic4_1_2_,
+        critic2_.dtype as dtype1_1_2_,
+        location3_.id as id1_7_3_,
+        location3_.city as city2_7_3_,
+        location3_.country as country3_7_3_,
+        source4_.id as id1_14_4_,
+        source4_.name as name2_14_4_ 
+    from
+        reviews review0_ 
+    left outer join
+        language language1_ 
+            on review0_.language_id=language1_.id 
+    left outer join
+        critic critic2_ 
+            on review0_.user_id=critic2_.id 
+    left outer join
+        location location3_ 
+            on critic2_.location_id=location3_.id 
+    left outer join
+        source source4_ 
+            on critic2_.source=source4_.id 
+    where
+        review0_.id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Review')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    delete 
+    from
+        titles_reviews 
+    where
+        title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_0_,
+        language0_.value as value2_6_0_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_,
+        critic0_.location_id as location5_1_,
+        critic0_.source as source6_1_,
+        critic0_.critic_id as critic_i3_1_,
+        critic0_.user_nick as user_nic4_1_,
+        critic0_.dtype as dtype1_1_ 
+    from
+        critic critic0_ 
+    where
+        critic0_.source=? 
+        and critic0_.critic_id=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, dtype) 
+    values
+        (?, ?, ?, 'Critic')
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=? 
+        and review0_.user_id=?
+Hibernate: 
+    insert 
+    into
+        reviews
+        (date, language_id, rated_down, rated_up, rating, spoiler_alert, text, text_extended, title_id, type, user_id, dtype) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'ReviewPremium')
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        reviews0_.title_title_id as title_ti1_17_0_,
+        reviews0_.reviews_id as reviews_2_17_0_,
+        review1_.id as id2_11_1_,
+        review1_.date as date3_11_1_,
+        review1_.language_id as languag12_11_1_,
+        review1_.rated_down as rated_do4_11_1_,
+        review1_.rated_up as rated_up5_11_1_,
+        review1_.rating as rating6_11_1_,
+        review1_.spoiler_alert as spoiler_7_11_1_,
+        review1_.text as text8_11_1_,
+        review1_.text_extended as text_ext9_11_1_,
+        review1_.title_id as title_i10_11_1_,
+        review1_.type as type11_11_1_,
+        review1_.user_id as user_id13_11_1_,
+        review1_.dtype as dtype1_11_1_,
+        language2_.id as id1_6_2_,
+        language2_.value as value2_6_2_,
+        critic3_.id as id2_1_3_,
+        critic3_.location_id as location5_1_3_,
+        critic3_.source as source6_1_3_,
+        critic3_.critic_id as critic_i3_1_3_,
+        critic3_.user_nick as user_nic4_1_3_,
+        critic3_.dtype as dtype1_1_3_,
+        location4_.id as id1_7_4_,
+        location4_.city as city2_7_4_,
+        location4_.country as country3_7_4_,
+        source5_.id as id1_14_5_,
+        source5_.name as name2_14_5_ 
+    from
+        titles_reviews reviews0_ 
+    inner join
+        reviews review1_ 
+            on reviews0_.reviews_id=review1_.id 
+    left outer join
+        language language2_ 
+            on review1_.language_id=language2_.id 
+    left outer join
+        critic critic3_ 
+            on review1_.user_id=critic3_.id 
+    left outer join
+        location location4_ 
+            on critic3_.location_id=location4_.id 
+    left outer join
+        source source5_ 
+            on critic3_.source=source5_.id 
+    where
+        reviews0_.title_title_id=?
+Hibernate: 
+    delete 
+    from
+        titles_reviews 
+    where
+        title_title_id=?
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        titles_reviews
+        (title_title_id, reviews_id) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        title0_.title_id as title_id1_15_,
+        title0_.duration as duration2_15_,
+        title0_.end_year as end_year3_15_,
+        title0_.is_adult as is_adult4_15_,
+        title0_.start_year as start_ye5_15_,
+        title0_.title as title6_15_,
+        title0_.title_type as title_ty7_15_ 
+    from
+        titles title0_ 
+    where
+        title0_.title_id=?
+Hibernate: 
+    select
+        genres0_.title_title_id as title_ti1_5_0_,
+        genres0_.generos as generos2_5_0_ 
+    from
+        generos_enum genres0_ 
+    where
+        genres0_.title_title_id=?
+Hibernate: 
+    select
+        review0_.id as id2_11_,
+        review0_.date as date3_11_,
+        review0_.language_id as languag12_11_,
+        review0_.rated_down as rated_do4_11_,
+        review0_.rated_up as rated_up5_11_,
+        review0_.rating as rating6_11_,
+        review0_.spoiler_alert as spoiler_7_11_,
+        review0_.text as text8_11_,
+        review0_.text_extended as text_ext9_11_,
+        review0_.title_id as title_i10_11_,
+        review0_.type as type11_11_,
+        review0_.user_id as user_id13_11_,
+        review0_.dtype as dtype1_11_ 
+    from
+        reviews review0_ 
+    where
+        review0_.title_id=?
+Hibernate: 
+    select
+        language0_.id as id1_6_0_,
+        language0_.value as value2_6_0_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_0_,
+        critic0_.location_id as location5_1_0_,
+        critic0_.source as source6_1_0_,
+        critic0_.critic_id as critic_i3_1_0_,
+        critic0_.user_nick as user_nic4_1_0_,
+        critic0_.dtype as dtype1_1_0_,
+        location1_.id as id1_7_1_,
+        location1_.city as city2_7_1_,
+        location1_.country as country3_7_1_,
+        source2_.id as id1_14_2_,
+        source2_.name as name2_14_2_ 
+    from
+        critic critic0_ 
+    left outer join
+        location location1_ 
+            on critic0_.location_id=location1_.id 
+    left outer join
+        source source2_ 
+            on critic0_.source=source2_.id 
+    where
+        critic0_.id=?
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 6.8.1</a> at 08/06/2021 12:36:22</p>
+</div>
+</div>
+</body>
+</html>

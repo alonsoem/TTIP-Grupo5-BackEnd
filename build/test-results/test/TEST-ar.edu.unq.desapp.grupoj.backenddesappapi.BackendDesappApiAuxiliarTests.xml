@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-06-08T15:36:19" hostname="ko-3" time="0.147">
+  <properties/>
+  <testcase name="retrieveAllLanguagesFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests" time="0.022"/>
+  <testcase name="retrieveOneLanguageFromServiceById()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests" time="0.04"/>
+  <testcase name="retrieveAllLocationsFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests" time="0.058"/>
+  <testcase name="retrieveOneNonExistentLanguageFromServiceById()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests" time="0.013"/>
+  <system-out><![CDATA[2021-06-08 12:36:19.082  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests], using SpringBootContextLoader
+2021-06-08 12:36:19.083  INFO 22885 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-06-08 12:36:19.083  INFO 22885 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests]: BackendDesappApiAuxiliarTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-06-08 12:36:19.088  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiApplication for test class ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiAuxiliarTests
+2021-06-08 12:36:19.091  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-06-08 12:36:19.092  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3e917581, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7de94982, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@52d95221, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@50478834, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@65cfc2c0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@525d22a2, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4a8d2a92, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@26e70ddf, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@3da51201, org.springframework.test.context.event.EventPublishingTestExecutionListener@6d67f25, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@252c0cd7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3bbb6458, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2e1b5c34, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1b012185, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5e8edc86, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3e77faab, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4a79ebad]
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_
+Hibernate: 
+    select
+        language0_.id as id1_6_,
+        language0_.value as value2_6_ 
+    from
+        language language0_ 
+    where
+        language0_.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

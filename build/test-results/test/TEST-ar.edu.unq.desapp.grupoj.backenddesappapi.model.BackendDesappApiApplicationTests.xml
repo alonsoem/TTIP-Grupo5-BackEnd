@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" tests="15" skipped="0" failures="0" errors="0" timestamp="2021-06-08T15:36:17" hostname="ko-3" time="0.478">
+  <properties/>
+  <testcase name="locationCOuntryItalyReturnsItaly()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.006"/>
+  <testcase name="retrieveUserWithUnknownSourceFromServiceAndGetLocationException()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.019"/>
+  <testcase name="ratingThreeInReviewReturnsThree()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.154"/>
+  <testcase name="rateDtoReviewId123Returns123()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.008"/>
+  <testcase name="userServiceTest1()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.153"/>
+  <testcase name="retrieveCriticWithUnknownSourceFromServiceAndGetSourceException()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.012"/>
+  <testcase name="locationCityParmaReturnsParma()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.004"/>
+  <testcase name="getUserCriticNamedJoeReturnsJoe()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.006"/>
+  <testcase name="retrieveAllUsersFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.015"/>
+  <testcase name="testReview9()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.023"/>
+  <testcase name="retrieveOneUserFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.007"/>
+  <testcase name="espanolLanguageReturnsValueEspanol()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.004"/>
+  <testcase name="retrieveOneDecadeFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.011"/>
+  <testcase name="getOneForCriticService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.017"/>
+  <testcase name="retrieveAllDecadeFromService()" classname="ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests" time="0.013"/>
+  <system-out><![CDATA[2021-06-08 12:36:17.161  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests], using SpringBootContextLoader
+2021-06-08 12:36:17.162  INFO 22885 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2021-06-08 12:36:17.162  INFO 22885 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests]: BackendDesappApiApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2021-06-08 12:36:17.197  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ar.edu.unq.desapp.grupoj.backenddesappapi.BackendDesappApiApplication for test class ar.edu.unq.desapp.grupoj.backenddesappapi.model.BackendDesappApiApplicationTests
+2021-06-08 12:36:17.199  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2021-06-08 12:36:17.200  INFO 22885 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@e63f7f4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@15ea449d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@63dc2996, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1e53676f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@f9eff06, org.springframework.test.context.support.DirtiesContextTestExecutionListener@48978cc4, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4a058cd9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4f68f2e9, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@377652cd, org.springframework.test.context.event.EventPublishingTestExecutionListener@4373094b, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@257636b8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2d816745, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@28e4a802, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7386c504, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6751fe3a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@414c06da, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4ce50249]
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        user0_.id as id2_1_,
+        user0_.location_id as location5_1_,
+        user0_.source as source6_1_,
+        user0_.critic_id as critic_i3_1_,
+        user0_.user_nick as user_nic4_1_ 
+    from
+        critic user0_ 
+    where
+        user0_.dtype='User' 
+        and user0_.source=? 
+        and user0_.critic_id=? 
+        and user0_.user_nick=?
+Hibernate: 
+    select
+        location0_.id as id1_7_,
+        location0_.city as city2_7_,
+        location0_.country as country3_7_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    insert 
+    into
+        critic
+        (location_id, source, critic_id, user_nick, dtype) 
+    values
+        (?, ?, ?, ?, 'User')
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        decade0_.id as id1_2_,
+        decade0_.from_year as from_yea2_2_,
+        decade0_.to_year as to_year3_2_ 
+    from
+        decade decade0_ 
+    where
+        decade0_.id=?
+Hibernate: 
+    select
+        source0_.id as id1_14_,
+        source0_.name as name2_14_ 
+    from
+        source source0_ 
+    where
+        source0_.id=?
+Hibernate: 
+    select
+        critic0_.id as id2_1_,
+        critic0_.location_id as location5_1_,
+        critic0_.source as source6_1_,
+        critic0_.critic_id as critic_i3_1_,
+        critic0_.user_nick as user_nic4_1_,
+        critic0_.dtype as dtype1_1_ 
+    from
+        critic critic0_ 
+    where
+        critic0_.source=? 
+        and critic0_.critic_id=?
+Hibernate: 
+    select
+        location0_.id as id1_7_0_,
+        location0_.city as city2_7_0_,
+        location0_.country as country3_7_0_ 
+    from
+        location location0_ 
+    where
+        location0_.id=?
+Hibernate: 
+    select
+        decade0_.id as id1_2_,
+        decade0_.from_year as from_yea2_2_,
+        decade0_.to_year as to_year3_2_ 
+    from
+        decade decade0_
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi</a> &gt; <span class="el_source">SecurityConfiguration.java</span></div><h1>SecurityConfiguration.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.filters.JwtRequestFilter;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+
+@EnableWebSecurity
+<span class="nc" id="L20">public class SecurityConfiguration extends WebSecurityConfigurerAdapter {</span>
+
+    @Autowired
+    private FrontUserService frontUserService;
+
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+<span class="nc" id="L31">        auth.userDetailsService(frontUserService);</span>
+<span class="nc" id="L32">    }</span>
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+<span class="nc" id="L36">        web.ignoring().antMatchers(&quot;/v2/api-docs&quot;,</span>
+                &quot;/configuration/ui&quot;,
+                &quot;/swagger-resources/**&quot;,
+                &quot;/configuration/security&quot;,
+                &quot;/swagger-ui.html&quot;,
+                &quot;/webjars/**&quot;);
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+<span class="nc" id="L46">        http.cors().and().csrf().disable();</span>
+<span class="nc" id="L47">        http.authorizeRequests()</span>
+<span class="nc" id="L48">                .antMatchers(&quot;/register&quot;).permitAll()</span>
+<span class="nc" id="L49">                .antMatchers(&quot;/sources&quot;).permitAll()</span>
+<span class="nc" id="L50">                .antMatchers(&quot;/authenticate&quot;).permitAll()</span>
+<span class="nc" id="L51">                .antMatchers(&quot;/suscription/demo/**&quot;).permitAll()</span>
+<span class="nc" id="L52">                .anyRequest().authenticated()</span>
+<span class="nc" id="L53">                .and().sessionManagement()</span>
+<span class="nc" id="L54">                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);</span>
+        //Revisar aca que hacer con el token
+<span class="nc" id="L56">        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);</span>
+<span class="nc" id="L57">    }</span>
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+<span class="nc" id="L62">        return super.authenticationManagerBean();</span>
+    }
+
+    @Bean
+    public PasswordEncoder getPasswordEncoder() {
+<span class="nc" id="L67">        return NoOpPasswordEncoder.getInstance();</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

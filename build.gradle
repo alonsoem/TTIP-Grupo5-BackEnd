@@ -1,0 +1,76 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+	id 'jacoco'
+	id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+group = 'ar.edu.unq.desapp.grupoj'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation "io.jsonwebtoken:jjwt:0.9.1"
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//runtimeOnly 'org.apache.logging.log4j:log4j-1.2-api:2.11.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+	runtimeOnly 'mysql:mysql-connector-java'
+	//testImplementation 'org.mockito:mockito-core:1.10.19'
+	compile 'org.hibernate.validator:hibernate-validator:6.0.13.Final'
+	testImplementation 'org.mockito:mockito-core:3.2.4'
+	testImplementation 'com.tngtech.archunit:archunit:0.19.0'
+	testCompile 'junit:junit:4.12'
+	compile 'junit:junit:4.12'
+	//compile 'redis.clients:jedis:2.9.0'
+	//compile "org.springframework.data:spring-data-redis:1.7.0.RELEASE"
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'redis.clients:jedis:3.3.0'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	implementation 'it.ozimov:embedded-redis:0.7.2'
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	//dependency 'org.springframework.boot:spring-boot-starter-log4j2'
+
+	//exclude(group: 'org.springframework.boot', module: 'spring-boot-starter-logging')
+	
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jacoco{
+	toolVersion = '0.8.2'
+
+}
+
+jacocoTestReport{
+	reports{
+		html.enabled = true
+		xml.enabled = true
+		csv.enabled = true
+	}
+	afterEvaluate { // (optional) : to exclude classes / packages from coverage
+		classDirectories.from = files(classDirectories.files.collect {
+			fileTree(
+					dir: it,
+					exclude: [ 'src/main/java/ar.edu.unq.desapp.grupoj.backenddesappapi/ServletInitializer','src/main/java/ar.edu.unq.desapp.grupoj.backenddesappapi/BackendDesappApiApplication'])
+		})
+	}
+}

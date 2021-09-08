@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LanguageService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi.service</a> &gt; <span class="el_source">LanguageService.java</span></div><h1>LanguageService.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi.service;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.Language;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.repository.LanguageRepository;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentLanguageException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+
+@Service
+public class LanguageService {
+
+
+    private LanguageRepository repository;
+
+    @Autowired
+<span class="fc" id="L20">    public LanguageService(LanguageRepository repo){</span>
+<span class="fc" id="L21">        repository=repo;</span>
+<span class="fc" id="L22">    }</span>
+
+    @EventListener
+    public void appReady(ApplicationReadyEvent event) {
+<span class="fc" id="L26">        repository.save(new Language(&quot;Español&quot;));</span>
+<span class="fc" id="L27">        repository.save(new Language(&quot;Ingles&quot;));</span>
+<span class="fc" id="L28">        repository.save(new Language(&quot;Portugues&quot;));</span>
+<span class="fc" id="L29">        repository.save(new Language(&quot;Frances&quot;));</span>
+<span class="fc" id="L30">    }</span>
+
+    public List&lt;Language&gt; findAll() {
+<span class="fc" id="L33">        return repository.findAll();</span>
+    }
+
+    public Language getById(Integer id) throws NonExistentLanguageException {
+
+<span class="fc" id="L38">        return repository.getById(id).orElseThrow(() -&gt; new NonExistentLanguageException(id));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

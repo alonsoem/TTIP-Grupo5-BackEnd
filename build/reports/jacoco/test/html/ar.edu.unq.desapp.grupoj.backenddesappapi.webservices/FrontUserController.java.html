@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FrontUserController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">backend-desapp-api</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unq.desapp.grupoj.backenddesappapi.webservices</a> &gt; <span class="el_source">FrontUserController.java</span></div><h1>FrontUserController.java</h1><pre class="source lang-java linenums">package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices;
+
+import ar.edu.unq.desapp.grupoj.backenddesappapi.Aspect.ExcludeFromMetrics;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationRequest;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.model.AuthenticationResponse;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserService;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RegisterDTO;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NonExistentSourceException;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyExistsException;
+import ar.edu.unq.desapp.grupoj.backenddesappapi.service.util.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Description;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@CrossOrigin(origins =&quot;*&quot;)
+@RestController
+@EnableAutoConfiguration
+
+<span class="nc" id="L30">public class FrontUserController {</span>
+
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtUtil jwtTokenUtil;
+
+    @Autowired
+    private FrontUserService service;
+
+    @GetMapping(&quot;/frontusers&quot;)
+    @Description(&quot;All FrontUsers list&quot;)
+    public ResponseEntity&lt;List&lt;FrontUserDTO&gt;&gt; getAllFrontUsers() {
+<span class="nc" id="L45">        return ResponseEntity.ok(service.findAll().stream().map(user-&gt;FrontUserDTO.fromModel(user)).collect(Collectors.toList()));</span>
+    }
+
+    @PostMapping(&quot;/register&quot;)
+    @ExcludeFromMetrics
+    public ResponseEntity saveUser(@Valid @RequestBody RegisterDTO registerRequest) throws UserAlreadyExistsException, NonExistentSourceException {
+<span class="nc" id="L51">        return new ResponseEntity(</span>
+<span class="nc" id="L52">                    service.save(registerRequest),</span>
+                    HttpStatus.CREATED
+                );
+    }
+
+    @PostMapping(&quot;/authenticate&quot;)
+    @ExcludeFromMetrics
+    public ResponseEntity&lt;?&gt; createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+
+<span class="nc" id="L61">            authenticationManager.authenticate(</span>
+<span class="nc" id="L62">                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())</span>
+            );
+
+
+
+<span class="nc" id="L67">        final UserDetails userDetails = service.loadUserByUsername(authenticationRequest.getUsername());</span>
+<span class="nc" id="L68">        final String jwt = jwtTokenUtil.generateToken(userDetails);</span>
+<span class="nc" id="L69">        return ResponseEntity.ok(new AuthenticationResponse(jwt));</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

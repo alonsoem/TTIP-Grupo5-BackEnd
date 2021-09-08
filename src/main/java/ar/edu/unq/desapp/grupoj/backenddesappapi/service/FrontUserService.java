@@ -39,12 +39,12 @@ public class FrontUserService implements UserDetailsService {
     }
 
     @Transactional
-    public FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException, NonExistentSourceException {
+    public ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException, NonExistentSourceException {
         Source source = sourceService.getById(frontuser.getSourceId());
         try {
             FrontUser user = frontuser.toModel(source);
             frontUserRepo.save(user);
-            return FrontUserDTO.fromModel(user);
+            return ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserDTO.fromModel(user);
         }catch(DuplicateKeyException e){
             throw new UserAlreadyExistsException();
         }

@@ -1,5 +1,4 @@
 package ar.edu.unq.desapp.grupoj.backenddesappapi.service;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.config.MessagingConfig;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.*;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.titles.Title;
 import ar.edu.unq.desapp.grupoj.backenddesappapi.model.user.Critic;
@@ -128,14 +127,6 @@ public class ReviewService {
 
     }
 
-    @Transactional
-    public Rates rate(RateDTO rateDto) throws NonExistentReviewException, NonExistentSourceException, NonExistentLocationException {
-        Review aReview= reviewRepo.findById(rateDto.reviewId).orElseThrow(() -> new NonExistentReviewException(rateDto.reviewId));
-        this.rateReview(aReview,rateDto.user,rateDto.rateType);
-        reviewRepo.save(aReview);
-
-        return aReview.getReviewRate();
-    }
 
     private void rateReview(Review review, UserDTO user, RateType rateType) throws NonExistentLocationException, NonExistentSourceException {
         User rateUser = userService.getBySourceAndUserIdAndNickId(user.getSourceId(),
@@ -146,20 +137,6 @@ public class ReviewService {
     }
 
 
-    @Transactional
-    public ReviewReport report(ReportDTO reportDto) throws NonExistentReviewException, NonExistentLocationException, NonExistentSourceException {
-        Review aReview= reviewRepo.findById(reportDto.reviewId).orElseThrow(() -> new NonExistentReviewException(reportDto.reviewId));
-        User user= userService.getBySourceAndUserIdAndNickId(reportDto.user.getSourceId(),
-                                                            reportDto.user.getUserId(),
-                                                            reportDto.user.getUserNick(),
-                                                            reportDto.user.getLocationId());
-        ReviewReport report= new ReviewReport(reportDto.reason,user);
-        reportRepo.save(report);
-
-        aReview.addReport(report);
-        reviewRepo.save(aReview);
-        return report;
-    }
 
 
     private Language checkLanguage(Integer languageId) throws NonExistentLanguageException {

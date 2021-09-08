@@ -38,7 +38,7 @@ dependencies {
 	//compile 'redis.clients:jedis:2.9.0'
 	//compile "org.springframework.data:spring-data-redis:1.7.0.RELEASE"
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	implementation 'redis.clients:jedis:3.3.0'
+	//implementation 'redis.clients:jedis:3.3.0'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

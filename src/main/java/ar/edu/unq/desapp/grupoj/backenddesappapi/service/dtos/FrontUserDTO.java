@@ -20,6 +20,3 @@ public class FrontUserDTO {
         return new FrontUserDTO(userModel.getUsername(),userModel.getName(),userModel.isEnabled());
     }
 }
-
-
-//{"id":null,"password":"123456","name":"quique","active":true,"roles":"USER","username":"quique@gmail.com"}

@@ -1,9 +1,11 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.service;
+package ar.edu.unq.ttip.alec.backend.service;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.repository.FrontUserRepository;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.RegisterDTO;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.UserAlreadyExistsException;
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
+import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -11,7 +13,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos.FrontUserDTO;
 
 import javax.transaction.Transactional;
 import java.util.List;

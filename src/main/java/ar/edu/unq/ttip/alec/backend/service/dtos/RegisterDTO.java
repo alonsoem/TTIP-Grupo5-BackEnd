@@ -1,8 +1,8 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos;
-
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser;
+package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 import javax.validation.constraints.NotBlank;
+
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 
 public class RegisterDTO {
 

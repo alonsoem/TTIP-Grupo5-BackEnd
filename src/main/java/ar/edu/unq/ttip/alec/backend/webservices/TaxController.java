@@ -1,8 +1,9 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices;
+package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.Tax;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.TaxService;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.NoExistentTaxException;
+import ar.edu.unq.ttip.alec.backend.model.Tax;
+import ar.edu.unq.ttip.alec.backend.service.TaxService;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.NoExistentTaxException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;

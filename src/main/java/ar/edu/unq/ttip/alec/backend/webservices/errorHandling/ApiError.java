@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.errorHandling;
+package ar.edu.unq.ttip.alec.backend.webservices.errorHandling;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

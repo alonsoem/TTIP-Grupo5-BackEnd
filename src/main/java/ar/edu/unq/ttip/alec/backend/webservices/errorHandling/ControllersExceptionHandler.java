@@ -1,6 +1,5 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.webservices.errorHandling;
+package ar.edu.unq.ttip.alec.backend.webservices.errorHandling;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions.*;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import ar.edu.unq.ttip.alec.backend.service.exceptions.*;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;

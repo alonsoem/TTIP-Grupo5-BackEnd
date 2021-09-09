@@ -1,8 +1,9 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.repository;
+package ar.edu.unq.ttip.alec.backend.repository;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 
 import java.util.List;
 import java.util.Optional;

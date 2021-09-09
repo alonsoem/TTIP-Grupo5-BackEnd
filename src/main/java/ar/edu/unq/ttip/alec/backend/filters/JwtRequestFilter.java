@@ -1,7 +1,8 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.filters;
+package ar.edu.unq.ttip.alec.backend.filters;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.FrontUserService;
-import ar.edu.unq.desapp.grupoj.backenddesappapi.service.util.JwtUtil;
+import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
+import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

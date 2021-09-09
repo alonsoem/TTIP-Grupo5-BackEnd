@@ -1,6 +1,6 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.service.dtos;
+package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import ar.edu.unq.desapp.grupoj.backenddesappapi.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import lombok.Getter;
 
 @Getter

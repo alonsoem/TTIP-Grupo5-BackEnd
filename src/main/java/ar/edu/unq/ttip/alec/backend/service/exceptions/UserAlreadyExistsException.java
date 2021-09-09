@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.service.exceptions;
+package ar.edu.unq.ttip.alec.backend.service.exceptions;
 
 public class UserAlreadyExistsException extends Throwable{
     public UserAlreadyExistsException () {

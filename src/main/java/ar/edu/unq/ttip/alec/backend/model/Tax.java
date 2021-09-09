@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.model;
+package ar.edu.unq.ttip.alec.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

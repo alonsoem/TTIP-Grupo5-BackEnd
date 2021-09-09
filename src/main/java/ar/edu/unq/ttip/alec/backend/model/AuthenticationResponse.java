@@ -1,4 +1,4 @@
-package ar.edu.unq.desapp.grupoj.backenddesappapi.model;
+package ar.edu.unq.ttip.alec.backend.model;
 
 public class AuthenticationResponse {
     private final String jwt;

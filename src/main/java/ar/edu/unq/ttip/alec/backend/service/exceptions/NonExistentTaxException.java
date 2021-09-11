@@ -1,7 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service.exceptions;
 
-public class NoExistentTaxException extends Throwable{
-    public NoExistentTaxException(Integer id) {
+public class NonExistentTaxException extends RuntimeException{
+    public NonExistentTaxException(Integer id) {
         super("Non existent Tax with id " + id);
     }
 }

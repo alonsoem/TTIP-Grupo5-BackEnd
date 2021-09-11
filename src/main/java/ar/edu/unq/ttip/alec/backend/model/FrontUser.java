@@ -21,6 +21,13 @@ public class FrontUser implements UserDetails {
     private String userName;
     private String password;
     private String name;
+
+    @OneToOne
+    private Provincia province;
+
+    @OneToOne
+    private Responsable responsable;
+
     private boolean active=true;
     private String roles="USER";
 
@@ -30,10 +37,12 @@ public class FrontUser implements UserDetails {
 
     protected FrontUser(){}
 
-    public FrontUser(String email, String name, String password){
+    public FrontUser(String email, String name, String password, Provincia province, Responsable responsable){
         this.userName=email;
         this.name=name;
         this.password=password;
+        this.province=province;
+        this.responsable=responsable;
     }
 
 
@@ -50,6 +59,10 @@ public class FrontUser implements UserDetails {
     public String getUsername() {
         return userName;
     }
+
+    public Provincia getProvince() { return province;}
+
+    public Responsable getResponsable(){return responsable;}
 
     @Override
     public boolean isAccountNonExpired() {

@@ -41,13 +41,10 @@
 
 
 
-    <logger name="ar.edu.unq.desapp.grupoj.backenddesappapi" level="DEBUG">
+    <logger name="ar.edu.unq.ttip.alec.backend" level="DEBUG">
         <appender-ref ref="console" />
     </logger>
 
-    <logger name="org.springframework" level="DEBUG">
-        <appender-ref ref="console" />
-    </logger>
 
     <logger name="org.hibernate" level="DEBUG">
         <appender-ref ref="console" />

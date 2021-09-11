@@ -3,7 +3,7 @@ package ar.edu.unq.ttip.alec.backend.service;
 
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.NoExistentTaxException;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -30,8 +30,8 @@ public class TaxService {
 
     }
 
-    public Tax getByTitleId(Integer id) throws NoExistentTaxException {
-        return repo.getTaxById(id).orElseThrow(() -> new NoExistentTaxException(id));
+    public Tax getByTitleId(Integer id) {
+        return repo.getTaxById(id).orElseThrow(() -> new NonExistentTaxException(id));
     }
 
     public List<Tax> findAll() {

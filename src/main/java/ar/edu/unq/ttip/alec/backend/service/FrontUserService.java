@@ -39,7 +39,7 @@ public class FrontUserService implements UserDetailsService {
         provincia= provinciaService.save(provincia);
         Responsable responsable = new Responsable("IVA CAPO");
         responsable= responsableService.save(responsable);
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b",provincia,responsable));
+        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b",provincia,true));
     }
 
     @Transactional
@@ -50,9 +50,8 @@ public class FrontUserService implements UserDetailsService {
     @Transactional
     public FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException {
         Provincia province= provinciaService.getByProvinciaId(frontuser.getProvinceId());
-        Responsable responsable= responsableService.getByResponsableId(frontuser.getResponsableId());
         try {
-            FrontUser user = frontuser.toModel(province,responsable);
+            FrontUser user = frontuser.toModel(province);
             frontUserRepo.save(user);
             return FrontUserDTO.fromModel(user);
         }catch(DuplicateKeyException e){

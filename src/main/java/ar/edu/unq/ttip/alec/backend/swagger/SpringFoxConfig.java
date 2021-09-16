@@ -55,7 +55,7 @@ public class SpringFoxConfig {
                 .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Arrays.asList(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ar.edu.unq.desapp.grupoj.backenddesappapi.webservices"))
+                .apis(RequestHandlerSelectors.basePackage("ar.edu.unq.ttip.alec.backend"))
                 .paths(PathSelectors.any())
                 .build();
     }

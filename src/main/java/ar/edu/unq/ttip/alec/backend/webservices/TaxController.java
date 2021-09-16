@@ -2,7 +2,7 @@ package ar.edu.unq.ttip.alec.backend.webservices;
 
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.service.TaxService;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.NoExistentTaxException;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins ="*")
 @RestController
@@ -29,7 +28,7 @@ public class TaxController {
     }
 
     @GetMapping("/tax/{id}")
-    public ResponseEntity<Tax> getTitleById(@PathVariable(value = "id") Integer id) throws NoExistentTaxException {
+    public ResponseEntity<Tax> getTitleById(@PathVariable(value = "id") Integer id) throws NonExistentTaxException {
         return ResponseEntity
                 .ok(
                     service.getByTitleId(id)

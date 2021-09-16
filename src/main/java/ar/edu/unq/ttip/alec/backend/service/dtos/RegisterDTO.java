@@ -1,8 +1,12 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.model.Province;
+
 
 public class RegisterDTO {
 
@@ -12,18 +16,24 @@ public class RegisterDTO {
     private String password;
     @NotBlank(message = "Name must be provided")
     private String name;
+    @NotNull(message = "Province cannot be null")
+    private Province province;
 
-    public RegisterDTO(String email, String name, String password) {
+    private Boolean respInscripto;
+
+    public RegisterDTO(String email, String name, String password, Province aProvince, Boolean respInscripto) {
         this.password = password;
         this.email=email;
         this.name=name;
+        this.province=aProvince;
+        this.respInscripto=respInscripto;
 
     }
 
-    public RegisterDTO() { }
+    protected RegisterDTO() { }
 
     public FrontUser toModel(){
-        return new FrontUser(email, name, password);
+        return new FrontUser(email, name, password, province, respInscripto);
     }
     public String getEmail() {
         return email;
@@ -37,5 +47,6 @@ public class RegisterDTO {
         return name;
     }
 
-
+    public Province getProvince() { return province; }
+    public Boolean getRespInscripto() { return respInscripto;}
 }

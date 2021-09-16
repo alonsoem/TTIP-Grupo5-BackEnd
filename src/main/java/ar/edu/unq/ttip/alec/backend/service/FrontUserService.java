@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
@@ -21,12 +22,15 @@ import java.util.Optional;
 @Service
 public class FrontUserService implements UserDetailsService {
 
+
     @Autowired
     private FrontUserRepository frontUserRepo;
 
+
+
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b"));
+        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b", Province.TUCUMAN,true));
     }
 
     @Transactional
@@ -37,7 +41,7 @@ public class FrontUserService implements UserDetailsService {
     @Transactional
     public FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException {
         try {
-            FrontUser user = frontuser.toModel();
+            FrontUser user= frontuser.toModel();
             frontUserRepo.save(user);
             return FrontUserDTO.fromModel(user);
         }catch(DuplicateKeyException e){

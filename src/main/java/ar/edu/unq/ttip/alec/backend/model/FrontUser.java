@@ -21,6 +21,11 @@ public class FrontUser implements UserDetails {
     private String userName;
     private String password;
     private String name;
+
+    private Province province;
+
+    private Boolean responsableInscripto = false;
+
     private boolean active=true;
     private String roles="USER";
 
@@ -30,10 +35,12 @@ public class FrontUser implements UserDetails {
 
     protected FrontUser(){}
 
-    public FrontUser(String email, String name, String password){
+    public FrontUser(String email, String name, String password, Province province, Boolean isRespInscripto){
         this.userName=email;
         this.name=name;
         this.password=password;
+        this.province=province;
+        this.responsableInscripto=isRespInscripto;
     }
 
 
@@ -50,6 +57,10 @@ public class FrontUser implements UserDetails {
     public String getUsername() {
         return userName;
     }
+
+    public Province getProvince() { return province;}
+
+    public Boolean isResponsableInscripto(){return responsableInscripto;}
 
     @Override
     public boolean isAccountNonExpired() {

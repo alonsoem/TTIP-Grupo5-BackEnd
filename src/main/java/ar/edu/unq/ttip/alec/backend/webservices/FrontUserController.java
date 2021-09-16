@@ -8,6 +8,7 @@ import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Description;
@@ -40,12 +41,12 @@ public class FrontUserController {
     private FrontUserService service;
 
     @GetMapping("/frontusers")
-    @Description("All FrontUsers list")
     public ResponseEntity<List<FrontUserDTO>> getAllFrontUsers() {
         return ResponseEntity.ok(service.findAll().stream().map(user-> FrontUserDTO.fromModel(user)).collect(Collectors.toList()));
     }
 
     @PostMapping("/register")
+    @ApiOperation("Registro de usuarios")
     public ResponseEntity<?> saveUser(@Valid @RequestBody RegisterDTO registerRequest) throws UserAlreadyExistsException {
         return new ResponseEntity(
                 service.save(registerRequest),

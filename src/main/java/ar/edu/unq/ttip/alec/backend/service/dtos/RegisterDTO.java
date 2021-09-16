@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 
 
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Provincia;
+import ar.edu.unq.ttip.alec.backend.model.Province;
 
 
 public class RegisterDTO {
@@ -16,23 +16,23 @@ public class RegisterDTO {
     private String password;
     @NotBlank(message = "Name must be provided")
     private String name;
-    @NotNull(message = "Province Id cannot be null")
-    private Integer provinceId;
+    @NotNull(message = "Province cannot be null")
+    private Province province;
 
     private Boolean respInscripto;
 
-    public RegisterDTO(String email, String name, String password, Integer provinceId, Boolean respInscripto) {
+    public RegisterDTO(String email, String name, String password, Province aProvince, Boolean respInscripto) {
         this.password = password;
         this.email=email;
         this.name=name;
-        this.provinceId=provinceId;
+        this.province=aProvince;
         this.respInscripto=respInscripto;
 
     }
 
     protected RegisterDTO() { }
 
-    public FrontUser toModel(Provincia province){
+    public FrontUser toModel(){
         return new FrontUser(email, name, password, province, respInscripto);
     }
     public String getEmail() {
@@ -47,8 +47,6 @@ public class RegisterDTO {
         return name;
     }
 
-    public Integer getProvinceId() {
-        return provinceId;
-    }
+    public Province getProvince() { return province; }
     public Boolean getRespInscripto() { return respInscripto;}
 }

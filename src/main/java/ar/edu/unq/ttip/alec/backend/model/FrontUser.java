@@ -22,8 +22,7 @@ public class FrontUser implements UserDetails {
     private String password;
     private String name;
 
-    @OneToOne
-    private Provincia province;
+    private Province province;
 
     private Boolean responsableInscripto = false;
 
@@ -36,7 +35,7 @@ public class FrontUser implements UserDetails {
 
     protected FrontUser(){}
 
-    public FrontUser(String email, String name, String password, Provincia province, Boolean isRespInscripto){
+    public FrontUser(String email, String name, String password, Province province, Boolean isRespInscripto){
         this.userName=email;
         this.name=name;
         this.password=password;
@@ -59,7 +58,7 @@ public class FrontUser implements UserDetails {
         return userName;
     }
 
-    public Provincia getProvince() { return province;}
+    public Province getProvince() { return province;}
 
     public Boolean isResponsableInscripto(){return responsableInscripto;}
 

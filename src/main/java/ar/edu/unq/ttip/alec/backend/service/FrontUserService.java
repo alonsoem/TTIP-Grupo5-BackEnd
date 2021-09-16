@@ -1,8 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Provincia;
-import ar.edu.unq.ttip.alec.backend.model.Responsable;
+import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
@@ -23,10 +22,6 @@ import java.util.Optional;
 @Service
 public class FrontUserService implements UserDetailsService {
 
-    @Autowired
-    private ResponsableService responsableService;
-    @Autowired
-    private ProvinciaService provinciaService;
 
     @Autowired
     private FrontUserRepository frontUserRepo;
@@ -35,11 +30,7 @@ public class FrontUserService implements UserDetailsService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        Provincia provincia = new Provincia("CATAMARCA");
-        provincia= provinciaService.save(provincia);
-        Responsable responsable = new Responsable("IVA CAPO");
-        responsable= responsableService.save(responsable);
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b",provincia,true));
+        frontUserRepo.save(new FrontUser("alonso.em@gmail.com","Enrique Alonso","4a7d1ed414474e4033ac29ccb8653d9b", Province.TUCUMAN,true));
     }
 
     @Transactional
@@ -49,9 +40,8 @@ public class FrontUserService implements UserDetailsService {
 
     @Transactional
     public FrontUserDTO save(RegisterDTO frontuser) throws UserAlreadyExistsException {
-        Provincia province= provinciaService.getByProvinciaId(frontuser.getProvinceId());
         try {
-            FrontUser user = frontuser.toModel(province);
+            FrontUser user= frontuser.toModel();
             frontUserRepo.save(user);
             return FrontUserDTO.fromModel(user);
         }catch(DuplicateKeyException e){

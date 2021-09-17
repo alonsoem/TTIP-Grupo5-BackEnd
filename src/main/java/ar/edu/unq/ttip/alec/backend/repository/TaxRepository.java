@@ -3,7 +3,7 @@ package ar.edu.unq.ttip.alec.backend.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unq.ttip.alec.backend.model.Tax;
+import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 
 import java.util.List;
 import java.util.Optional;

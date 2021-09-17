@@ -1,7 +1,9 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
 
-import ar.edu.unq.ttip.alec.backend.model.Tax;
+import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
+import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
+import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
@@ -24,9 +26,10 @@ public class TaxService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        repo.save (new Tax("IVA", 21.0));
-        repo.save (new Tax("Dolar Solidario", 30.0));
-        repo.save (new Tax("Impuesto al aire", 10.0));
+        repo.save (new Tax("TASA 21%", 21.0));
+        repo.save (new Tax("TASA 30%", 30.0));
+        repo.save (new IVAExterior("IVA Exterior", 21.0));
+        repo.save (new Pais("Impuesto Pais", 30.0,8.0));
 
     }
 
@@ -36,6 +39,12 @@ public class TaxService {
 
     public List<Tax> findAll() {
         return repo.findAll();
+    }
+
+    public Double calculate(Double amount, String description,Integer taxId){
+
+        Tax tax = this.getByTitleId(taxId);
+        return tax.calculateWith(amount,description);
     }
 
 

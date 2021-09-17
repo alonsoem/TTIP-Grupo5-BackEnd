@@ -1,16 +1,15 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.Tax;
+import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.service.TaxService;
+import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +32,15 @@ public class TaxController {
                 .ok(
                     service.getByTitleId(id)
                     );
+    }
+
+    @PostMapping("/tax/calculate")
+    public ResponseEntity<Double> taxCalculate(@RequestBody CalculationDTO request) {
+
+        return new ResponseEntity(
+                service.calculate(request.getAmount(),request.getDescription(),request.getTaxId()),
+                HttpStatus.CREATED
+        );
     }
 
 

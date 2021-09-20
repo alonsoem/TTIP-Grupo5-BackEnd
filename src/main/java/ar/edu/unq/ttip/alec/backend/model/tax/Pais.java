@@ -1,5 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model.tax;
 
+import ar.edu.unq.ttip.alec.backend.model.Apartado;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -18,12 +20,12 @@ public class Pais extends Tax {
     }
 
     @Override
-    public Double calculateWith(Double amount, String description) {
-        //TODO Otro Strategy aca?
-        if (isInApartadoA(description)) {
+    public Double calculateWith(Double amount, Apartado apartado) {
+
+        if (apartado==Apartado.APARTADOA) {
             return this.getRate()/100*amount;
         }
-        if (isInApartadoB(description) && amount<10) {
+        if (apartado==Apartado.APARTADOB && amount<10) {
             return this.getRate()/100*amount;
         }else{
             return this.getSecondaryRate()/100*amount;

@@ -1,5 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model.tax;
 
+import ar.edu.unq.ttip.alec.backend.model.Apartado;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,14 +41,9 @@ public class Tax implements TaxStrategy{
     }
 
 
-    public Double calculateWith(Double amount, String description) {
+    public Double calculateWith(Double amount, Apartado apartado) {
         return rate/100*amount;
     }
 
-    protected Boolean isInApartadoA(String description){
-        return true; //TODO Implementar el control
-    }
-    protected Boolean isInApartadoB(String description){
-        return false; //TODO Implementar el control
-    }
+
 }

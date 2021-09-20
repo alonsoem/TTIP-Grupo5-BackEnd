@@ -1,14 +1,16 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
+import ar.edu.unq.ttip.alec.backend.model.Apartado;
+
 public class CalculationDTO {
 
     private Double amount;
-    private String description;
+    private Apartado apartado;
     private Integer taxId;
 
-    public CalculationDTO(Double amount, String description, Integer taxId){
+    public CalculationDTO(Double amount, Apartado apartado, Integer taxId){
         this.amount=amount;
-        this.description=description;
+        this.apartado=apartado;
         this.taxId=taxId;
     }
 
@@ -22,7 +24,7 @@ public class CalculationDTO {
         return taxId;
     }
 
-    public String getDescription() {
-        return description;
+    public Apartado getApartado() {
+        return apartado;
     }
 }

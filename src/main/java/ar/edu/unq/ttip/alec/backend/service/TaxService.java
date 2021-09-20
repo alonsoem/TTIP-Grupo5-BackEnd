@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
 
+import ar.edu.unq.ttip.alec.backend.model.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
 import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
@@ -41,10 +42,10 @@ public class TaxService {
         return repo.findAll();
     }
 
-    public Double calculate(Double amount, String description,Integer taxId){
+    public Double calculate(Double amount, Apartado apartado, Integer taxId){
 
         Tax tax = this.getByTitleId(taxId);
-        return tax.calculateWith(amount,description);
+        return tax.calculateWith(amount,apartado);
     }
 
 

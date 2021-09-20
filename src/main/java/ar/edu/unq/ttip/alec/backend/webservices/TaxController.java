@@ -38,7 +38,7 @@ public class TaxController {
     public ResponseEntity<Double> taxCalculate(@RequestBody CalculationDTO request) {
 
         return new ResponseEntity(
-                service.calculate(request.getAmount(),request.getDescription(),request.getTaxId()),
+                service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),
                 HttpStatus.CREATED
         );
     }

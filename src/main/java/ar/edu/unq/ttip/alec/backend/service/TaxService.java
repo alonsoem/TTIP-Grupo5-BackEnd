@@ -6,6 +6,8 @@ import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
 import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
+import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -27,10 +30,10 @@ public class TaxService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        repo.save (new Tax("TASA 21%", 21.0));
-        repo.save (new Tax("TASA 30%", 30.0));
-        repo.save (new IVAExterior("IVA Exterior", 21.0));
-        repo.save (new Pais("Impuesto Pais", 30.0,8.0));
+        repo.save (new Tax("TASA 21%", new BigDecimal(21)));
+        repo.save (new Tax("TASA 30%", new BigDecimal(30)));
+        repo.save (new IVAExterior("IVA Exterior", BigDecimal.valueOf(21)));
+        repo.save (new Pais("Impuesto Pais", BigDecimal.valueOf(30),BigDecimal.valueOf(8)));
 
     }
 
@@ -42,13 +45,12 @@ public class TaxService {
         return repo.findAll();
     }
 
-    public Double calculate(Double amount, Apartado apartado, Integer taxId){
-
+    public CalcResultDTO calculate(BigDecimal amount, Apartado apartado, Integer taxId){
         Tax tax = this.getByTitleId(taxId);
-        return tax.calculateWith(amount,apartado);
+        BigDecimal calcResult = tax.calculateWith(amount,apartado);
+
+        return new CalcResultDTO(amount, calcResult,taxId);
     }
-
-
 
 
 }

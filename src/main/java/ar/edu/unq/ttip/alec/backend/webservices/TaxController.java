@@ -2,6 +2,7 @@ package ar.edu.unq.ttip.alec.backend.webservices;
 
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.service.TaxService;
+import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @CrossOrigin(origins ="*")
@@ -35,7 +37,7 @@ public class TaxController {
     }
 
     @PostMapping("/tax/calculate")
-    public ResponseEntity<Double> taxCalculate(@RequestBody CalculationDTO request) {
+    public ResponseEntity<CalcResultDTO> taxCalculate(@RequestBody CalculationDTO request) {
 
         return new ResponseEntity(
                 service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),

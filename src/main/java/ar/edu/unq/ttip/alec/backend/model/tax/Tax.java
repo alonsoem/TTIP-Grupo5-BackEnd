@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 public class Tax implements TaxStrategy{
@@ -15,9 +16,9 @@ public class Tax implements TaxStrategy{
     private Integer id;
 
     private String name;
-    private Double rate;
+    private BigDecimal rate;
 
-    public Tax (String name, Double taxRate){
+    public Tax (String name, BigDecimal taxRate){
         this.name=name;
         this.rate=taxRate;
     }
@@ -28,7 +29,7 @@ public class Tax implements TaxStrategy{
         return name;
     }
 
-    public Double getRate() {
+    public BigDecimal getRate() {
         return rate;
     }
 
@@ -41,8 +42,8 @@ public class Tax implements TaxStrategy{
     }
 
 
-    public Double calculateWith(Double amount, Apartado apartado) {
-        return rate/100*amount;
+    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
+        return amount.multiply(rate.divide(new BigDecimal(100)));
     }
 
 

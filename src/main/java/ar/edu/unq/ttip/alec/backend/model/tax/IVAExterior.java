@@ -7,31 +7,31 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.persistence.Entity;
+import java.math.BigDecimal;
 
 @Entity
 public class IVAExterior extends Tax {
 
-    public IVAExterior(String name, Double tax) {
+    public IVAExterior(String name, BigDecimal tax) {
         super(name,tax);
     }
     protected IVAExterior(){}
 
 
     @Override
-    public Double calculateWith(Double amount, Apartado apartado) {
+    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
 
         if (userDetails.isResponsableInscripto() || userDetails.getProvince() == Province.TIERRA_DEL_FUEGO){
-            return 0.0;
         }
         if (apartado==Apartado.APARTADOA) {
-            return this.getRate()/100*amount;
+            return amount.multiply(this.getRate().divide(BigDecimal.valueOf(100)));
         }
-        if (apartado==Apartado.APARTADOB && amount<10) {
-            return 0.0;
+        if (apartado==Apartado.APARTADOB && amount.compareTo(BigDecimal.TEN)==-1) {
+            return BigDecimal.ZERO;
         }else{
-            return 0.0;
+            return BigDecimal.ZERO;
         }
     }
 }

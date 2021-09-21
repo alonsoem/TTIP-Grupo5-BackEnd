@@ -26,6 +26,8 @@ public class FrontUser implements UserDetails {
 
     private Boolean responsableInscripto = false;
 
+    private Boolean gananciasYBienesP = false;
+
     private boolean active=true;
     private String roles="USER";
 
@@ -35,12 +37,14 @@ public class FrontUser implements UserDetails {
 
     protected FrontUser(){}
 
-    public FrontUser(String email, String name, String password, Province province, Boolean isRespInscripto){
+    public FrontUser(String email, String name, String password,
+                     Province province, Boolean isRespInscripto, Boolean isGananciasYBienesP){
         this.userName=email;
         this.name=name;
         this.password=password;
         this.province=province;
         this.responsableInscripto=isRespInscripto;
+        this.gananciasYBienesP=isGananciasYBienesP;
     }
 
 
@@ -93,5 +97,6 @@ public class FrontUser implements UserDetails {
 
     public String getName() {  return name;   }
 
+    public boolean isGananciasYBienesP() { return gananciasYBienesP; }
 }
 

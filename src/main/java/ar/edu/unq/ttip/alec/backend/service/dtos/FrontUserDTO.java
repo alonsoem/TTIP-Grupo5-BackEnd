@@ -12,16 +12,17 @@ public class FrontUserDTO {
     private Boolean active;
     private Province province;
     private Boolean isResponsableInscripto;
-
-    public FrontUserDTO(String username, String name, Province aProvince, boolean isResponsableInscripto, Boolean active){
+    private Boolean isgananciasYBienesP;
+    public FrontUserDTO(String username, String name, Province aProvince, boolean isResponsableInscripto, Boolean ganancias, Boolean active){
         this.username=username;
         this.name=name;
         this.active=active;
         this.province=aProvince;
         this.isResponsableInscripto=isResponsableInscripto;
+        this.isgananciasYBienesP=ganancias;
     }
 
     public static FrontUserDTO fromModel(FrontUser userModel){
-        return new FrontUserDTO(userModel.getUsername(),userModel.getName(),userModel.getProvince(),userModel.isResponsableInscripto(),userModel.isEnabled());
+        return new FrontUserDTO(userModel.getUsername(),userModel.getName(),userModel.getProvince(),userModel.isResponsableInscripto(),userModel.isGananciasYBienesP(),userModel.isEnabled());
     }
 }

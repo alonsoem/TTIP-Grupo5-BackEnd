@@ -53,7 +53,6 @@ public class FrontUser implements UserDetails {
         return authorities;
     }
 
-
     public void setId(Integer id) {
         this.id = id;
     }

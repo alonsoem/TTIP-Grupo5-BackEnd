@@ -1,31 +1,35 @@
-package ar.edu.unq.ttip.alec.backend.model;
+package ar.edu.unq.ttip.alec.backend.model.tax;
+
+import ar.edu.unq.ttip.alec.backend.model.Apartado;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
-public class Tax {
+public class Tax implements TaxStrategy{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name = "";
-    private Double rate =0.0;
+    private String name;
+    private BigDecimal rate;
 
-    public Tax (String name, Double taxRate){
+    public Tax (String name, BigDecimal taxRate){
         this.name=name;
         this.rate=taxRate;
     }
+
     protected Tax(){}
 
     public String getName() {
         return name;
     }
 
-    public Double getRate() {
+    public BigDecimal getRate() {
         return rate;
     }
 
@@ -36,4 +40,11 @@ public class Tax {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
+    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
+        return amount.multiply(rate.divide(new BigDecimal(100)));
+    }
+
+
 }

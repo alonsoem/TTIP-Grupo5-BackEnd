@@ -22,9 +22,7 @@ public enum Province {
     CHUBUT,
     SANTA_CRUZ,
     TIERRA_DEL_FUEGO,
-    ISLAS_MALVINAS,
+    SANTIAGO_DEL_ESTERO,
     SAN_LUIS,
     TUCUMAN
-
 }
-

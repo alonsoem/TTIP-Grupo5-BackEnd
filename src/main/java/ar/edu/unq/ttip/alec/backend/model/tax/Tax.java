@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model.tax;
 
 import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.TaxResult;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,8 +43,17 @@ public class Tax implements TaxStrategy{
     }
 
 
-    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
+    public BigDecimal result (BigDecimal amount, Apartado apartado){
         return amount.multiply(rate.divide(new BigDecimal(100)));
+    }
+
+    public TaxResult calculateWith(BigDecimal amount, Apartado apartado) {
+
+        return new TaxResult(
+                            this.result(amount,apartado),
+                            this.id,
+                            this.name
+                            );
     }
 
 

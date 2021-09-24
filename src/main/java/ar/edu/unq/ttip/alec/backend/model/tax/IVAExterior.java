@@ -19,7 +19,7 @@ public class IVAExterior extends Tax {
 
 
     @Override
-    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
+    public BigDecimal result(BigDecimal amount, Apartado apartado) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
 

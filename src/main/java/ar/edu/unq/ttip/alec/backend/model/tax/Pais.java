@@ -21,7 +21,7 @@ public class Pais extends Tax {
     }
 
     @Override
-    public BigDecimal calculateWith(BigDecimal amount, Apartado apartado) {
+    public BigDecimal result(BigDecimal amount, Apartado apartado) {
 
         if (apartado==Apartado.APARTADOA) {
             return amount.multiply(this.getRate().divide(BigDecimal.valueOf(100)));
@@ -33,4 +33,6 @@ public class Pais extends Tax {
 
         }
     }
+
+
 }

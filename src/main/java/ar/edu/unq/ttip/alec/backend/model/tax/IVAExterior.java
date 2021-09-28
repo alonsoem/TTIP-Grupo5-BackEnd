@@ -24,12 +24,13 @@ public class IVAExterior extends Tax {
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
 
         if (userDetails.isResponsableInscripto() || userDetails.getProvince() == Province.TIERRA_DEL_FUEGO){
+            return BigDecimal.ZERO;
         }
         if (apartado==Apartado.APARTADOA) {
             return amount.multiply(this.getRate().divide(BigDecimal.valueOf(100)));
         }
         if (apartado==Apartado.APARTADOB && amount.compareTo(BigDecimal.TEN)==-1) {
-            return BigDecimal.ZERO;
+            return amount.multiply(this.getRate().divide(BigDecimal.valueOf(100)));
         }else{
             return BigDecimal.ZERO;
         }

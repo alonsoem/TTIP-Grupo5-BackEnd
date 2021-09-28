@@ -37,7 +37,7 @@ public class TaxService {
         repo.save (new Tax("TASA 21%", new BigDecimal(21)));
         repo.save (new Tax("TASA 30%", new BigDecimal(30)));
         repo.save (new IVAExterior("IVA Exterior", BigDecimal.valueOf(21)));
-        repo.save (new Pais("Impuesto Pais", BigDecimal.valueOf(30),BigDecimal.valueOf(8)));
+        repo.save (new Pais("Impuesto Pais", BigDecimal.valueOf(8),BigDecimal.valueOf(30)));
 
         Tax ivaExt = repo.getTaxById(3).orElseThrow(() -> new NonExistentTaxException(3));
         Tax pais= repo.getTaxById(4).orElseThrow(() -> new NonExistentTaxException(4));

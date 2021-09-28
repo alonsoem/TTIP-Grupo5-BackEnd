@@ -2,14 +2,13 @@ package ar.edu.unq.ttip.alec.backend.service;
 
 
 import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.TaxBroker;
-import ar.edu.unq.ttip.alec.backend.model.TaxResult;
 import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
 import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,7 @@ public class TaxService {
         Tax pais= repo.getTaxById(4).orElseThrow(() -> new NonExistentTaxException(4));
         broker.add(pais);
         broker.add(ivaExt);
+        broker.add(new Rule());
 
     }
 
@@ -62,6 +62,11 @@ public class TaxService {
         BigDecimal calcResult = tax.calculateWith(amount,apartado);
 
         return new CalcResultDTO(amount, calcResult,taxId);*/
+    }
+    public CalcResultDTO calculateWithRules(BigDecimal amount, Apartado apartado, Integer taxId){
+
+        return broker.getResultsWithRules(amount,apartado);
+
     }
 
 

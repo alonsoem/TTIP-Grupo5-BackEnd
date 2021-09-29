@@ -24,54 +24,50 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
 import ar.edu.unq.ttip.alec.backend.model.Apartado;
-import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.model.TaxResult;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
 import org.jeasy.rules.api.RulesEngine;
-import org.jeasy.rules.api.RulesEngineParameters;
 import org.jeasy.rules.core.DefaultRulesEngine;
+import org.jeasy.rules.mvel.MVELRuleFactory;
+import org.jeasy.rules.support.reader.YamlRuleDefinitionReader;
 
+import java.io.FileReader;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Rule {
+public class FileRule {
 
-    private String name;
-    private List<org.jeasy.rules.api.Rule> allRules= new ArrayList<>();
-
-    public void addRule(org.jeasy.rules.api.Rule rule){
-        allRules.add(rule);
-    }
-
-    public Rule(String name){
-        this.name=name;
-    }
-    public TaxResult calculateWith(BigDecimal amount, Apartado apartado, FrontUser user){
+    public TaxResult calculateWith(BigDecimal amount, Apartado apartado){
 
         RuleResult result = new RuleResult();
+
+        //create a person instance (fact)
 
         Facts facts = new Facts();
         facts.put("apartado", apartado);
         facts.put("apartadoA", Apartado.APARTADOA);
-        facts.put("apartadoB", Apartado.APARTADOB);
-        facts.put("noApartado", Apartado.NOAPARTADO);
-        facts.put("tierraDelFuego", Province.TIERRA_DEL_FUEGO);
         facts.put("amount", amount);
         facts.put("result", result);
-        facts.put("user", user);
 
+
+        MVELRuleFactory ruleFactory = new MVELRuleFactory(new YamlRuleDefinitionReader());
+        String fileName = "src/main/java/ar/edu/unq/ttip/alec/backend/model/rules/pais-rule.yml";
         Rules rules = new Rules();
-        allRules.stream().forEach(rule -> rules.register(rule));
+        try {
+            org.jeasy.rules.api.Rule ruleApartadoA = ruleFactory.createRule(new FileReader(fileName));
+            rules.register(ruleApartadoA);
+        }catch(Exception e) {
+            throw new RuntimeException("OCURRIO UN ERROR " + e.getMessage());
+        }
 
-        RulesEngineParameters parameters = new RulesEngineParameters().skipOnFirstAppliedRule(true);
-        RulesEngine rulesEngine = new DefaultRulesEngine(parameters);
+
+
+        //create a default rules engine and fire rules on known facts
+        RulesEngine rulesEngine = new DefaultRulesEngine();
 
         rulesEngine.fire(rules, facts);
 
-        return new TaxResult(result.value,999,name);
+        return new TaxResult(result.value,999,"Impuesto de prueba c/ RULE");
 
     }
 

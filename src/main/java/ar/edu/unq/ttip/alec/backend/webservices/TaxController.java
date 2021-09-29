@@ -45,18 +45,6 @@ public class TaxController {
         );
     }
 
-    @PostMapping("/tax/calculateRule")
-    public ResponseEntity<CalcResultDTO> taxCalculateRule(@RequestBody CalculationDTO request) {
-
-        return new ResponseEntity(
-                service.calculateWithRules(request.getAmount(),request.getApartado(),request.getTaxId()),
-                HttpStatus.CREATED
-        );
-    }
-
-
-
-
 }
 
 

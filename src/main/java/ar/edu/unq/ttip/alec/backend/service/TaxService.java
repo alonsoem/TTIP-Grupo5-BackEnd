@@ -107,7 +107,7 @@ public class TaxService {
                 .priority(2)
                 .when("apartado=apartadoB")
                 .when("amount<10")
-                .then("result.value=21;");
+                .then("result.value=amount*21/100;");
 
         taxRulesIva.addRule(noApartado);
         taxRulesIva.addRule(tierraDelFuego);

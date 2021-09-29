@@ -2,7 +2,7 @@ package ar.edu.unq.ttip.alec.backend.service;
 
 
 import ar.edu.unq.ttip.alec.backend.model.*;
-import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
+import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
 import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
@@ -42,7 +42,7 @@ public class TaxService {
 
 
 
-        Rule rule= new Rule("IMPUESTO PAIS");
+        TaxRules rule= new TaxRules("IMPUESTO PAIS");
 
         MVELRule apartadoARule = new MVELRule()
                 .name("Es Apartado A")
@@ -73,7 +73,7 @@ public class TaxService {
 
 
 
-        Rule ruleIva= new Rule("IVA EXTERIOR");
+        TaxRules taxRulesIva = new TaxRules("IVA EXTERIOR");
 
 
 
@@ -109,13 +109,13 @@ public class TaxService {
                 .when("amount<10")
                 .then("result.value=21;");
 
-        ruleIva.addRule(noApartado);
-        ruleIva.addRule(tierraDelFuego);
-        ruleIva.addRule(responsableInscripto);
-        ruleIva.addRule(apartadoBMayorADiez);
-        ruleIva.addRule(apartadoBMenorADiez);
+        taxRulesIva.addRule(noApartado);
+        taxRulesIva.addRule(tierraDelFuego);
+        taxRulesIva.addRule(responsableInscripto);
+        taxRulesIva.addRule(apartadoBMayorADiez);
+        taxRulesIva.addRule(apartadoBMenorADiez);
 
-        ruleBroker.add(ruleIva);
+        ruleBroker.add(taxRulesIva);
 
 
 

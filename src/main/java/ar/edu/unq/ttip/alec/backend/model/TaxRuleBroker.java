@@ -1,6 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.model;
 
-import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
+import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class TaxRuleBroker {
 
-    private List<Rule> rulesObj= new ArrayList<>();
+    private List<TaxRules> rulesObj= new ArrayList<>();
     private String name ="";
 
     public TaxRuleBroker(){}
@@ -18,7 +18,7 @@ public class TaxRuleBroker {
         name=taxBrokerName;
     }
 
-    public void add(Rule rule){
+    public void add(TaxRules rule){
         rulesObj.add(rule);
     }
 
@@ -32,7 +32,7 @@ public class TaxRuleBroker {
         return calcResult.getResults();
     }
 
-    public List<Rule> getRules() {
+    public List<TaxRules> getRules() {
         return rulesObj;
     }
 }

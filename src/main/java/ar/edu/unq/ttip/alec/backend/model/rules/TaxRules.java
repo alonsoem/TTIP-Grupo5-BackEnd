@@ -37,7 +37,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rule {
+public class TaxRules {
 
     private String name;
     private List<org.jeasy.rules.api.Rule> allRules= new ArrayList<>();
@@ -46,7 +46,7 @@ public class Rule {
         allRules.add(rule);
     }
 
-    public Rule(String name){
+    public TaxRules(String name){
         this.name=name;
     }
     public TaxResult calculateWith(BigDecimal amount, Apartado apartado, FrontUser user){

@@ -3,18 +3,25 @@ package ar.edu.unq.ttip.alec.backend.model;
 import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TaxRuleBroker {
+@Entity
+public class Broker {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaxRules> rulesObj= new ArrayList<>();
     private String name ="";
 
-    public TaxRuleBroker(){}
-    public TaxRuleBroker(String taxBrokerName){
+    public Broker(){}
+    public Broker(String taxBrokerName){
         name=taxBrokerName;
     }
 
@@ -34,5 +41,13 @@ public class TaxRuleBroker {
 
     public List<TaxRules> getRules() {
         return rulesObj;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

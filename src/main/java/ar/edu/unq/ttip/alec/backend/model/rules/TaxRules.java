@@ -33,22 +33,29 @@ import org.jeasy.rules.api.RulesEngine;
 import org.jeasy.rules.api.RulesEngineParameters;
 import org.jeasy.rules.core.DefaultRulesEngine;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class TaxRules {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
-    private List<org.jeasy.rules.api.Rule> allRules= new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rule> allRules= new ArrayList<>();
 
-    public void addRule(org.jeasy.rules.api.Rule rule){
+    public void addRule(Rule rule){
         allRules.add(rule);
     }
 
     public TaxRules(String name){
         this.name=name;
     }
+    public TaxRules(){}
     public TaxResult calculateWith(BigDecimal amount, Apartado apartado, FrontUser user){
 
         RuleResult result = new RuleResult();
@@ -64,17 +71,22 @@ public class TaxRules {
         facts.put("user", user);
 
         Rules rules = new Rules();
-        allRules.stream().forEach(rule -> rules.register(rule));
+        allRules.stream().forEach(rule -> rules.register(rule.toMVEL()));
 
         RulesEngineParameters parameters = new RulesEngineParameters().skipOnFirstAppliedRule(true);
         RulesEngine rulesEngine = new DefaultRulesEngine(parameters);
 
         rulesEngine.fire(rules, facts);
 
-        return new TaxResult(result.value,999,name);
+        return new TaxResult(result.value,id,name);
 
     }
 
+    public String getName() {
+        return name;
+    }
 
-
+    public Integer getId() {
+        return id;
+    }
 }

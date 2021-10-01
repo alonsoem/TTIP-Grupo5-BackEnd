@@ -1,49 +1,50 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
-import ar.edu.unq.ttip.alec.backend.service.TaxService;
+import ar.edu.unq.ttip.alec.backend.model.Broker;
+import ar.edu.unq.ttip.alec.backend.service.BrokerService;
+import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @CrossOrigin(origins ="*")
 @RestController
 @EnableAutoConfiguration
-public class TaxController {
+@RequestMapping("/broker")
+public class BrokerController {
+
 
     @Autowired
-    private TaxService service;
+    private BrokerService service;
 
-    @GetMapping("/tax")
-    public ResponseEntity<List<Tax>> getAllTax() {
+    @GetMapping
+    public ResponseEntity<List<Broker>> getAllBrokers() {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/tax/{id}")
-    public ResponseEntity<Tax> getTitleById(@PathVariable(value = "id") Integer id) throws NonExistentTaxException {
-        return ResponseEntity
-                .ok(
-                    service.getByTitleId(id)
-                    );
+    @PostMapping("/create")
+    public ResponseEntity<BrokerDTO> createBroker(@RequestBody BrokerDTO request) {
+        return new ResponseEntity(
+                service.createBroker(request),
+                HttpStatus.CREATED
+        );
     }
 
-    @PostMapping("/tax/calculate")
-    public ResponseEntity<CalcResultDTO> taxCalculate(@RequestBody CalculationDTO request) {
+    @PostMapping("/calculate")
+    public ResponseEntity<CalcResultDTO> calculate(@RequestBody CalculationDTO request) {
         return new ResponseEntity(
                 service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),
                 HttpStatus.CREATED
         );
     }
 
+
+
+
 }
-
-

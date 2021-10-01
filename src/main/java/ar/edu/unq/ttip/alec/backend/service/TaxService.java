@@ -2,6 +2,7 @@ package ar.edu.unq.ttip.alec.backend.service;
 
 
 import ar.edu.unq.ttip.alec.backend.model.*;
+import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
 import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
@@ -28,17 +29,17 @@ public class TaxService {
 
     @Autowired
     private TaxRepository repo;
-    private TaxRuleBroker ruleBroker = new TaxRuleBroker("PAGOS MONEDA EXTRANJERA CON RULE");
+    private Broker ruleBroker = new Broker("PAGOS MONEDA EXTRANJERA CON RULE");
 
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        //TODO EStos taxes se podrian eliminar
+      /*  //TODO EStos taxes se podrian eliminar
         repo.save (new Tax("TASA 21%", new BigDecimal(21)));
         repo.save (new Tax("TASA 30%", new BigDecimal(30)));
         repo.save (new IVAExterior("IVA Exterior", BigDecimal.valueOf(21)));
         repo.save (new Pais("Impuesto Pais", BigDecimal.valueOf(8),BigDecimal.valueOf(30)));
-
+*/
 
 
 
@@ -66,9 +67,9 @@ public class TaxService {
                 .when("apartado==noApartado")
                 .then("result.value=0;");
 
-        rule.addRule(apartadoARule);
-        rule.addRule(apartadoBMenorRule);
-        rule.addRule(noApartado);
+        //rule.addRule(apartadoARule);
+        //rule.addRule(apartadoBMenorRule);
+        //rule.addRule(noApartado);
         ruleBroker.add(rule);
 
 
@@ -109,11 +110,11 @@ public class TaxService {
                 .when("amount<10")
                 .then("result.value=amount*21/100;");
 
-        taxRulesIva.addRule(noApartado);
-        taxRulesIva.addRule(tierraDelFuego);
-        taxRulesIva.addRule(responsableInscripto);
-        taxRulesIva.addRule(apartadoBMayorADiez);
-        taxRulesIva.addRule(apartadoBMenorADiez);
+        //taxRulesIva.addRule(noApartado);
+        //taxRulesIva.addRule(tierraDelFuego);
+        //taxRulesIva.addRule(responsableInscripto);
+        //taxRulesIva.addRule(apartadoBMayorADiez);
+        //taxRulesIva.addRule(apartadoBMenorADiez);
 
         ruleBroker.add(taxRulesIva);
 
@@ -130,11 +131,12 @@ public class TaxService {
     }
 
     public CalcResultDTO calculate(BigDecimal amount, Apartado apartado, Integer taxId){
-        //TODO Seleccionar un TaxRuleBroker por id con taxid y llamar a getResults
+        //TODO Seleccionar un Broker por id con taxid y llamar a getResults
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
         return ruleBroker.getResultsWith(amount,apartado,userDetails);
     }
+
 
 
 }

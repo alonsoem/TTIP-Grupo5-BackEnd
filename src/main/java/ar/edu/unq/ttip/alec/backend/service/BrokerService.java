@@ -41,6 +41,7 @@ public class BrokerService {
         return repo.findAll();
     }
 
+    @Transactional
     public Broker createBroker(BrokerDTO brokerDto){
         Broker broker = brokerDto.toModel();
         repo.save(broker);

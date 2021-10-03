@@ -27,13 +27,17 @@ import ar.edu.unq.ttip.alec.backend.model.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.model.TaxResult;
+import org.hibernate.annotations.*;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
 import org.jeasy.rules.api.RulesEngine;
 import org.jeasy.rules.api.RulesEngineParameters;
 import org.jeasy.rules.core.DefaultRulesEngine;
 
+
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +49,7 @@ public class TaxRules {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rule> allRules= new ArrayList<>();
 
@@ -88,5 +93,9 @@ public class TaxRules {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

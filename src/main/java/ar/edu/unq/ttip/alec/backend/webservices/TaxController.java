@@ -28,14 +28,6 @@ public class TaxController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/tax/{id}")
-    public ResponseEntity<Tax> getTitleById(@PathVariable(value = "id") Integer id) throws NonExistentTaxException {
-        return ResponseEntity
-                .ok(
-                    service.getByTitleId(id)
-                    );
-    }
-
     @PostMapping("/tax/calculate")
     public ResponseEntity<CalcResultDTO> taxCalculate(@RequestBody CalculationDTO request) {
         return new ResponseEntity(

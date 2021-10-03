@@ -51,6 +51,8 @@ dependencies {
 	implementation 'org.jeasy:easy-rules-core:4.1.0'
 	implementation 'org.jeasy:easy-rules-support:4.1.0'
 	implementation 'org.jeasy:easy-rules-mvel:4.1.0'
+
+	compileOnly 'org.projectlombok:lombok:1.18.20'
 			
 }
 

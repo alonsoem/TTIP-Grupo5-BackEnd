@@ -1,5 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.jeasy.rules.mvel.MVELRule;
 
 import javax.persistence.*;
@@ -9,6 +12,10 @@ import java.util.stream.Collectors;
 
 
 @Entity
+@Accessors(chain = true,fluent = true)
+@Setter
+@Getter
+
 public class Rule {
 
     @Id
@@ -23,6 +30,7 @@ public class Rule {
     private List<ConditionAction> then = new ArrayList<>();
 
     public Rule(){    }
+
 
     public Rule (String name, String description, Integer priority,List<ConditionAction> when, List<ConditionAction> then){
         this.name=name;
@@ -74,7 +82,20 @@ public class Rule {
         then.add (condition);
     }
 
+    public Rule then(String action) {
+        this.then.add (new ConditionAction(action));
+        return this;
+    }
+    public Rule when(String action) {
+        this.when.add (new ConditionAction(action));
+        return this;
+    }
 
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
 
 

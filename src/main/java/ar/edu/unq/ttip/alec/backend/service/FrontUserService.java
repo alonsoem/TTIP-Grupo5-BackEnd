@@ -1,40 +1,27 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
-import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
-import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
-import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
+import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 
 @Service
 public class FrontUserService implements UserDetailsService {
 
-
     @Autowired
     private FrontUserRepository frontUserRepo;
-
-
-
-    @EventListener
-    public void appReady(ApplicationReadyEvent event) {
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com", "Enrique Alonso", "e10adc3949ba59abbe56e057f20f883e", Province.TUCUMAN, true, true));
-        frontUserRepo.save(new FrontUser("ljplatero@gmail.com", "Leandro Platero", "e10adc3949ba59abbe56e057f20f883e", Province.CABA, false, true));
-        frontUserRepo.save(new FrontUser("user@alec.com", "User Tierra del fuego", "e10adc3949ba59abbe56e057f20f883e", Province.TIERRA_DEL_FUEGO, true, true));
-        frontUserRepo.save(new FrontUser("userNRI@alec.com", "User No responsable inscripto", "e10adc3949ba59abbe56e057f20f883e", Province.CABA, false, true));
-    }
 
     @Transactional
     public List<FrontUser> findAll() {

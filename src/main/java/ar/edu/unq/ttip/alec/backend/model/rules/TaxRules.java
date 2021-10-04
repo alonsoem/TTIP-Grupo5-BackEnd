@@ -27,7 +27,6 @@ import ar.edu.unq.ttip.alec.backend.model.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.model.TaxResult;
-import org.hibernate.annotations.*;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
 import org.jeasy.rules.api.RulesEngine;
@@ -50,7 +49,7 @@ public class TaxRules {
     private Integer id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Rule> allRules= new ArrayList<>();
 
     public void addRule(Rule rule){

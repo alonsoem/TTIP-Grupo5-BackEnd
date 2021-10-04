@@ -26,7 +26,8 @@ public class TaxRulesService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-
+        repo.save(new TaxRules("IMPUESTO PAIS"));
+        repo.save(new TaxRules("IVA EXTERIOR"));
     }
 
     public TaxRules getTaxRulesById(Integer id) {
@@ -51,4 +52,9 @@ public class TaxRulesService {
         return (rule);
     }
 
+    @Transactional
+    public Object addTaxRules(Integer brokerId, Integer taxRuleId) {
+        TaxRules taxRules = getTaxRulesById(taxRuleId);
+        return brokerService.addTaxTule(brokerId, taxRules);
+    }
 }

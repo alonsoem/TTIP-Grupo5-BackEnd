@@ -16,8 +16,8 @@ public class Broker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TaxRules> rulesObj= new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<TaxRules> taxes= new ArrayList<>();
     private String name ="";
 
     public Broker(){}
@@ -26,11 +26,11 @@ public class Broker {
     }
 
     public void add(TaxRules rule){
-        rulesObj.add(rule);
+        taxes.add(rule);
     }
 
     public List<TaxResult> calculateWith(BigDecimal amount, Apartado apartado,FrontUser user){
-        return rulesObj.stream().map(rule -> rule.calculateWith(amount,apartado,user)).collect(Collectors.toList());
+        return taxes.stream().map(rule -> rule.calculateWith(amount,apartado,user)).collect(Collectors.toList());
     }
 
 
@@ -40,7 +40,7 @@ public class Broker {
     }
 
     public List<TaxRules> getRules() {
-        return rulesObj;
+        return taxes;
     }
 
     public String getName() {

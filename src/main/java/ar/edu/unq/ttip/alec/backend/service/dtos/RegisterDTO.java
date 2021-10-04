@@ -1,10 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import javax.swing.text.StyledEditorKit;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
-
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Province;
 

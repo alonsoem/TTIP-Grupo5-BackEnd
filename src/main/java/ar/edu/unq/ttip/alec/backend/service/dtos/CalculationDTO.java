@@ -2,12 +2,15 @@ package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 import ar.edu.unq.ttip.alec.backend.model.Apartado;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
 public class CalculationDTO {
-
+    @PositiveOrZero
     private BigDecimal amount;
     private Apartado apartado;
+    @NotEmpty(message = "Broker Id must be provided")
     private Integer taxId;
 
     public CalculationDTO(BigDecimal amount, Apartado apartado, Integer taxId){

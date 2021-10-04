@@ -33,6 +33,13 @@ public class TaxRulesController {
                 HttpStatus.CREATED
         );
     }
+    @PostMapping("/add/{taxRuleId}")
+    public ResponseEntity<TaxRulesDTO> addTaxRules(@PathVariable Integer brokerId, @PathVariable Integer taxRuleId) {
+        return new ResponseEntity(
+                service.addTaxRules(brokerId, taxRuleId),
+                HttpStatus.CREATED
+        );
+    }
 
 
 

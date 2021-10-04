@@ -1,11 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
-import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.service.RuleService;
-import ar.edu.unq.ttip.alec.backend.service.TaxRulesService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.TaxRulesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
@@ -33,6 +30,13 @@ public class RuleController {
     public ResponseEntity<RuleDTO> createRule(@PathVariable Integer taxRuleId, @RequestBody RuleDTO request) {
         return new ResponseEntity(
                 service.create(taxRuleId, request),
+                HttpStatus.CREATED
+        );
+    }
+    @PostMapping("/add/{ruleId}")
+    public ResponseEntity<RuleDTO> add(@PathVariable Integer taxRuleId, @PathVariable Integer ruleId) {
+        return new ResponseEntity(
+                service.add(taxRuleId, ruleId),
                 HttpStatus.CREATED
         );
     }

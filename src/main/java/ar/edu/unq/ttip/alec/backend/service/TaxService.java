@@ -67,16 +67,16 @@ public class TaxService {
                 .then("result.value=amount*8/100;");
         Rule apartadoBMayorRule = new Rule()
                 .name("Es Apartado B y monto mayor a 10")
-                    .description("Verifica que apartado sea igual B y aplica 30%")
-                    .priority(3)
-                    .when("apartado==apartadoB")
-                    .when("amount>=10")
-                    .then("result.value=amount*30/100;");
+                .description("Verifica que apartado sea igual B y aplica 30%")
+                .priority(3)
+                .when("apartado==apartadoB")
+                .when("amount>=10")
+                .then("result.value=amount*30/100;");
 
 
 
-            rule.addRule(apartadoARule);
-            rule.addRule(apartadoBMenorRule);
+        rule.addRule(apartadoARule);
+        rule.addRule(apartadoBMenorRule);
         rule.addRule(apartadoBMayorRule);
         rule.addRule(noApartadoPais);
         ruleBroker.add(rule);
@@ -93,16 +93,12 @@ public class TaxService {
                 .when("apartado==noApartado")
                 .then("result.value=0;");
 
-
-
         Rule tierraDelFuego = new Rule()
                 .name("Es de Tierra del fuego")
                 .description("Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.")
                 .priority(1)
                 .when("user.getProvince()==tierraDelFuego")
                 .then("result.value=0;");
-
-
 
         Rule responsableInscripto = new Rule()
                 .name("Es Responsable Inscripto")

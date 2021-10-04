@@ -30,10 +30,6 @@ public class FrontUserService implements UserDetailsService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        frontUserRepo.save(new FrontUser("alonso.em@gmail.com", "Enrique Alonso", "e10adc3949ba59abbe56e057f20f883e", Province.TUCUMAN, true, true));
-        frontUserRepo.save(new FrontUser("ljplatero@gmail.com", "Leandro Platero", "e10adc3949ba59abbe56e057f20f883e", Province.CABA, false, true));
-        frontUserRepo.save(new FrontUser("user@alec.com", "User Tierra del fuego", "e10adc3949ba59abbe56e057f20f883e", Province.TIERRA_DEL_FUEGO, true, true));
-        frontUserRepo.save(new FrontUser("userNRI@alec.com", "User No responsable inscripto", "e10adc3949ba59abbe56e057f20f883e", Province.CABA, false, true));
     }
 
     @Transactional

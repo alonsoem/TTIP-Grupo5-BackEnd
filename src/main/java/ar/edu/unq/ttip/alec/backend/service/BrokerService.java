@@ -30,7 +30,6 @@ public class BrokerService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        repo.save(new Broker("Broker Pagos Exterior"));
     }
 
     public Broker getBrokerById(Integer id) {

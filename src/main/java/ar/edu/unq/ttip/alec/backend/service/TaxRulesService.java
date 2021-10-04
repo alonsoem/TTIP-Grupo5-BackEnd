@@ -26,8 +26,6 @@ public class TaxRulesService {
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-        repo.save(new TaxRules("IMPUESTO PAIS"));
-        repo.save(new TaxRules("IVA EXTERIOR"));
     }
 
     public TaxRules getTaxRulesById(Integer id) {

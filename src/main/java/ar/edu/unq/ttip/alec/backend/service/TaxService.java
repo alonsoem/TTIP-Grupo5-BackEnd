@@ -86,6 +86,13 @@ public class TaxService {
 
 
 
+        Rule noApartadoIva = new Rule()
+                .name("Sin Apartado")
+                .description("Verifica que apartado sea ninguno y aplica 0%")
+                .priority(1)
+                .when("apartado==noApartado")
+                .then("result.value=amount*30/100;");
+
         Rule tierraDelFuego = new Rule()
                 .name("Es de Tierra del fuego")
                 .description("Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.")
@@ -126,7 +133,7 @@ public class TaxService {
                 .when("amount<10")
                 .then("result.value=amount*21/100;");
 
-        taxRulesIva.addRule(noApartado);
+        taxRulesIva.addRule(noApartadoIva);
         taxRulesIva.addRule(tierraDelFuego);
         taxRulesIva.addRule(responsableInscripto);
         taxRulesIva.addRule(apartadoBMayorADiez);

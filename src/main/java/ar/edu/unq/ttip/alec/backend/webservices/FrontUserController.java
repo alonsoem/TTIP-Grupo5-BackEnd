@@ -8,10 +8,10 @@ import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins ="*")
 @RestController
 @EnableAutoConfiguration
-
+@Api(value="/frontusers", tags="Front User Controller",description = "Manage ALEC Front Users")
 public class FrontUserController {
 
 
@@ -41,7 +41,7 @@ public class FrontUserController {
     private FrontUserService service;
 
     @GetMapping("/frontusers")
-    @Description("Get all Front Users")
+    @ApiOperation("Get all Front Users")
     public ResponseEntity<List<FrontUserDTO>> getAllFrontUsers() {
         return ResponseEntity.ok(service.findAll().stream().map(user-> FrontUserDTO.fromModel(user)).collect(Collectors.toList()));
     }
@@ -56,17 +56,15 @@ public class FrontUserController {
     }
 
     @PostMapping("/authenticate")
-    @Description("Allow to authenticate a Front User")
+    @ApiOperation("Allow to authenticate a Front User")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-            );
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
+        );
 
         final UserDetails userDetails = service.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
-
-
 }

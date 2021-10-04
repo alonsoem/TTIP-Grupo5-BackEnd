@@ -40,8 +40,6 @@ public class TaxService {
         repo.save (new Pais("Impuesto Pais", BigDecimal.valueOf(8),BigDecimal.valueOf(30)));
 
 
-
-
         TaxRules rule= new TaxRules("IMPUESTO PAIS");
 
         Rule noApartadoPais = new Rule()

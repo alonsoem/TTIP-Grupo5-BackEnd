@@ -58,7 +58,13 @@ public class TaxService {
                 .when("apartado==apartadoB")
                 .when("amount<10")
                 .then("result.value=amount*8/100;");
-
+        Rule apartadoBMayorRule = new Rule()
+                .name("Es Apartado B y monto mayor a 10")
+                .description("Verifica que apartado sea igual B y aplica 30%")
+                .priority(3)
+                .when("apartado==apartadoB")
+                .when("amount>=10")
+                .then("result.value=amount*30/100;");
 
 
         Rule noApartado = new Rule()
@@ -70,6 +76,7 @@ public class TaxService {
 
         rule.addRule(apartadoARule);
         rule.addRule(apartadoBMenorRule);
+        rule.addRule(apartadoBMayorRule);
         rule.addRule(noApartado);
         ruleBroker.add(rule);
 
@@ -91,14 +98,21 @@ public class TaxService {
         Rule responsableInscripto = new Rule()
                 .name("Es Responsable Inscripto")
                 .description("Verifica que Si el usuario es RI no aplica impuesto.")
-                .priority(1)
+                .priority(2)
                 .when("user.isResponsableInscripto()")
                 .then("result.value=0;");
+
+        Rule apartadoA = new Rule()
+                .name("Apartado A IVA")
+                .description("Verifica que si el apartado es A y aplica 21%.")
+                .priority(3)
+                .when("apartado=apartadoA")
+                .then("result.value=amount*21/100;");
 
         Rule apartadoBMayorADiez = new Rule()
                 .name("Apartado B mayor a 10")
                 .description("Verifica que si el apartado es B y monto >= 10 aplica 0%.")
-                .priority(2)
+                .priority(3)
                 .when("apartado=apartadoB")
                 .when("amount>=10")
                 .then("result.value=0;");
@@ -107,7 +121,7 @@ public class TaxService {
         Rule apartadoBMenorADiez = new Rule()
                 .name("Apartado B menor a 10")
                 .description("Verifica que si el apartado es B y monto < 10 aplica 21%.")
-                .priority(2)
+                .priority(4)
                 .when("apartado=apartadoB")
                 .when("amount<10")
                 .then("result.value=amount*21/100;");
@@ -119,6 +133,7 @@ public class TaxService {
         taxRulesIva.addRule(apartadoBMenorADiez);
 
         ruleBroker.add(taxRulesIva);
+
 
     }
 

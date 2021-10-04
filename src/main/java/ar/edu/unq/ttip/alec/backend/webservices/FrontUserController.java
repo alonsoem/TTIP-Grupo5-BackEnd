@@ -41,12 +41,13 @@ public class FrontUserController {
     private FrontUserService service;
 
     @GetMapping("/frontusers")
+    @Description("Get all Front Users")
     public ResponseEntity<List<FrontUserDTO>> getAllFrontUsers() {
         return ResponseEntity.ok(service.findAll().stream().map(user-> FrontUserDTO.fromModel(user)).collect(Collectors.toList()));
     }
 
     @PostMapping("/register")
-    @ApiOperation("Registro de usuarios")
+    @ApiOperation("Allow to register a new Front User")
     public ResponseEntity<?> saveUser(@Valid @RequestBody RegisterDTO registerRequest) throws UserAlreadyExistsException {
         return new ResponseEntity(
                 service.save(registerRequest),
@@ -55,6 +56,7 @@ public class FrontUserController {
     }
 
     @PostMapping("/authenticate")
+    @Description("Allow to authenticate a Front User")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
             authenticationManager.authenticate(

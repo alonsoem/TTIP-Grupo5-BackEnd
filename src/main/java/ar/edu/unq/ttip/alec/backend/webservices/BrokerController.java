@@ -7,6 +7,7 @@ import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class BrokerController {
     }
 
     @PostMapping("/create")
+    @Description("Allow to create a Tax Broker")
     public ResponseEntity<BrokerDTO> createBroker(@RequestBody BrokerDTO request) {
         return new ResponseEntity(
                 service.createBroker(request),
@@ -37,6 +39,7 @@ public class BrokerController {
     }
 
     @PostMapping("/calculate")
+    @Description("Allow to calculate a Tax aplication.")
     public ResponseEntity<CalcResultDTO> calculate(@RequestBody CalculationDTO request) {
         return new ResponseEntity(
                 service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),

@@ -115,7 +115,3 @@ insert into condition_action (id,value) values(24,"result.value=amount*21/100;")
 INSERT into rule_then (rule_id,then_id) values (10,24);
 
 insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,10);
-
-
-
-

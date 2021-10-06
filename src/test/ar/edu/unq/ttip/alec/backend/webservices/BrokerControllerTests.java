@@ -49,7 +49,7 @@ public class BrokerControllerTests {
 	
 	// MainCalc tests
 	@Test
-	void whenTierraDelFuegoUserEntersNoApartado100_thenMainCalcReturns130() throws Exception {     
+	void whenTierraDelFuegoAndGananciasUserEntersNoApartado100_thenMainCalcReturns165() throws Exception {     
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("amount", "100");
 		map.put("apartado", "NOAPARTADO");
@@ -65,6 +65,6 @@ public class BrokerControllerTests {
 	    	.andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();
         
-        assertThat(responseBody).contains("130");
+        assertThat(responseBody).contains("165");
 	}
 }

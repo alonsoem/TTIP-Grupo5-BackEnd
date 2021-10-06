@@ -115,3 +115,51 @@ insert into condition_action (id,value) values(24,"result.value=amount*21/100;")
 INSERT into rule_then (rule_id,then_id) values (10,24);
 
 insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,10);
+
+
+
+
+
+
+INSERT INTO broker (id, name) VALUES (2,"Broker Gravamen de emergencia sobre premios");
+
+INSERT INTO tax_rules (id, name) VALUES (3,"Gravamen");
+
+insert into broker_taxes (broker_id, taxes_id) values (2, 3);
+
+insert into rule (id, description, name, priority) values (11,"Aplica el 30% sobre el 90% del premio", "gravamenPremios", 1);
+insert into condition_action (id,value) values(25,"1==1");
+insert into rule_when (rule_id,when_id) values (11,25);
+insert into condition_action (id,value) values(26,"result.value=amount*90/100*30/100;");
+INSERT into rule_then (rule_id,then_id) values (11,26);
+
+insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (3,11);
+
+
+
+INSERT INTO tax_rules (id, name) VALUES (4,"Adelanto al impuesto a las Ganancias y los Bienes Personales");
+insert into broker_taxes (broker_id, taxes_id) values (1, 4);
+
+insert into rule (id, description, name, priority) values (12,"35% sobre el monto", "petreaintaycinco", 1);
+
+insert into condition_action (id,value) values(27,"1==1");
+insert into rule_when (rule_id,when_id) values (12,27);
+
+insert into condition_action (id,value) values(28,"result.value=amount*35/100;");
+INSERT into rule_then (rule_id,then_id) values (12,28);
+
+insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (4,12);
+
+
+INSERT INTO tax_rules (id, name) VALUES (5,"Percepción IIBB a los servicios digitales del exterior");
+insert into broker_taxes (broker_id, taxes_id) values (1, 5);
+
+insert into rule (id, description, name, priority) values (13,"35% sobre el monto", "petreaintaycinco", 1);
+
+insert into condition_action (id,value) values(29,"user.getProvince()==caba");
+insert into rule_when (rule_id,when_id) values (13,29);
+
+insert into condition_action (id,value) values(30,"result.value=amount*2/100;");
+INSERT into rule_then (rule_id,then_id) values (13,30);
+
+insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (5,13);

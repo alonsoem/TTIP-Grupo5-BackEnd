@@ -1,6 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;

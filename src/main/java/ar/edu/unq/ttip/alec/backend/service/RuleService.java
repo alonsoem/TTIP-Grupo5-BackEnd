@@ -24,9 +24,7 @@ public class RuleService {
     private TaxRulesService taxRulesService;
 
     @EventListener
-    public void appReady(ApplicationReadyEvent event) {
-
-    }
+    public void appReady(ApplicationReadyEvent event) {}
 
     public List<Rule> findAll() {
         return repo.findAll();

@@ -3,7 +3,7 @@ package ar.edu.unq.ttip.alec.backend.service.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 
 
 public class RegisterDTO {

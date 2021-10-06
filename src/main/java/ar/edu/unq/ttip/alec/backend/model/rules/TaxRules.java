@@ -23,9 +23,6 @@
  */
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
-import ar.edu.unq.ttip.alec.backend.model.Apartado;
-import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
 import ar.edu.unq.ttip.alec.backend.model.TaxResult;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
@@ -37,7 +34,6 @@ import org.jeasy.rules.core.DefaultRulesEngine;
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,19 +56,11 @@ public class TaxRules {
         this.name=name;
     }
     public TaxRules(){}
-    public TaxResult calculateWith(BigDecimal amount, Apartado apartado, FrontUser user){
+
+    public TaxResult calculateWith(Facts facts){
 
         RuleResult result = new RuleResult();
-
-        Facts facts = new Facts();
-        facts.put("apartado", apartado);
-        facts.put("apartadoA", Apartado.APARTADOA);
-        facts.put("apartadoB", Apartado.APARTADOB);
-        facts.put("noApartado", Apartado.NOAPARTADO);
-        facts.put("tierraDelFuego", Province.TIERRA_DEL_FUEGO);
-        facts.put("amount", amount);
         facts.put("result", result);
-        facts.put("user", user);
 
         Rules rules = new Rules();
         allRules.stream().forEach(rule -> rules.register(rule.toMVEL()));

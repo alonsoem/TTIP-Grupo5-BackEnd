@@ -1,7 +1,0 @@
-name: "pais rule"
-description: "Compra es Apartado A"
-priority: 2
-condition: "apartado==apartadoA"
-actions:
-  - "result.value=amount*8/100;"
-  - "System.out.println(\"CALCULO: ES APARTADO A\");"

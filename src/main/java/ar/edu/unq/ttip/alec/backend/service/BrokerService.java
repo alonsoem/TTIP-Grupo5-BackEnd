@@ -1,7 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
 
-import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
@@ -29,8 +29,7 @@ public class BrokerService {
     private BrokerRepository repo;
 
     @EventListener
-    public void appReady(ApplicationReadyEvent event) {
-    }
+    public void appReady(ApplicationReadyEvent event) {}
 
     public Broker getBrokerById(Integer id) {
         return repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));

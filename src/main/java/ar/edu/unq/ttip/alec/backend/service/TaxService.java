@@ -3,6 +3,7 @@ package ar.edu.unq.ttip.alec.backend.service;
 
 import ar.edu.unq.ttip.alec.backend.model.*;
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.model.tax.IVAExterior;
@@ -10,7 +11,6 @@ import ar.edu.unq.ttip.alec.backend.model.tax.Pais;
 import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
-import org.jeasy.rules.mvel.MVELRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;

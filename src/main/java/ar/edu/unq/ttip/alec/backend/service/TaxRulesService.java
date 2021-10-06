@@ -25,8 +25,7 @@ public class TaxRulesService {
     private TaxRulesRepository repo;
 
     @EventListener
-    public void appReady(ApplicationReadyEvent event) {
-    }
+    public void appReady(ApplicationReadyEvent event) {}
 
     public TaxRules getTaxRulesById(Integer id) {
         return repo.getTaxRulesById(id).orElseThrow(() -> new NonExistentTaxException(id));

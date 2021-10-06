@@ -1,6 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.model.tax;
 
-import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;

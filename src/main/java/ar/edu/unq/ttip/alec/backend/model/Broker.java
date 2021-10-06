@@ -1,7 +1,10 @@
 package ar.edu.unq.ttip.alec.backend.model;
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
+import org.jeasy.rules.api.Facts;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -29,13 +32,21 @@ public class Broker {
         taxes.add(rule);
     }
 
-    public List<TaxResult> calculateWith(BigDecimal amount, Apartado apartado,FrontUser user){
-        return taxes.stream().map(rule -> rule.calculateWith(amount,apartado,user)).collect(Collectors.toList());
+    public List<TaxResult> calculateWith(Facts facts){
+        return taxes.stream().map(rule -> rule.calculateWith(facts)).collect(Collectors.toList());
     }
 
-
-    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado,FrontUser user) {
-        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(amount, apartado,user));
+    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user) {
+        Facts facts = new Facts();
+        facts.put("apartado", apartado);
+        facts.put("apartadoA", Apartado.APARTADOA);
+        facts.put("apartadoB", Apartado.APARTADOB);
+        facts.put("noApartado", Apartado.NOAPARTADO);
+        facts.put("tierraDelFuego", Province.TIERRA_DEL_FUEGO);
+        facts.put("caba", Province.CABA);
+        facts.put("amount", amount);
+        facts.put("user", user);
+        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(facts));
         return calcResult.getResults();
     }
 

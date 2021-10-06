@@ -1,7 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import lombok.Getter;
 
 @Getter

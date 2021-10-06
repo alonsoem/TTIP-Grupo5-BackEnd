@@ -36,7 +36,7 @@ public class ControllersExceptionHandler {
 
 
 
-    @ExceptionHandler({NonExistentTaxException.class,NonExistentResponsableException.class,NonExistentProvinciaException.class})
+    @ExceptionHandler({NonExistentTaxException.class,NonExistentResponsableException.class,NonExistentProvinciaException.class,NonExistentBrokerException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ResponseEntity<Object> NonExistentExceptions
@@ -64,7 +64,7 @@ public class ControllersExceptionHandler {
         return ResponseEntityBuilder.build(err);
 
     }
-
+/*
     @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -76,7 +76,7 @@ public class ControllersExceptionHandler {
         return ResponseEntityBuilder.build(err);
 
     }
-
+*/
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
+import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -11,14 +16,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.repository.FrontUserRepository;
-import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 
 @Service
 public class FrontUserService implements UserDetailsService {
+
 
     @Autowired
     private FrontUserRepository frontUserRepo;

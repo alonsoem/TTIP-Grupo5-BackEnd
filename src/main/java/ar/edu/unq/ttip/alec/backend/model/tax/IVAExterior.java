@@ -1,8 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.model.tax;
 
-import ar.edu.unq.ttip.alec.backend.model.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
-import ar.edu.unq.ttip.alec.backend.model.Province;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 

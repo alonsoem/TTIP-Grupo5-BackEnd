@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model;
 
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

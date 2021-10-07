@@ -142,7 +142,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, description, name, priority) values (12,"35% sobre el monto", "petreaintaycinco", 1);
 
-insert into condition_action (id,value) values(27,"1==1");
+insert into condition_action (id,value) values(27,"user.isGananciasYBienesP()");
 insert into rule_when (rule_id,when_id) values (12,27);
 
 insert into condition_action (id,value) values(28,"result.value=amount*35/100;");

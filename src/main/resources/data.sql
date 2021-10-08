@@ -10,8 +10,8 @@ INSERT INTO frontuser
 
 INSERT INTO broker (id, name) VALUES (1,"Broker pagos exterior");
 
-INSERT INTO tax (id, name) VALUES (1,"IMPUESTO PAIS");
-INSERT INTO tax (id, name) VALUES (2,"IVA EXTERIOR");
+INSERT INTO tax (id, name,url) VALUES (1,"IMPUESTO PAIS", "https://www.afip.gob.ar");
+INSERT INTO tax (id, name,url) VALUES (2,"IVA EXTERIOR","https://www.arba.gob.ar");
 
 insert into broker_taxes (broker_id, taxes_id) values (1, 1);
 insert into broker_taxes (broker_id, taxes_id) values (1, 2);
@@ -123,7 +123,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
 INSERT INTO broker (id, name) VALUES (2,"Broker Gravamen de emergencia sobre premios");
 
-INSERT INTO tax (id, name) VALUES (3,"Gravamen");
+INSERT INTO tax (id, name,url) VALUES (3,"Gravamen", "https://www.afip.gob.ar");
 
 insert into broker_taxes (broker_id, taxes_id) values (2, 3);
 

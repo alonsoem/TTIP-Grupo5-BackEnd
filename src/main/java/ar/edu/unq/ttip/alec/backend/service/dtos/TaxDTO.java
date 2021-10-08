@@ -5,20 +5,26 @@ import ar.edu.unq.ttip.alec.backend.model.Tax;
 public class TaxDTO {
     private Integer id;
     private String name;
+    private String url;
 
     public TaxDTO(){}
 
-    public TaxDTO(String name){this.name=name;}
-
-    public String getName() {
-        return name;
+    public TaxDTO(String name,String url){
+        this.name=name;
+        this.url=url;
     }
 
     public Tax toModel(){
-        return new Tax(name);
+        return new Tax(name,url);
     }
 
     public Integer getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {return url; }
 }

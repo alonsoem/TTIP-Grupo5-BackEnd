@@ -9,7 +9,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +27,19 @@ public class BrokerController {
     private BrokerService service;
 
     @GetMapping
-    @ApiOperation("List all Rate Brokers")
+    @ApiOperation("List all Brokers")
     public ResponseEntity<List<Broker>> getAllBrokers() {
         return ResponseEntity.ok(service.findAll());
     }
 
+    @GetMapping("/{brokerId}")
+    @ApiOperation("Get One Broker")
+    public ResponseEntity<Broker> getBrokerById(@PathVariable Integer brokerId) {
+        return ResponseEntity.ok(service.getBrokerById(brokerId));
+    }
+
     @PostMapping("/create")
-    @ApiOperation("Allow to create a Rate Broker")
+    @ApiOperation("Allow to create a Broker")
     public ResponseEntity<BrokerDTO> createBroker(@RequestBody BrokerDTO request) {
         return new ResponseEntity(
                 service.createBroker(request),

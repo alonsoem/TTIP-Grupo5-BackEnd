@@ -28,9 +28,6 @@ public class BrokerService {
     @Autowired
     private BrokerRepository repo;
 
-    @EventListener
-    public void appReady(ApplicationReadyEvent event) {}
-
     public Broker getBrokerById(Integer id) {
         return repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
     }

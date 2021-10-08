@@ -45,6 +45,7 @@ public class Tax {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String url;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Rule> allRules= new ArrayList<>();
@@ -53,6 +54,10 @@ public class Tax {
         allRules.add(rule);
     }
 
+    public Tax(String name,String url){
+        this.name=name;
+        this.url=url;
+    }
     public Tax(String name){
         this.name=name;
     }
@@ -71,8 +76,12 @@ public class Tax {
 
         rulesEngine.fire(rules, facts);
 
-        return new TaxResult(result.value,id,name);
+        return new TaxResult(result.value,id,name,url);
 
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public String getName() {

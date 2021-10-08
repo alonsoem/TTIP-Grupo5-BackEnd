@@ -30,6 +30,7 @@ import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
 public class BrokerControllerTests {
+
 	@Autowired
     private FrontUserService userservice;
 	@Autowired

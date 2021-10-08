@@ -21,9 +21,10 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  *  THE SOFTWARE.
  */
-package ar.edu.unq.ttip.alec.backend.model.rules;
+package ar.edu.unq.ttip.alec.backend.model;
 
-import ar.edu.unq.ttip.alec.backend.model.TaxResult;
+import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
+import ar.edu.unq.ttip.alec.backend.model.rules.RuleResult;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rules;
 import org.jeasy.rules.api.RulesEngine;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class TaxRules {
+public class Tax {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,10 +53,10 @@ public class TaxRules {
         allRules.add(rule);
     }
 
-    public TaxRules(String name){
+    public Tax(String name){
         this.name=name;
     }
-    public TaxRules(){}
+    public Tax(){}
 
     public TaxResult calculateWith(Facts facts){
 

@@ -1,7 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.AuthenticationRequest;
-import ar.edu.unq.ttip.alec.backend.model.AuthenticationResponse;
+import ar.edu.unq.ttip.alec.backend.service.dtos.AuthenticationRequest;
+import ar.edu.unq.ttip.alec.backend.service.dtos.AuthenticationResponse;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;

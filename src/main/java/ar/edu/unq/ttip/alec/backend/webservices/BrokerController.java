@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("/broker")
-@Api(value="/broker",tags="Tax Broker Controller",description = "Manage ALEC Tax Brokers and calculations")
+@Api(value="/broker",tags="Rate Broker Controller",description = "Manage ALEC Rate Brokers and calculations")
 public class BrokerController {
 
 
@@ -28,13 +28,13 @@ public class BrokerController {
     private BrokerService service;
 
     @GetMapping
-    @ApiOperation("List all Tax Brokers")
+    @ApiOperation("List all Rate Brokers")
     public ResponseEntity<List<Broker>> getAllBrokers() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @PostMapping("/create")
-    @ApiOperation("Allow to create a Tax Broker")
+    @ApiOperation("Allow to create a Rate Broker")
     public ResponseEntity<BrokerDTO> createBroker(@RequestBody BrokerDTO request) {
         return new ResponseEntity(
                 service.createBroker(request),
@@ -43,7 +43,7 @@ public class BrokerController {
     }
 
     @PostMapping("/calculate")
-    @ApiOperation("Allow to calculate a Tax aplication.")
+    @ApiOperation("Allow to calculate a Rate aplication.")
     public ResponseEntity<CalcResultDTO> calculate(@RequestBody CalculationDTO request) {
         return new ResponseEntity(
                 service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),

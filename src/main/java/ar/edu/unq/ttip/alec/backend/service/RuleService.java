@@ -1,13 +1,9 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
-import ar.edu.unq.ttip.alec.backend.model.rules.ConditionAction;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
-import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.TaxRulesDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentRuleException;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -21,7 +17,7 @@ public class RuleService {
     @Autowired
     private RuleRepository repo;
     @Autowired
-    private TaxRulesService taxRulesService;
+    private TaxService taxService;
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {}
@@ -35,16 +31,16 @@ public class RuleService {
     }
 
     @Transactional
-    public Rule create(Integer taxRuleId, RuleDTO request){
+    public Rule create(Integer taxId, RuleDTO request){
         Rule rule = request.toModel();
-        return taxRulesService.addRule(taxRuleId, rule);
+        return taxService.addRule(taxId, rule);
 
     }
 
     @Transactional
-    public Rule add(Integer taxRuleId, Integer ruleId){
+    public Rule add(Integer taxId, Integer ruleId){
         Rule rule =getRuleById(ruleId);
-        return taxRulesService.addRule(taxRuleId, rule);
+        return taxService.addRule(taxId, rule);
 
     }
 }

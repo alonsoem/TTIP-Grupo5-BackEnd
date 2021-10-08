@@ -2,7 +2,6 @@ package ar.edu.unq.ttip.alec.backend.model;
 
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
-import ar.edu.unq.ttip.alec.backend.model.rules.TaxRules;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import org.jeasy.rules.api.Facts;
 
@@ -20,7 +19,7 @@ public class Broker {
     private Integer id;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<TaxRules> taxes= new ArrayList<>();
+    private List<Tax> taxes= new ArrayList<>();
     private String name ="";
 
     public Broker(){}
@@ -28,7 +27,7 @@ public class Broker {
         name=taxBrokerName;
     }
 
-    public void add(TaxRules rule){
+    public void add(Tax rule){
         taxes.add(rule);
     }
 
@@ -50,7 +49,7 @@ public class Broker {
         return calcResult.getResults();
     }
 
-    public List<TaxRules> getRules() {
+    public List<Tax> getRules() {
         return taxes;
     }
 

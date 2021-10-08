@@ -10,8 +10,8 @@ INSERT INTO frontuser
 
 INSERT INTO broker (id, name) VALUES (1,"Broker pagos exterior");
 
-INSERT INTO tax_rules (id, name) VALUES (1,"IMPUESTO PAIS");
-INSERT INTO tax_rules (id, name) VALUES (2,"IVA EXTERIOR");
+INSERT INTO tax (id, name) VALUES (1,"IMPUESTO PAIS");
+INSERT INTO tax (id, name) VALUES (2,"IVA EXTERIOR");
 
 insert into broker_taxes (broker_id, taxes_id) values (1, 1);
 insert into broker_taxes (broker_id, taxes_id) values (1, 2);
@@ -23,7 +23,7 @@ insert into rule_when (rule_id,when_id) values (1,1);
 insert into condition_action (id,value) values(2,"result.value=amount*30/100;");
 INSERT into rule_then (rule_id,then_id) values (1,2);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (1,1);
+insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
 
 insert into rule (id, description, name, priority) values (2,"Verifica que apartado sea igual A y aplica 21%", "Es Apartado A", 1);
@@ -32,7 +32,7 @@ INSERT into rule_when (rule_id,when_id) values (2,3);
 INSERT into condition_action (id,value) values(4,"result.value=amount*8/100;");
 INSERT into rule_then (rule_id,then_id) values (2,4);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (1,2);
+insert into tax_all_rules(tax_id,all_rules_id) values (1,2);
 
 insert into rule (id, description, name, priority) values (3, "Verifica que apartado sea igual B y aplica 8%", "Es Apartado B y monto menor a 10", 2);
 INSERT into condition_action (id,value) values(5,"apartado==apartadoB");
@@ -42,7 +42,7 @@ INSERT into rule_when (rule_id,when_id) values (3,6);
 INSERT into condition_action (id,value) values(7,"result.value=amount*8/100;");
 INSERT into rule_then (rule_id,then_id) values (3,7);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (1,3);
+insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 
 
 insert into rule (id, description, name, priority) values (4, "Verifica que apartado sea igual B y aplica 30%", "Es Apartado B y monto mayor a 10", 3);
@@ -54,7 +54,7 @@ INSERT into condition_action (id,value) values(10,"result.value=amount*30/100;")
 INSERT into rule_then (rule_id,then_id) values (4,10);
 
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (1,4);
+insert into tax_all_rules(tax_id,all_rules_id) values (1,4);
 
 
 
@@ -64,7 +64,7 @@ insert into rule_when (rule_id,when_id) values (5,11);
 insert into condition_action (id,value) values(12,"result.value=0;");
 INSERT into rule_then (rule_id,then_id) values (5,12);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,5);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,5);
 
 
 insert into rule (id, description, name, priority) values (6,"Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.", "Es de tierra del fuego", 1);
@@ -73,7 +73,7 @@ insert into rule_when (rule_id,when_id) values (6,13);
 insert into condition_action (id,value) values(14,"result.value=0;");
 INSERT into rule_then (rule_id,then_id) values (6,14);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,6);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,6);
 
 
 insert into rule (id, description, name, priority) values (7,"Verifica que Si el usuario es RI no aplica impuesto.", "Es Responsable Inscripto", 2);
@@ -82,7 +82,7 @@ insert into rule_when (rule_id,when_id) values (7,15);
 insert into condition_action (id,value) values(16,"result.value=0;");
 INSERT into rule_then (rule_id,then_id) values (7,16);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,7);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
 
 
 insert into rule (id, description, name, priority) values (8,"Verifica que si el apartado es A y aplica 21%.", "Apartado A IVA", 3);
@@ -91,7 +91,7 @@ insert into rule_when (rule_id,when_id) values (8,17);
 insert into condition_action (id,value) values(18,"result.value=amount*21/100;");
 INSERT into rule_then (rule_id,then_id) values (8,18);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,8);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,8);
 
 
 insert into rule (id, description, name, priority) values (9,"Verifica que si el apartado es B y monto >= 10 aplica 0%.", "Apartado B mayor a 10", 3);
@@ -102,7 +102,7 @@ insert into rule_when (rule_id,when_id) values (9,20);
 insert into condition_action (id,value) values(21,"result.value=0;");
 INSERT into rule_then (rule_id,then_id) values (9,21);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,9);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
 
 
 
@@ -114,7 +114,7 @@ insert into rule_when (rule_id,when_id) values (10,23);
 insert into condition_action (id,value) values(24,"result.value=amount*21/100;");
 INSERT into rule_then (rule_id,then_id) values (10,24);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,10);
+insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
 
 
@@ -123,7 +123,7 @@ insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (2,10);
 
 INSERT INTO broker (id, name) VALUES (2,"Broker Gravamen de emergencia sobre premios");
 
-INSERT INTO tax_rules (id, name) VALUES (3,"Gravamen");
+INSERT INTO tax (id, name) VALUES (3,"Gravamen");
 
 insert into broker_taxes (broker_id, taxes_id) values (2, 3);
 
@@ -133,11 +133,11 @@ insert into rule_when (rule_id,when_id) values (11,25);
 insert into condition_action (id,value) values(26,"result.value=amount*90/100*30/100;");
 INSERT into rule_then (rule_id,then_id) values (11,26);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (3,11);
+insert into tax_all_rules(tax_id,all_rules_id) values (3,11);
 
 
 
-INSERT INTO tax_rules (id, name) VALUES (4,"Adelanto al impuesto a las Ganancias y los Bienes Personales");
+INSERT INTO tax (id, name) VALUES (4,"Adelanto al impuesto a las Ganancias y los Bienes Personales");
 insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, description, name, priority) values (12,"35% sobre el monto", "petreaintaycinco", 1);
@@ -148,10 +148,10 @@ insert into rule_when (rule_id,when_id) values (12,27);
 insert into condition_action (id,value) values(28,"result.value=amount*35/100;");
 INSERT into rule_then (rule_id,then_id) values (12,28);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (4,12);
+insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 
 
-INSERT INTO tax_rules (id, name) VALUES (5,"Percepción IIBB a los servicios digitales del exterior");
+INSERT INTO tax (id, name) VALUES (5,"Percepción IIBB a los servicios digitales del exterior");
 insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
 insert into rule (id, description, name, priority) values (13,"35% sobre el monto", "petreaintaycinco", 1);
@@ -162,4 +162,14 @@ insert into rule_when (rule_id,when_id) values (13,29);
 insert into condition_action (id,value) values(30,"result.value=amount*2/100;");
 INSERT into rule_then (rule_id,then_id) values (13,30);
 
-insert into tax_rules_all_rules(tax_rules_id,all_rules_id) values (5,13);
+insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
+
+
+
+--Alicuotas
+
+INSERT INTO rate (id,name,rate) VALUES (1, "IVA 21%", 21);
+INSERT INTO rate (id,name,rate) VALUES (2, "PAIS 8%", 8);
+INSERT INTO rate (id,name,rate) VALUES (3, "PAIS 30%", 30);
+INSERT INTO rate (id,name,rate) VALUES (4, "IVA 10,5%", 10.5);
+INSERT INTO rate (id,name,rate) VALUES (5, "IVA EXTERIOR", 21);

@@ -41,22 +41,22 @@ public class TaxControllerTests {
         this.token = "Bearer " + jwt;
 	}
 	
-	// Taxlist tests
+	// Ratelist tests
 	@Test
 	void whenNotAuthenticated_thenGetAllTaxReturns403() throws Exception {
-		mvc.perform(get("/tax"))
+		mvc.perform(get("/rate"))
 	    	.andExpect(status().isForbidden());
 	}
 	
 	@Test
 	void whenValidRequest_thenGetAllTaxReturnsStatusCode200() throws Exception {
-		mvc.perform(get("/tax").header("Authorization", this.token))
+		mvc.perform(get("/rate").header("Authorization", this.token))
 	    	.andExpect(status().isOk());
 	}
 	
 	@Test
 	void whenValidRequest_thenGetAllTaxReturnsTheTaxesAsJSON() throws Exception {     
-        MvcResult mvcResult = mvc.perform(get("/tax").header("Authorization", this.token))
+        MvcResult mvcResult = mvc.perform(get("/rate").header("Authorization", this.token))
 	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 	    	.andReturn();
         String responseBody = mvcResult.getResponse().getContentAsString();

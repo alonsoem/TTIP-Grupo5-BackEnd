@@ -1,15 +1,14 @@
 package ar.edu.unq.ttip.alec.backend.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import ar.edu.unq.ttip.alec.backend.model.Tax;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TaxRepository extends CrudRepository<Tax, Integer> {
+public interface TaxRepository extends JpaRepository<Tax, Integer> {
 
     List<Tax> findAll();
     Optional<Tax> getTaxById(Integer id);

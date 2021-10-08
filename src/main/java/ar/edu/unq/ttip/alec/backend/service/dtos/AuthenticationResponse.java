@@ -1,4 +1,4 @@
-package ar.edu.unq.ttip.alec.backend.model;
+package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 public class AuthenticationResponse {
     private final String jwt;

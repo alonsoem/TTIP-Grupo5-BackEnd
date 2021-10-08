@@ -1,4 +1,4 @@
-package ar.edu.unq.ttip.alec.backend.model;
+package ar.edu.unq.ttip.alec.backend.service.dtos;
 
 import java.io.Serializable;
 

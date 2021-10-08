@@ -1,9 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.tax.Tax;
+import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.service.TaxService;
-import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,28 +16,38 @@ import java.util.List;
 @CrossOrigin(origins ="*")
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/tax")
-@Api(value = "/tax", tags = "Tax Controller (OLD VERSION)",description = "Manage ALEC Taxes (OLD VERSION)")
+@RequestMapping("/broker/{brokerId}/tax")
+@Api(value = "/broker/{brokerId}/tax", tags = "Tax Controller", description = "Manage ALEC Taxes")
 public class TaxController {
+
 
     @Autowired
     private TaxService service;
 
-    @GetMapping()
-    @ApiOperation("Get All taxes (old version)")
-    public ResponseEntity<List<Tax>> getAllTax() {
+    @GetMapping
+    @ApiOperation("Lists all Taxes.")
+    public ResponseEntity<List<Tax>> getAllTaxes() {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @PostMapping("/calculate")
-    @ApiOperation("Allow to calculate Tax aplication")
-    public ResponseEntity<CalcResultDTO> taxCalculate(@RequestBody CalculationDTO request) {
+    @PostMapping
+    @ApiOperation("Allow to add new Tax to existing Broker.")
+    public ResponseEntity<TaxDTO> createTax(@PathVariable Integer brokerId, @RequestBody TaxDTO request) {
         return new ResponseEntity(
-                service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),
+                service.createTax(brokerId, request),
+                HttpStatus.CREATED
+        );
+    }
+    @PostMapping("/add/{taxId}")
+    @ApiOperation("Allow to add existing Tax to existing Broker.")
+    public ResponseEntity<TaxDTO> addTax(@PathVariable Integer brokerId, @PathVariable Integer taxId) {
+        return new ResponseEntity(
+                service.addTax(brokerId, taxId),
                 HttpStatus.CREATED
         );
     }
 
+
+
+
 }
-
-

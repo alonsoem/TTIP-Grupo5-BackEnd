@@ -16,8 +16,8 @@ import java.util.List;
 @CrossOrigin(origins ="*")
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/taxRule/{taxRuleId}/rule")
-@Api(value = "/taxRule/{taxRuleId}/rule", tags = "Rule Controller",description = "Manage ALEC Rules to use in calculations.")
+@RequestMapping("/tax/{taxId}/rule")
+@Api(value = "/tax/{taxId}/rule", tags = "Rule Controller",description = "Manage ALEC Rules to use in calculations.")
 public class RuleController {
 
 
@@ -31,18 +31,18 @@ public class RuleController {
     }
 
     @PostMapping
-    @ApiOperation("Allow to add new Rule to existing Tax")
-    public ResponseEntity<RuleDTO> createRule(@PathVariable Integer taxRuleId, @RequestBody RuleDTO request) {
+    @ApiOperation("Allow to add new Rule to existing Rate")
+    public ResponseEntity<RuleDTO> createRule(@PathVariable Integer taxId, @RequestBody RuleDTO request) {
         return new ResponseEntity(
-                service.create(taxRuleId, request),
+                service.create(taxId, request),
                 HttpStatus.CREATED
         );
     }
     @PostMapping("/add/{ruleId}")
-    @ApiOperation("Allow to add existing Rule to existing Tax")
-    public ResponseEntity<RuleDTO> add(@PathVariable Integer taxRuleId, @PathVariable Integer ruleId) {
+    @ApiOperation("Allow to add existing Rule to existing Rate")
+    public ResponseEntity<RuleDTO> add(@PathVariable Integer taxId, @PathVariable Integer ruleId) {
         return new ResponseEntity(
-                service.add(taxRuleId, ruleId),
+                service.add(taxId, ruleId),
                 HttpStatus.CREATED
         );
     }

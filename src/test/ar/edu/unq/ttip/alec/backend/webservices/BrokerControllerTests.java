@@ -49,6 +49,29 @@ public class BrokerControllerTests {
 	
 	// MainCalc tests
 	@Test
+	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersNoApartado100_thenMainCalcReturns130() throws Exception {     
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("amount", "100");
+		map.put("apartado", "NOAPARTADO");
+		map.put("taxId", "1");
+		UserDetails userDetails = userservice.loadUserByUsername("apiuser@alec.com");
+        String jwt = jwtTokenUtil.generateToken(userDetails);
+        String token = "Bearer " + jwt;
+		
+        MvcResult mvcResult = mvc.perform(
+        	post("/broker/calculate")
+        		.header("Authorization", token)
+        		.content(mapper.writeValueAsString(map))
+        		.contentType(MediaType.APPLICATION_JSON)
+        )
+	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+	    	.andReturn();
+        String responseBody = mvcResult.getResponse().getContentAsString();
+        
+        assertThat(responseBody).contains("130");
+	}
+	
+	@Test
 	void whenTierraDelFuegoAndGananciasUserEntersNoApartado100_thenMainCalcReturns165() throws Exception {     
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("amount", "100");

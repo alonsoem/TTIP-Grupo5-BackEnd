@@ -25,7 +25,7 @@ import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 @AutoConfigureMockMvc
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
-public class TaxControllerTests {
+public class RateControllerTests {
 	@Autowired
     private FrontUserService userservice;
 	@Autowired
@@ -62,6 +62,6 @@ public class TaxControllerTests {
         String responseBody = mvcResult.getResponse().getContentAsString();
         
         assertThat(responseBody).contains("IVA");
-        assertThat(responseBody).contains("Pais");
+        assertThat(responseBody).contains("PAIS");
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins ="*")
 @RestController
@@ -28,14 +29,14 @@ public class BrokerController {
 
     @GetMapping
     @ApiOperation("List all Brokers")
-    public ResponseEntity<List<Broker>> getAllBrokers() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<BrokerDTO>> getAllBrokers() {
+        return ResponseEntity.ok(service.findAll().stream().map(each->BrokerDTO.fromModel(each)).collect(Collectors.toList()));
     }
 
     @GetMapping("/{brokerId}")
     @ApiOperation("Get One Broker")
-    public ResponseEntity<Broker> getBrokerById(@PathVariable Integer brokerId) {
-        return ResponseEntity.ok(service.getBrokerById(brokerId));
+    public ResponseEntity<BrokerDTO> getBrokerById(@PathVariable Integer brokerId) {
+        return ResponseEntity.ok(BrokerDTO.fromModel(service.getBrokerById(brokerId)));
     }
 
     @PostMapping("/create")

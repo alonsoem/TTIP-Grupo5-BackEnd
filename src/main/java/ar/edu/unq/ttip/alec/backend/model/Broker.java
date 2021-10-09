@@ -49,7 +49,7 @@ public class Broker {
         return calcResult.getResults();
     }
 
-    public List<Tax> getRules() {
+    public List<Tax> getTaxes() {
         return taxes;
     }
 
@@ -58,7 +58,7 @@ public class Broker {
     }
 
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Integer id) {

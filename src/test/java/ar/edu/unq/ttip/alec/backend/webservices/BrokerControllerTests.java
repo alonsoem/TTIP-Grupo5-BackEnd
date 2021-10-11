@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
-@ActiveProfiles("test")
+@ActiveProfiles("#{systemProperties['spring.profiles.active'] ?: 'test'}")
 @AutoConfigureMockMvc
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

@@ -60,6 +60,11 @@ test {
 	useJUnitPlatform()
 }
 
+task 'testCI' (type: Test) {
+    useJUnitPlatform()
+    jvmArgs "-Dspring.profiles.active=ci"
+}
+
 jacoco{
 	toolVersion = '0.8.2'
 

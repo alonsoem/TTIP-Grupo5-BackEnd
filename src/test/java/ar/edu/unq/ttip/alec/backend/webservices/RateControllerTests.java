@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +22,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
-@ActiveProfiles("test")
+@ActiveProfiles("#{systemProperties['spring.profiles.active'] ?: 'test'}")
 @AutoConfigureMockMvc
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

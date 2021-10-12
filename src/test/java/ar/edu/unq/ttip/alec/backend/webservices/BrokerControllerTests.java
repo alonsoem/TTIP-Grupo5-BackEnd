@@ -16,7 +16,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -25,7 +24,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
-@ActiveProfiles("#{systemProperties['spring.profiles.active'] ?: 'test'}")
 @AutoConfigureMockMvc
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)

@@ -58,6 +58,7 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	jvmArgs "-Dspring.profiles.active=test"
 }
 
 task 'testCI' (type: Test) {

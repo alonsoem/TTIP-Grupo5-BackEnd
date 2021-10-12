@@ -37,12 +37,9 @@ public class Broker {
 
     public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user) {
         Facts facts = new Facts();
+        facts.put("apartadoClass", Apartado.class);
+        facts.put("provinceClass", Province.class);
         facts.put("apartado", apartado);
-        facts.put("apartadoA", Apartado.APARTADOA);
-        facts.put("apartadoB", Apartado.APARTADOB);
-        facts.put("noApartado", Apartado.NOAPARTADO);
-        facts.put("tierraDelFuego", Province.TIERRA_DEL_FUEGO);
-        facts.put("caba", Province.CABA);
         facts.put("amount", amount);
         facts.put("user", user);
         BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(facts));

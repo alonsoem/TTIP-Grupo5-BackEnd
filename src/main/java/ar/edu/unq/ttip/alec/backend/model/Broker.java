@@ -3,6 +3,7 @@ package ar.edu.unq.ttip.alec.backend.model;
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
+import org.jeasy.rules.api.Fact;
 import org.jeasy.rules.api.Facts;
 
 import javax.persistence.*;
@@ -10,6 +11,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+
 
 @Entity
 public class Broker {
@@ -36,12 +39,7 @@ public class Broker {
     }
 
     public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user) {
-        Facts facts = new Facts();
-        facts.put("apartadoClass", Apartado.class);
-        facts.put("provinceClass", Province.class);
-        facts.put("apartado", apartado);
-        facts.put("amount", amount);
-        facts.put("user", user);
+        Facts facts = getFacts(amount, apartado, user);
         BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(facts));
         return calcResult.getResults();
     }
@@ -60,5 +58,15 @@ public class Broker {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user){
+        Facts facts = new Facts();
+        facts.put("apartadoClass", "Apartado".getClass());
+        facts.put("provinceClass", "Province".getClass());
+        facts.put("apartado", apartado);
+        facts.put("amount", amount);
+        facts.put("user", user);
+        return facts;
     }
 }

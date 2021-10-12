@@ -6,5 +6,5 @@
  - Back https://github.com/alonsoem/TTIP-Grupo5-BackEnd.git
  - BackLog https://trello.com/invite/b/JE6t82M0/f58bc3343d57eff364ab972abe8b7a1e/ttip-grupo-5
 
-![example workflow](https://github.com/alonsoem/TTIP-Grupo5-BackEnd/actions/workflows/ci.yml/badge.svg)
+Estado CI BackEnd: ![workflow CI](https://github.com/alonsoem/TTIP-Grupo5-BackEnd/actions/workflows/ci.yml/badge.svg)
  

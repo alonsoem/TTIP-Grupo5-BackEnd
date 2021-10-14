@@ -39,9 +39,9 @@ public class Broker {
         return taxes.stream().map(rule -> rule.calculateWith(facts)).collect(Collectors.toList());
     }
 
-    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user) {
-        Facts facts = getFacts(amount, apartado, user);
-        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(facts));
+    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user,List<Fact> facts) {
+        Facts updatedFacts = getFacts(amount, apartado, user,facts);
+        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(updatedFacts));
         return calcResult.getResults();
     }
 
@@ -61,21 +61,13 @@ public class Broker {
         this.id = id;
     }
 
-    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user){
-        Facts facts = new Facts();
+    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user, List<Fact> facts){
+        Facts jeassyFacts = new Facts();
 
-        //this.facts.stream.forEach(eachFact -> facts.put (eachFact));
-        /*List<Fact> ftest = taxes.stream()
-                .map(eachTaxFacts->eachTaxFacts.getFacts())
-                .flatMap(Collection::stream)
-                .distinct().collect(Collectors.toList());
-
-        ftest.forEach(fact->facts.put(fact.getName(),fact.getValue()));
-*/
         //No se persisten, asociados a parametros
-        facts.put("apartado", apartado);
-        facts.put("amount", amount);
-        facts.put("user", user);
-        return facts;
+        jeassyFacts.put("apartado", apartado);
+        jeassyFacts.put("amount", amount);
+        jeassyFacts .put("user", user);
+        return jeassyFacts;
     }
 }

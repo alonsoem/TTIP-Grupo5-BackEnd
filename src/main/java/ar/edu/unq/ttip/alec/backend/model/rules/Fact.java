@@ -1,5 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,7 @@ public class Fact {
     @Id
     @Column(name="name")
     private String name;
+    protected Boolean fixed=true;
 
     public Fact(String name){
         this.name=name;
@@ -20,4 +23,5 @@ public class Fact {
     public Object getValue() throws ClassNotFoundException {
         return null;
     }
+    public Boolean fixed(){return fixed;}
 }

@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface FactRepository extends CrudRepository<Fact, String> {
 
     List<Fact> findAll();
+    List<Fact> getFactsByFixedFalse();
     Optional<Fact> getFactByName(String name);
 
 }

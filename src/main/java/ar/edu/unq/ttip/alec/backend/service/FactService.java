@@ -26,4 +26,7 @@ public class FactService {
     public Fact getFactByName(String name){return repo.getFactByName(name).orElseThrow(()-> new NonExistentFactException(name));}
 
 
+    public List<Fact> getAllByClass() {
+        return repo.getFactsByFixedFalse();
+    }
 }

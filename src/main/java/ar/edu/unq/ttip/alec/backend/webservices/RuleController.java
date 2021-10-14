@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
+import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.service.RuleService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
@@ -30,6 +31,11 @@ public class RuleController {
         return ResponseEntity.ok(service.findAll());
     }
 
+    @GetMapping("/facts")
+    @ApiOperation("Get all facts")
+    public ResponseEntity<List<Fact>> getAllFacts() {
+        return ResponseEntity.ok(service.findAllFacts());
+    }
     @PostMapping
     @ApiOperation("Allow to add new Rule to existing Rate")
     public ResponseEntity<RuleDTO> createRule(@PathVariable Integer taxId, @RequestBody RuleDTO request) {

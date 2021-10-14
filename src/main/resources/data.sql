@@ -173,3 +173,13 @@ INSERT INTO rate (id,name,rate) VALUES (2, 'PAIS 8%', 8);
 INSERT INTO rate (id,name,rate) VALUES (3, 'PAIS 30%', 30);
 INSERT INTO rate (id,name,rate) VALUES (4, 'IVA 10,5%', 10.5);
 INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
+
+
+--Facts
+
+INSERT INTO fact (dtype, name,class_name) VALUES ('ClassFact', 'provinceClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
+INSERT INTO fact (dtype, name,class_name) VALUES ('ClassFact','apartadoClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
+INSERT INTO fact (dtype,name) VALUES ('Fact','amount');
+INSERT INTO fact (dtype,name) VALUES ('Fact','result');
+INSERT INTO fact (dtype,name) VALUES ('Fact','apartado');
+INSERT INTO fact (dtype,name) VALUES ('Fact','user');

@@ -23,6 +23,9 @@
  */
 package ar.edu.unq.ttip.alec.backend.model;
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
+import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.rules.RuleResult;
 import org.jeasy.rules.api.Facts;
@@ -36,7 +39,9 @@ import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Tax {
@@ -63,10 +68,18 @@ public class Tax {
     }
     public Tax(){}
 
-    public TaxResult calculateWith(Facts facts){
+    public TaxResult calculateWith(Facts facts) {
 
         RuleResult result = new RuleResult();
         facts.put("result", result);
+
+        try {
+            facts.put("apartadoClass",  Class.forName("ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado"));
+            facts.put("provinceClass",  Class.forName("ar.edu.unq.ttip.alec.backend.model.enumClasses.Province"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
 
         Rules rules = new Rules();
         allRules.stream().forEach(rule -> rules.register(rule.toMVEL()));
@@ -78,6 +91,14 @@ public class Tax {
 
         return new TaxResult(result.value,id,name,url);
 
+    }
+
+    public List<Fact> getFacts(){
+        return this.allRules.stream()
+                .map(each->each.getFacts())
+                .flatMap(Collection::stream)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public String getUrl() {

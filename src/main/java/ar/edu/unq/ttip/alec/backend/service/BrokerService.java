@@ -28,6 +28,9 @@ public class BrokerService {
     @Autowired
     private BrokerRepository repo;
 
+    @Autowired
+    private FactService factService;
+
     public Broker getBrokerById(Integer id) {
         return repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
     }

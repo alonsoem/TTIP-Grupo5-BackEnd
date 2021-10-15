@@ -3,7 +3,6 @@ package ar.edu.unq.ttip.alec.backend.model.rules;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.mvel.MVELRule;
 
 import javax.persistence.*;
@@ -29,21 +28,17 @@ public class Rule {
     private List<ConditionAction> when = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ConditionAction> then = new ArrayList<>();
-    @ManyToMany
-    private List<ar.edu.unq.ttip.alec.backend.model.rules.Fact> facts = new ArrayList<>();
 
     public Rule(){}
 
 
     public Rule (String name, String description, Integer priority,
-                 List<ConditionAction> when, List<ConditionAction> then,
-                 List<ar.edu.unq.ttip.alec.backend.model.rules.Fact> facts){
+                 List<ConditionAction> when, List<ConditionAction> then){
         this.name=name;
         this.description=description;
         this.priority=priority;
         this.when = when;
         this.then = then;
-        this.facts=facts;
     }
 
     public MVELRule toMVEL(){
@@ -68,8 +63,6 @@ public class Rule {
         return then.stream().map(i->i.value).collect(Collectors.toList());
     }
 
-    public List<ar.edu.unq.ttip.alec.backend.model.rules.Fact> getFacts() {return facts;}
-
     public Integer getPriority() {
         return priority;
     }
@@ -87,9 +80,6 @@ public class Rule {
     }
     public void addThen(ConditionAction condition) {
         then.add (condition);
-    }
-    public void addFact(Fact fact) {
-        facts.add (fact);
     }
 
     public Rule then(String action) {

@@ -15,17 +15,15 @@ public class RuleDTO {
     private Integer priority;
     private List<String> when = new ArrayList<>();
     private List<String> then = new ArrayList<>();
-    private List<String> factIds= new ArrayList<>();
 
     public RuleDTO(){    }
 
-    public RuleDTO (String name, String description, Integer priority, List<String> then, List<String> when,List<String> factsId){
+    public RuleDTO (String name, String description, Integer priority, List<String> then, List<String> when){
         this.name=name;
         this.description=description;
         this.priority=priority;
         this.when=when;
         this.then=then;
-        this.factIds=factsId;
     }
 
     public String getDescription() {
@@ -48,19 +46,13 @@ public class RuleDTO {
         return when;
     }
 
-    public List<String> getFactIds() {
-        return factIds;
-    }
-
-    public Rule toModel(List<Fact> facts){
+    public Rule toModel(){
 
         return new Rule(name,
                 description,
                 priority,
                 when.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()),
-                then.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()),
-                facts
-                );
+                then.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()));
 
     }
 }

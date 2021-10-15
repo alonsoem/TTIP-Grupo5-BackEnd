@@ -41,8 +41,7 @@ public class RuleService {
 
     @Transactional
     public Rule create(Integer taxId, RuleDTO request){
-        List<Fact> factList = request.getFactIds().stream().map(each->factService.getFactByName(each)).collect(Collectors.toList());
-        Rule rule = request.toModel(factList);
+        Rule rule = request.toModel();
         return taxService.addRule(taxId, rule);
 
     }

@@ -177,9 +177,9 @@ INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
 --Facts
 
-INSERT INTO fact (dtype, name,class_name) VALUES ('ClassFact', 'provinceClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
-INSERT INTO fact (dtype, name,class_name) VALUES ('ClassFact','apartadoClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
-INSERT INTO fact (dtype,name) VALUES ('Fact','amount');
-INSERT INTO fact (dtype,name) VALUES ('Fact','result');
-INSERT INTO fact (dtype,name) VALUES ('Fact','apartado');
-INSERT INTO fact (dtype,name) VALUES ('Fact','user');
+INSERT INTO fact (dtype, name,class_name,fixed) VALUES ('ClassFact', 'provinceClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province',false);
+INSERT INTO fact (dtype, name,class_name,fixed) VALUES ('ClassFact','apartadoClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.LACHOTAApartado',false);
+INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','amount',true);
+INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','result',true);
+INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','apartado',true);
+INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','user',true);

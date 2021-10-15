@@ -20,7 +20,7 @@ public class Fact {
         return name;
     }
 
-    public Object getValue() throws ClassNotFoundException {
+    public Object getValue() {
         return null;
     }
     public Boolean fixed(){return fixed;}

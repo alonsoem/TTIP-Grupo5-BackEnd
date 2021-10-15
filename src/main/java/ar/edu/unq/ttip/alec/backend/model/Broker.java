@@ -4,6 +4,7 @@ import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.jeasy.rules.api.Facts;
 
 import javax.persistence.*;
@@ -61,13 +62,16 @@ public class Broker {
         this.id = id;
     }
 
-    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user, List<Fact> facts){
+    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user, List<Fact> facts) {
         Facts jeassyFacts = new Facts();
-
+        facts.stream().forEach(eachFact-> {
+                jeassyFacts.put(eachFact.getName(),eachFact.getValue());
+        });
         //No se persisten, asociados a parametros
         jeassyFacts.put("apartado", apartado);
         jeassyFacts.put("amount", amount);
-        jeassyFacts .put("user", user);
+        jeassyFacts.put("user", user);
+
         return jeassyFacts;
     }
 }

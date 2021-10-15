@@ -1,6 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
 
+import ar.edu.unq.ttip.alec.backend.service.exceptions.FactLoadFailedException;
+
 import javax.persistence.Entity;
 
 @Entity
@@ -20,8 +22,12 @@ public class ClassFact extends Fact {
     }
 
     @Override
-    public Object getValue() throws ClassNotFoundException {
-        return Class.forName(this.className);
+    public Object getValue() {
+        try {
+            return Class.forName(this.className);
+        } catch (ClassNotFoundException e) {
+            throw new FactLoadFailedException();
+        }
     }
     @Override
     public Boolean fixed(){return this.fixed;}

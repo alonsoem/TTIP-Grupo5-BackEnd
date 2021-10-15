@@ -30,6 +30,15 @@ public class TaxController {
         return ResponseEntity.ok(service.findAll());
     }
 
+    @GetMapping("/{taxId}")
+    @ApiOperation("Get a Tax.")
+    public ResponseEntity<TaxDTO> getTaxById(@PathVariable Integer taxId) {
+        Tax t= service.getTaxById(taxId);
+        return ResponseEntity.ok(
+                TaxDTO.fromModel(t)
+        );
+    }
+
     @PostMapping
     @ApiOperation("Allow to add new Tax to existing Broker.")
     public ResponseEntity<TaxDTO> createTax(@PathVariable Integer brokerId, @RequestBody TaxDTO request) {

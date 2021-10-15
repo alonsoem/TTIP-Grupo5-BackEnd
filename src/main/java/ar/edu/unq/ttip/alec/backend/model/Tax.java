@@ -89,6 +89,10 @@ public class Tax {
         return url;
     }
 
+    public List<Rule> getRules(){
+        return this.allRules;
+    }
+
     public String getName() {
         return name;
     }

@@ -55,4 +55,8 @@ public class RuleDTO {
                 then.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()));
 
     }
+
+    public static RuleDTO fromModel(Rule rule){
+        return new RuleDTO(rule.getName(),rule.getDescription(),rule.getPriority(),rule.getThen(),rule.getWhen());
+    }
 }

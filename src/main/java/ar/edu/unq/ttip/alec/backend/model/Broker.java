@@ -46,7 +46,7 @@ public class Broker {
         return calcResult.getResults();
     }
 
-    public List<Tax> getRules() {
+    public List<Tax> getTaxes() {
         return taxes;
     }
 

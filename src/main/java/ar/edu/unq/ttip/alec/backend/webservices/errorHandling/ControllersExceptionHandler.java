@@ -36,7 +36,7 @@ public class ControllersExceptionHandler {
 
 
 
-    @ExceptionHandler({NonExistentTaxException.class,NonExistentResponsableException.class,NonExistentProvinciaException.class,NonExistentBrokerException.class,FactLoadFailedException.class})
+    @ExceptionHandler({NonExistentTaxException.class,NonExistentResponsableException.class,NonExistentProvinciaException.class,NonExistentBrokerException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ResponseEntity<Object> NonExistentExceptions

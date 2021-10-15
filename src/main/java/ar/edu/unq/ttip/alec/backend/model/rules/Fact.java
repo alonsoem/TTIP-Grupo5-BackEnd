@@ -23,5 +23,5 @@ public class Fact {
     public Object getValue() {
         return null;
     }
-    public Boolean fixed(){return fixed;}
+    public Boolean fixed(){return this.fixed;}
 }

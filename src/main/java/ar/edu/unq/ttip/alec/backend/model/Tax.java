@@ -70,7 +70,7 @@ public class Tax {
 
     public TaxResult calculateWith(Facts facts) {
 
-        RuleResult result = new RuleResult();
+        RuleResult result = new RuleResult();//Rule result set in zero
         facts.put("result", result);
 
         Rules rules = new Rules();

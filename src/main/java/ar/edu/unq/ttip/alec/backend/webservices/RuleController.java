@@ -36,6 +36,7 @@ public class RuleController {
     public ResponseEntity<List<Fact>> getAllFacts() {
         return ResponseEntity.ok(service.findAllFacts());
     }
+
     @PostMapping
     @ApiOperation("Allow to add new Rule to existing Rate")
     public ResponseEntity<RuleDTO> createRule(@PathVariable Integer taxId, @RequestBody RuleDTO request) {

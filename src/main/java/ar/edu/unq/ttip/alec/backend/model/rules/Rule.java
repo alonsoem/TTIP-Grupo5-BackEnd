@@ -46,8 +46,8 @@ public class Rule {
                 .name(name)
                 .description(description)
                 .priority(priority);
-        when.stream().forEach(each ->rule.when(each.value));
-        then.stream().forEach(each ->rule.then(each.value));
+        when.stream().forEach(each -> rule.when(each.getValue()));
+        then.stream().forEach(each -> rule.then(each.getValue()));
         return rule;
     }
 

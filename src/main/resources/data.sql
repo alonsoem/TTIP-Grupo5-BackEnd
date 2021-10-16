@@ -18,7 +18,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 2);
 
 
 insert into rule (id, description, name, priority) values (1,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
-insert into condition_action (id,value) values(1,'apartado=apartadoClass.NOAPARTADO');
+insert into condition_action (id,value) values(1,'apartado==apartadoClass.NOAPARTADO');
 insert into rule_when (rule_id,when_id) values (1,1);
 insert into condition_action (id,value) values(2,'result.value=amount*30/100;');
 INSERT into rule_then (rule_id,then_id) values (1,2);
@@ -27,7 +27,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
 
 insert into rule (id, description, name, priority) values (2,'Verifica que apartado sea igual A y aplica 21%', 'Es Apartado A', 1);
-INSERT into condition_action (id,value) values(3,'apartado=apartadoClass.APARTADOA');
+INSERT into condition_action (id,value) values(3,'apartado==apartadoClass.APARTADOA');
 INSERT into rule_when (rule_id,when_id) values (2,3);
 INSERT into condition_action (id,value) values(4,'result.value=amount*8/100;');
 INSERT into rule_then (rule_id,then_id) values (2,4);
@@ -35,7 +35,7 @@ INSERT into rule_then (rule_id,then_id) values (2,4);
 insert into tax_all_rules(tax_id,all_rules_id) values (1,2);
 
 insert into rule (id, description, name, priority) values (3, 'Verifica que apartado sea igual B y aplica 8%', 'Es Apartado B y monto menor a 10', 2);
-INSERT into condition_action (id,value) values(5,'apartado=apartadoClass.APARTADOB');
+INSERT into condition_action (id,value) values(5,'apartado==apartadoClass.APARTADOB');
 INSERT into condition_action (id,value) values(6,'amount<10');
 INSERT into rule_when (rule_id,when_id) values (3,5);
 INSERT into rule_when (rule_id,when_id) values (3,6);
@@ -46,7 +46,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 
 
 insert into rule (id, description, name, priority) values (4, 'Verifica que apartado sea igual B y aplica 30%', 'Es Apartado B y monto mayor a 10', 3);
-INSERT into condition_action (id,value) values(8,'apartado=apartadoClass.APARTADOB');
+INSERT into condition_action (id,value) values(8,'apartado==apartadoClass.APARTADOB');
 INSERT into condition_action (id,value) values(9,'amount>=10');
 INSERT into rule_when (rule_id,when_id) values (4,8);
 INSERT into rule_when (rule_id,when_id) values (4,9);
@@ -59,7 +59,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,4);
 
 
 insert into rule (id, description, name, priority) values (5,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
-insert into condition_action (id,value) values(11,'apartado=apartadoClass.NOAPARTADO');
+insert into condition_action (id,value) values(11,'apartado==apartadoClass.NOAPARTADO');
 insert into rule_when (rule_id,when_id) values (5,11);
 insert into condition_action (id,value) values(12,'result.value=0;');
 INSERT into rule_then (rule_id,then_id) values (5,12);
@@ -86,7 +86,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
 
 
 insert into rule (id, description, name, priority) values (8,'Verifica que si el apartado es A y aplica 21%.', 'Apartado A IVA', 3);
-insert into condition_action (id,value) values(17,'apartado=apartadoClass.APARTADOA');
+insert into condition_action (id,value) values(17,'apartado==apartadoClass.APARTADOA');
 insert into rule_when (rule_id,when_id) values (8,17);
 insert into condition_action (id,value) values(18,'result.value=amount*21/100;');
 INSERT into rule_then (rule_id,then_id) values (8,18);
@@ -95,7 +95,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,8);
 
 
 insert into rule (id, description, name, priority) values (9,'Verifica que si el apartado es B y monto >= 10 aplica 0%.', 'Apartado B mayor a 10', 3);
-insert into condition_action (id,value) values(19,'apartado=apartadoClass.APARTADOB');
+insert into condition_action (id,value) values(19,'apartado==apartadoClass.APARTADOB');
 insert into rule_when (rule_id,when_id) values (9,19);
 insert into condition_action (id,value) values(20,'amount>=10');
 insert into rule_when (rule_id,when_id) values (9,20);
@@ -107,7 +107,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
 
 
 insert into rule (id, description, name, priority) values (10,'Verifica que si el apartado es B y monto < 10 aplica 21%.', 'Apartado B menor a 10', 4);
-insert into condition_action (id,value) values(22,'apartado=apartadoClass.APARTADOB');
+insert into condition_action (id,value) values(22,'apartado==apartadoClass.APARTADOB');
 insert into rule_when (rule_id,when_id) values (10,22);
 insert into condition_action (id,value) values(23,'amount<10');
 insert into rule_when (rule_id,when_id) values (10,23);
@@ -154,9 +154,9 @@ insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 INSERT INTO tax (id, name) VALUES (5,'Percepción IIBB a los servicios digitales del exterior');
 insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
-insert into rule (id, description, name, priority) values (13,'35% sobre el monto', 'petreaintaycinco', 1);
+insert into rule (id, description, name, priority) values (13,'35% sobre el monto', 'treintaycinco', 1);
 
-insert into condition_action (id,value) values(29,'user.getProvince()==apartadoClass.CABA');
+insert into condition_action (id,value) values(29,'user.getProvince()==provinceClass.CABA');
 insert into rule_when (rule_id,when_id) values (13,29);
 
 insert into condition_action (id,value) values(30,'result.value=amount*2/100;');
@@ -186,4 +186,4 @@ INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','user',true);
 INSERT INTO fact (dtype,name,fixed) VALUES ('RateFact','iva',false);
 
 
-insert into rel_facts_rates (fk_fact,fk_rate) values ("iva",1)
+insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1)

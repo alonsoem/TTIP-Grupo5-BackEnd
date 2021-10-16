@@ -33,7 +33,7 @@ public class RateFact extends Fact {
 
     @Override
     public Object getValue() {
-        return this.rate;
+        return this.rate.getRate();
     }
 
 }

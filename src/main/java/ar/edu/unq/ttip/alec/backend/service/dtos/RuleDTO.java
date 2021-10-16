@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class RuleDTO {
 
+    private Integer id;
     private String name;
     private String description;
     private Integer priority;
@@ -25,6 +26,8 @@ public class RuleDTO {
         this.when=when;
         this.then=then;
     }
+
+    public void setId(Integer id){this.id=id;}
 
     public String getDescription() {
         return description;
@@ -57,6 +60,12 @@ public class RuleDTO {
     }
 
     public static RuleDTO fromModel(Rule rule){
-        return new RuleDTO(rule.getName(),rule.getDescription(),rule.getPriority(),rule.getThen(),rule.getWhen());
+        RuleDTO dto = new RuleDTO(rule.getName(),rule.getDescription(),rule.getPriority(),rule.getThen(),rule.getWhen());
+        dto.setId(rule.getId());
+        return dto;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

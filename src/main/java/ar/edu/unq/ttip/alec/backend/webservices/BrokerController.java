@@ -56,6 +56,15 @@ public class BrokerController {
         );
     }
 
+    @PutMapping("/:id")
+    @ApiOperation("Allow to update a Broker")
+    public ResponseEntity<BrokerDTO> update(@PathVariable Integer id, @RequestBody BrokerDTO request) {
+        return new ResponseEntity(
+                service.update(id,request),
+                HttpStatus.CREATED
+        );
+    }
+
 
 
 

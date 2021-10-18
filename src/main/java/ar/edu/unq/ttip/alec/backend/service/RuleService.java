@@ -52,4 +52,5 @@ public class RuleService {
         return taxService.addRule(taxId, rule);
 
     }
+
 }

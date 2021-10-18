@@ -1,12 +1,9 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import ar.edu.unq.ttip.alec.backend.model.rules.ConditionAction;
-import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RuleDTO {
 

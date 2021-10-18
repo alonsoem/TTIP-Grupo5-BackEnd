@@ -6,9 +6,8 @@ import lombok.experimental.Accessors;
 import org.jeasy.rules.mvel.MVELRule;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Entity
@@ -23,9 +22,6 @@ public class Rule {
     private String name;
     private String description;
     private Integer priority;
-    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    //private List<ConditionAction> when = new ArrayList<>();
-
     @ElementCollection(targetClass=String.class)
     private List<String> whenBis;
     @ElementCollection(targetClass=String.class)
@@ -95,14 +91,6 @@ public class Rule {
 
     public void setThen(List<String> then) {
         this.thenBis = then;
-    }
-
-    public void addWhen(ConditionAction condition) {
-        whenBis.add (condition.getValue());
-    }
-
-    public void addThen(ConditionAction condition) {
-        thenBis.add (condition.getValue());
     }
 
     public Rule when(String action) {

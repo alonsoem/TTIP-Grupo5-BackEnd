@@ -1,6 +1,5 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
-import ar.edu.unq.ttip.alec.backend.model.rules.ConditionAction;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RuleService {

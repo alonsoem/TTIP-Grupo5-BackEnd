@@ -45,7 +45,7 @@ public class Rule {
                 .description(description)
                 .priority(priority);
         whenBis.stream().forEach(each -> rule.when(each));
-        thenBis.stream().forEach(each -> rule.then(each + ";"));
+        thenBis.stream().forEach(each -> rule.then("result.value=" + each + ";"));
         return rule;
     }
 

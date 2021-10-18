@@ -1,14 +1,13 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import ar.edu.unq.ttip.alec.backend.model.rules.ConditionAction;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RuleDTO {
 
+    private Integer id;
     private String name;
     private String description;
     private Integer priority;
@@ -24,6 +23,8 @@ public class RuleDTO {
         this.when=when;
         this.then=then;
     }
+
+    public void setId(Integer id){this.id=id;}
 
     public String getDescription() {
         return description;
@@ -50,8 +51,18 @@ public class RuleDTO {
         return new Rule(name,
                 description,
                 priority,
-                when.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()),
-                then.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()));
+                when,
+                then);
 
+    }
+
+    public static RuleDTO fromModel(Rule rule){
+        RuleDTO dto = new RuleDTO(rule.getName(),rule.getDescription(),rule.getPriority(),rule.getThen(),rule.getWhen());
+        dto.setId(rule.getId());
+        return dto;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

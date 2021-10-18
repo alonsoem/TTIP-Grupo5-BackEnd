@@ -23,6 +23,9 @@
  */
 package ar.edu.unq.ttip.alec.backend.model;
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
+import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.rules.RuleResult;
 import org.jeasy.rules.api.Facts;
@@ -37,6 +40,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 public class Tax {
@@ -63,9 +67,9 @@ public class Tax {
     }
     public Tax(){}
 
-    public TaxResult calculateWith(Facts facts){
+    public TaxResult calculateWith(Facts facts) {
 
-        RuleResult result = new RuleResult();
+        RuleResult result = new RuleResult();//Rule result set in zero
         facts.put("result", result);
 
         Rules rules = new Rules();
@@ -84,8 +88,20 @@ public class Tax {
         return url;
     }
 
+    public List<Rule> getRules(){
+        return this.allRules;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Integer getId() {

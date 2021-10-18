@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface RuleRepository extends JpaRepository<Rule, Integer> {
     List<Rule> findAll();
-
     Optional<Rule> getRuleById(Integer id);
 }
 

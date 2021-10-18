@@ -7,6 +7,7 @@ public class BrokerDTO {
 
     public BrokerDTO(String name){ this.name=name;}
 
+
     public BrokerDTO(){}
 
 
@@ -21,4 +22,5 @@ public class BrokerDTO {
     public String getName() {
         return name;
     }
+
 }

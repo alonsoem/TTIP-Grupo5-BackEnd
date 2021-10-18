@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
+import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class RuleService {
 
@@ -18,12 +20,18 @@ public class RuleService {
     private RuleRepository repo;
     @Autowired
     private TaxService taxService;
+    @Autowired
+    private FactService factService;
 
     @EventListener
     public void appReady(ApplicationReadyEvent event) {}
 
     public List<Rule> findAll() {
         return repo.findAll();
+    }
+
+    public List<Fact> findAllFacts() {
+        return factService.findAll();
     }
 
     public Rule getRuleById(Integer id) {
@@ -33,7 +41,8 @@ public class RuleService {
     @Transactional
     public Rule create(Integer taxId, RuleDTO request){
         Rule rule = request.toModel();
-        return taxService.addRule(taxId, rule);
+        Rule oRule = taxService.addRule(taxId, rule);
+        return oRule;
 
     }
 
@@ -43,4 +52,18 @@ public class RuleService {
         return taxService.addRule(taxId, rule);
 
     }
+
+    @Transactional
+    public Rule update(Integer ruleId, RuleDTO request){
+        Rule rule = getRuleById(ruleId);
+        rule.setName(request.getName());
+        rule.setDescription(request.getDescription());
+        rule.setPriority(request.getPriority());
+        rule.setWhen(request.getWhen());
+        rule.setThen(request.getThen());
+        repo.save(rule);
+        return rule;
+
+    }
+
 }

@@ -6,16 +6,14 @@ import lombok.experimental.Accessors;
 import org.jeasy.rules.mvel.MVELRule;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @Entity
 @Accessors(chain = true,fluent = true)
 @Setter
 @Getter
-
 public class Rule {
 
     @Id
@@ -24,20 +22,21 @@ public class Rule {
     private String name;
     private String description;
     private Integer priority;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ConditionAction> when = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ConditionAction> then = new ArrayList<>();
+    @ElementCollection(targetClass=String.class)
+    private List<String> whenBis;
+    @ElementCollection(targetClass=String.class)
+    private List<String> thenBis ;
 
-    public Rule(){    }
+    public Rule(){}
 
 
-    public Rule (String name, String description, Integer priority,List<ConditionAction> when, List<ConditionAction> then){
+    public Rule (String name, String description, Integer priority,
+                 List<String> when, List<String> then){
         this.name=name;
         this.description=description;
         this.priority=priority;
-        this.when = when;
-        this.then = then;
+        this.whenBis = when;
+        this.thenBis = then;
     }
 
     public MVELRule toMVEL(){
@@ -45,8 +44,8 @@ public class Rule {
                 .name(name)
                 .description(description)
                 .priority(priority);
-        when.stream().forEach(each ->rule.when(each.value));
-        then.stream().forEach(each ->rule.then(each.value));
+        whenBis.stream().forEach(each -> rule.when(each));
+        thenBis.stream().forEach(each -> rule.then(each));
         return rule;
     }
 
@@ -54,13 +53,12 @@ public class Rule {
         return name;
     }
 
-
     public List<String> getWhen() {
-        return when.stream().map(i->i.value).collect(Collectors.toList());
+        return whenBis;
     }
 
     public List<String> getThen() {
-        return then.stream().map(i->i.value).collect(Collectors.toList());
+        return thenBis;
     }
 
     public Integer getPriority() {
@@ -75,25 +73,40 @@ public class Rule {
         return id;
     }
 
-    public void addWhen(ConditionAction condition) {
-        when.add (condition);
-    }
-    public void addThen(ConditionAction condition) {
-        then.add (condition);
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Rule then(String action) {
-        this.then.add (new ConditionAction(action));
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public void setWhen(List<String> when) {
+        this.whenBis = when;
+    }
+
+    public void setThen(List<String> then) {
+        this.thenBis = then;
+    }
+
+    public Rule when(String action) {
+        this.whenBis.add (action);
         return this;
     }
-    public Rule when(String action) {
-        this.when.add (new ConditionAction(action));
+    public Rule then(String action) {
+        this.thenBis.add (action);
         return this;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }
 
 

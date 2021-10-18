@@ -2,14 +2,19 @@ package ar.edu.unq.ttip.alec.backend.model;
 
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
+import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
+import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.jeasy.rules.api.Facts;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+
 
 @Entity
 public class Broker {
@@ -35,26 +40,22 @@ public class Broker {
         return taxes.stream().map(rule -> rule.calculateWith(facts)).collect(Collectors.toList());
     }
 
-    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user) {
-        Facts facts = new Facts();
-        facts.put("apartado", apartado);
-        facts.put("apartadoA", Apartado.APARTADOA);
-        facts.put("apartadoB", Apartado.APARTADOB);
-        facts.put("noApartado", Apartado.NOAPARTADO);
-        facts.put("tierraDelFuego", Province.TIERRA_DEL_FUEGO);
-        facts.put("caba", Province.CABA);
-        facts.put("amount", amount);
-        facts.put("user", user);
-        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(facts));
+    public CalcResultDTO getResultsWith(BigDecimal amount, Apartado apartado, FrontUser user,List<Fact> facts) {
+        Facts updatedFacts = getFacts(amount, apartado, user,facts);
+        BrokerResult calcResult = new BrokerResult(name, amount, calculateWith(updatedFacts));
         return calcResult.getResults();
     }
 
-    public List<Tax> getRules() {
+    public List<Tax> getTaxes() {
         return taxes;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -64,4 +65,18 @@ public class Broker {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    private Facts getFacts(BigDecimal amount, Apartado apartado, FrontUser user, List<Fact> facts) {
+        Facts jeassyFacts = new Facts();
+        facts.stream().forEach(eachFact-> {
+                jeassyFacts.put(eachFact.getName(),eachFact.getValue());
+        });
+        //No se persisten, asociados a parametros
+        jeassyFacts.put("apartado", apartado);
+        jeassyFacts.put("amount", amount);
+        jeassyFacts.put("user", user);
+
+        return jeassyFacts;
+    }
+
 }

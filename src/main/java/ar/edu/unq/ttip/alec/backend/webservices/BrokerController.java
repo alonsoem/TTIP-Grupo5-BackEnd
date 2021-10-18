@@ -5,6 +5,7 @@ import ar.edu.unq.ttip.alec.backend.service.BrokerService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,17 @@ public class BrokerController {
                 HttpStatus.CREATED
         );
     }
+
+    @PutMapping("/{id}")
+    @ApiOperation("Allow to update a Broker")
+    public ResponseEntity<BrokerDTO> update(@PathVariable Integer id, @RequestBody BrokerDTO request) {
+        return new ResponseEntity(
+                service.update(id,request),
+                HttpStatus.CREATED
+        );
+    }
+
+
 
 
 

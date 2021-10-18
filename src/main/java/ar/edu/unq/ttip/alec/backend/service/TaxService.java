@@ -54,4 +54,13 @@ public class TaxService {
         Tax tax = getTaxById(taxId);
         return brokerService.addTaxTule(brokerId, tax);
     }
+
+    @Transactional
+    public Tax update(Integer taxId, TaxDTO request){
+        Tax tax = this.getTaxById(taxId);
+        tax.setName(request.getName());
+        tax.setUrl(request.getUrl());
+        repo.save(tax);
+        return tax;
+    }
 }

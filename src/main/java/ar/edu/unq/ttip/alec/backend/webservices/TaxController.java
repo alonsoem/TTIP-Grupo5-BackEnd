@@ -56,6 +56,14 @@ public class TaxController {
         );
     }
 
+    @PostMapping
+    @ApiOperation("Allow to update Tax.")
+    public ResponseEntity<TaxDTO> update(@PathVariable Integer id, @RequestBody TaxDTO request) {
+        return new ResponseEntity(
+                service.update(id, request),
+                HttpStatus.CREATED
+        );
+    }
 
 
 

@@ -96,6 +96,14 @@ public class Tax {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -28,7 +28,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 2);
 
 insert into rule (id, description, name, priority) values (1,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
 insert into rule_when_bis (rule_id,when_bis) values(1,'apartado==apartadoClass.NOAPARTADO');
-insert into rule_then_bis (rule_id,then_bis) values(1,'result.value=amount*30/100;');
+insert into rule_then_bis (rule_id,then_bis) values(1,'result.value=amount*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
@@ -36,14 +36,14 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
 insert into rule (id, description, name, priority) values (2,'Verifica que apartado sea igual A y aplica 21%', 'Es Apartado A', 1);
 INSERT into rule_when_bis (rule_id,when_bis) values(2,'apartado==apartadoClass.APARTADOA');
-INSERT into rule_then_bis (rule_id,then_bis) values(2,'result.value=amount*8/100;');
+INSERT into rule_then_bis (rule_id,then_bis) values(2,'result.value=amount*8/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,2);
 
 insert into rule (id, description, name, priority) values (3, 'Verifica que apartado sea igual B y aplica 8%', 'Es Apartado B y monto menor a 10', 2);
 INSERT into rule_when_bis (rule_id,when_bis) values(3,'apartado==apartadoClass.APARTADOB');
 INSERT into rule_when_bis (rule_id,when_bis) values(3,'amount<10');
-INSERT into rule_then_bis (rule_id,then_bis) values(3,'result.value=amount*8/100;');
+INSERT into rule_then_bis (rule_id,then_bis) values(3,'result.value=amount*8/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 
@@ -51,7 +51,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 insert into rule (id, description, name, priority) values (4, 'Verifica que apartado sea igual B y aplica 30%', 'Es Apartado B y monto mayor a 10', 3);
 INSERT into rule_when_bis (rule_id,when_bis) values(4,'apartado==apartadoClass.APARTADOB');
 INSERT into rule_when_bis (rule_id,when_bis) values(4,'amount>=10');
-INSERT into rule_then_bis (rule_id,then_bis) values(4,'result.value=amount*30/100;');
+INSERT into rule_then_bis (rule_id,then_bis) values(4,'result.value=amount*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,4);
 
@@ -59,28 +59,28 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,4);
 
 insert into rule (id, description, name, priority) values (5,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
 insert into rule_when_bis (rule_id,when_bis) values(5,'apartado==apartadoClass.NOAPARTADO');
-insert into rule_then_bis (rule_id,then_bis) values(5,'result.value=0;');
+insert into rule_then_bis (rule_id,then_bis) values(5,'result.value=0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,5);
 
 
 insert into rule (id, description, name, priority) values (6,'Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.', 'Es de tierra del fuego', 1);
 insert into rule_when_bis (rule_id,when_bis) values(6,'user.getProvince()==provinceClass.TIERRA_DEL_FUEGO');
-insert into rule_then_bis (rule_id,then_bis) values(6,'result.value=0;');
+insert into rule_then_bis (rule_id,then_bis) values(6,'result.value=0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,6);
 
 
 insert into rule (id, description, name, priority) values (7,'Verifica que Si el usuario es RI no aplica impuesto.', 'Es Responsable Inscripto', 2);
 insert into rule_when_bis (rule_id,when_bis) values(7,'user.isResponsableInscripto()');
-insert into rule_then_bis (rule_id,then_bis) values(7,'result.value=0;');
+insert into rule_then_bis (rule_id,then_bis) values(7,'result.value=0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
 
 
 insert into rule (id, description, name, priority) values (8,'Verifica que si el apartado es A y aplica 21%.', 'Apartado A IVA', 3);
 insert into rule_when_bis (rule_id,when_bis) values(8,'apartado==apartadoClass.APARTADOA');
-insert into rule_then_bis (rule_id,then_bis) values(8,'result.value=amount*21/100;');
+insert into rule_then_bis (rule_id,then_bis) values(8,'result.value=amount*21/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,8);
 
@@ -88,7 +88,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,8);
 insert into rule (id, description, name, priority) values (9,'Verifica que si el apartado es B y monto >= 10 aplica 0%.', 'Apartado B mayor a 10', 3);
 insert into rule_when_bis (rule_id,when_bis) values(9,'apartado==apartadoClass.APARTADOB');
 insert into rule_when_bis (rule_id,when_bis) values(9,'amount>=10');
-insert into rule_then_bis (rule_id,then_bis) values(9,'result.value=0;');
+insert into rule_then_bis (rule_id,then_bis) values(9,'result.value=0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
 
@@ -97,7 +97,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
 insert into rule (id, description, name, priority) values (10,'Verifica que si el apartado es B y monto < 10 aplica 21%.', 'Apartado B menor a 10', 4);
 insert into rule_when_bis (rule_id,when_bis) values(10,'apartado==apartadoClass.APARTADOB');
 insert into rule_when_bis (rule_id,when_bis) values(10,'amount<10');
-insert into rule_then_bis (rule_id,then_bis) values(10,'result.value=amount*21/100;');
+insert into rule_then_bis (rule_id,then_bis) values(10,'result.value=amount*21/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
@@ -110,7 +110,7 @@ insert into broker_taxes (broker_id, taxes_id) values (2, 3);
 
 insert into rule (id, description, name, priority) values (11,'Aplica el 30% sobre el 90% del premio', 'gravamenPremios', 1);
 insert into rule_when_bis (rule_id,when_bis) values(11,'1==1');
-insert into rule_then_bis (rule_id,then_bis) values(11,'result.value=amount*90/100*30/100;');
+insert into rule_then_bis (rule_id,then_bis) values(11,'result.value=amount*90/100*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (3,11);
 
@@ -122,7 +122,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 insert into rule (id, description, name, priority) values (12,'35% sobre el monto', 'petreaintaycinco', 1);
 
 insert into rule_when_bis (rule_id,when_bis) values(12,'user.isGananciasYBienesP()');
-insert into rule_then_bis (rule_id,then_bis) values(12,'result.value=amount*35/100;');
+insert into rule_then_bis (rule_id,then_bis) values(12,'result.value=amount*35/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 
@@ -133,7 +133,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 insert into rule (id, description, name, priority) values (13,'35% sobre el monto', 'treintaycinco', 1);
 
 insert into rule_when_bis (rule_id,when_bis) values(13,'user.getProvince()==provinceClass.CABA');
-insert into rule_then_bis (rule_id,then_bis) values(13,'result.value=amount*2/100;');
+insert into rule_then_bis (rule_id,then_bis) values(13,'result.value=amount*2/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
 

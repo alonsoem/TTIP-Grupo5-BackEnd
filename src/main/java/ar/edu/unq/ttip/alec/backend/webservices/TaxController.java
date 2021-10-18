@@ -39,6 +39,16 @@ public class TaxController {
         );
     }
 
+
+    @PutMapping("/{taxId}")
+    @ApiOperation("Allow to update Tax.")
+    public ResponseEntity<TaxDTO> update(@PathVariable Integer taxId, @RequestBody TaxDTO request) {
+        return new ResponseEntity(
+                service.update(taxId, request),
+                HttpStatus.CREATED
+        );
+    }
+
     @PostMapping
     @ApiOperation("Allow to add new Tax to existing Broker.")
     public ResponseEntity<TaxDTO> createTax(@PathVariable Integer brokerId, @RequestBody TaxDTO request) {
@@ -55,16 +65,6 @@ public class TaxController {
                 HttpStatus.CREATED
         );
     }
-
-    @PostMapping
-    @ApiOperation("Allow to update Tax.")
-    public ResponseEntity<TaxDTO> update(@PathVariable Integer id, @RequestBody TaxDTO request) {
-        return new ResponseEntity(
-                service.update(id, request),
-                HttpStatus.CREATED
-        );
-    }
-
 
 
 }

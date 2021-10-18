@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
+import ar.edu.unq.ttip.alec.backend.model.rules.ConditionAction;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
@@ -50,6 +51,19 @@ public class RuleService {
     public Rule add(Integer taxId, Integer ruleId){
         Rule rule =getRuleById(ruleId);
         return taxService.addRule(taxId, rule);
+
+    }
+
+    @Transactional
+    public Rule update(Integer ruleId, RuleDTO request){
+        Rule rule = getRuleById(ruleId);
+        rule.setName(request.getName());
+        rule.setDescription(request.getDescription());
+        rule.setPriority(request.getPriority());
+        //rule.setWhen(request.getWhen().stream().map(eachWhen -> new ConditionAction(eachWhen)).collect(Collectors.toList()));
+        //rule.setThen(request.getThen().stream().map(eachThen -> new ConditionAction(eachThen)).collect(Collectors.toList()));
+        repo.save(rule);
+        return rule;
 
     }
 

@@ -75,6 +75,26 @@ public class Rule {
         return id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public void setThen(List<ConditionAction> then) {
+        this.then = then;
+    }
+
+    public void setWhen(List<ConditionAction> when) {
+        this.when = when;
+    }
+
     public void addWhen(ConditionAction condition) {
         when.add (condition);
     }

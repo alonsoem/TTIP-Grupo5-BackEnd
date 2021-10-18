@@ -5,6 +5,7 @@ import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.service.RuleService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,15 @@ public class RuleController {
     public ResponseEntity<RuleDTO> add(@PathVariable Integer taxId, @PathVariable Integer ruleId) {
         return new ResponseEntity(
                 service.add(taxId, ruleId),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PutMapping("/tax/{taxId}/rule/{ruleId}")
+    @ApiOperation("Allow to update Tax.")
+    public ResponseEntity<TaxDTO> update(@PathVariable Integer ruleId, @RequestBody RuleDTO request) {
+        return new ResponseEntity(
+                service.update(ruleId, request),
                 HttpStatus.CREATED
         );
     }

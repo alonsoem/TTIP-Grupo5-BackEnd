@@ -43,7 +43,8 @@ public class RuleService {
     @Transactional
     public Rule create(Integer taxId, RuleDTO request){
         Rule rule = request.toModel();
-        return taxService.addRule(taxId, rule);
+        Rule oRule = taxService.addRule(taxId, rule);
+        return oRule;
 
     }
 
@@ -60,8 +61,8 @@ public class RuleService {
         rule.setName(request.getName());
         rule.setDescription(request.getDescription());
         rule.setPriority(request.getPriority());
-        //rule.setWhen(request.getWhen().stream().map(eachWhen -> new ConditionAction(eachWhen)).collect(Collectors.toList()));
-        //rule.setThen(request.getThen().stream().map(eachThen -> new ConditionAction(eachThen)).collect(Collectors.toList()));
+        rule.setWhen(request.getWhen());
+        rule.setThen(request.getThen());
         repo.save(rule);
         return rule;
 

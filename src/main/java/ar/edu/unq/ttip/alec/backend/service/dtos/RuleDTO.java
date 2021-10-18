@@ -54,8 +54,8 @@ public class RuleDTO {
         return new Rule(name,
                 description,
                 priority,
-                when.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()),
-                then.stream().map(string -> new ConditionAction(string)).collect(Collectors.toList()));
+                when,
+                then);
 
     }
 

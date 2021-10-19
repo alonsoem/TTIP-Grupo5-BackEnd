@@ -7,7 +7,7 @@ plugins {
 	id "io.freefair.lombok" version "6.0.0-m2"
 }
 
-group = 'ar.edu.unq.desapp.grupoj'
+group = 'ar.edu.unq.ttip.alec'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
@@ -52,8 +52,7 @@ dependencies {
 	implementation 'org.jeasy:easy-rules-support:4.1.0'
 	implementation 'org.jeasy:easy-rules-mvel:4.1.0'
 
-	compileOnly 'org.projectlombok:lombok:1.18.20'
-			
+	compileOnly 'org.projectlombok:lombok:1.18.20'	
 }
 
 test {
@@ -63,24 +62,17 @@ test {
 task 'testCI' (type: Test) {
     useJUnitPlatform()
     jvmArgs "-Dspring.profiles.active=ci"
+    finalizedBy jacocoTestReport
 }
 
-jacoco{
+jacoco {
 	toolVersion = '0.8.2'
-
 }
 
-jacocoTestReport{
-	reports{
-		html.enabled = true
-		xml.enabled = true
-		csv.enabled = true
-	}
-	afterEvaluate { // (optional) : to exclude classes / packages from coverage
-		classDirectories.from = files(classDirectories.files.collect {
-			fileTree(
-					dir: it,
-					exclude: [ 'src/main/java/ar.edu.unq.desapp.grupoj.backenddesappapi/ServletInitializer','src/main/java/ar.edu.unq.desapp.grupoj.backenddesappapi/BackendDesappApiApplication'])
-		})
-	}
+jacocoTestReport {
+    getExecutionData().setFrom(fileTree(buildDir).include("/jacoco/*.exec"))
+    
+    reports {
+        xml.enabled true
+    }
 }

@@ -21,3 +21,5 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
       - name: Build with Gradle
         run: ./gradlew testCI
+      - name: Upload coverage report to Codacy  
+        run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r build/reports/jacoco/test/jacocoTestReport.xml

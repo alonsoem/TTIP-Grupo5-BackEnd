@@ -16,8 +16,8 @@ public class RateFact extends Fact {
     @ManyToOne
     private Rate rate;
 
-    public RateFact(String name){
-        super(name);
+    public RateFact(String name,String description){
+        super(name,description);
         this.fixed=false;
     }
 

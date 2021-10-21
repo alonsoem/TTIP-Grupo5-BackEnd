@@ -139,13 +139,13 @@ insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
 
 --Facts
 
-INSERT INTO fact (dtype, name,class_name,fixed) VALUES ('ClassFact', 'provinceClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province',false);
-INSERT INTO fact (dtype, name,class_name,fixed) VALUES ('ClassFact','apartadoClass','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado',false);
-INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','amount',true);
-INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','result',true);
-INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','apartado',true);
-INSERT INTO fact (dtype,name,fixed) VALUES ('Fact','user',true);
-INSERT INTO fact (dtype,name,fixed) VALUES ('RateFact','iva',false);
+INSERT INTO fact (dtype, name,description,class_name,fixed) VALUES ('ClassFact', 'provinceClass','Clase que agrupa las provincias disponibles en el sistema.','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province',false);
+INSERT INTO fact (dtype, name,description,class_name,fixed) VALUES ('ClassFact','apartadoClass','Clase que agrupa los apartados disponibles en el sistema.','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado',false);
+INSERT INTO fact (dtype,name,description,fixed) VALUES ('Fact','amount','Monto imponible',true);
+--INSERT INTO fact (dtype,name,description,fixed) VALUES ('Fact','result',true);
+INSERT INTO fact (dtype,name,description,fixed) VALUES ('Fact','apartado','Apartado afectado al calculo.',true);
+INSERT INTO fact (dtype,name,description,fixed) VALUES ('Fact','user','Usuario afectable al calculo',true);
+INSERT INTO fact (dtype,name,description,fixed) VALUES ('RateFact','iva','Tasa Iva',false);
 
 
 insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1)

@@ -10,8 +10,8 @@ public class ClassFact extends Fact {
 
     private String className;
 
-    public ClassFact(String name, String className){
-        super(name);
+    public ClassFact(String name, String description,String className){
+        super(name,description);
         this.className=className;
         this.fixed=false;
     }

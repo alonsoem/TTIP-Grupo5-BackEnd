@@ -1,5 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
+import ar.edu.unq.ttip.alec.backend.model.Broker;
+import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
@@ -61,6 +63,14 @@ public class RuleService {
         repo.save(rule);
         return rule;
 
+    }
+
+    @Transactional
+    public void remove(Integer ruleId){
+        Rule rule = getRuleById(ruleId);
+        Tax tax = rule.getTax();
+        taxService.removeRule(tax,rule);
+        repo.delete(rule);
     }
 
 }

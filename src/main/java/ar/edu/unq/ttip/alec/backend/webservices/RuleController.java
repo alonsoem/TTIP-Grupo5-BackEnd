@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins ="*")
 @RestController
@@ -29,22 +30,27 @@ public class RuleController {
 
     @GetMapping("/rule")
     @ApiOperation("Get all rules")
-    public ResponseEntity<List<Rule>> getAllRules() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<RuleDTO>> getAllRules() {
+        return ResponseEntity.ok(
+                service.findAll().stream()
+                        .map(rule -> RuleDTO.fromModel(rule))
+                        .collect(Collectors.toList()));
     }
 
     @GetMapping("/rule/{ruleId}")
     @ApiOperation("Get One Rule")
-    public ResponseEntity<Rule> getRuleById(@PathVariable Integer ruleId) {
-        return ResponseEntity.ok(service.getRuleById(ruleId));
+    public ResponseEntity<RuleDTO> getRuleById(@PathVariable Integer ruleId) {
+        return ResponseEntity.ok(
+                RuleDTO.fromModel(service.getRuleById(ruleId))
+        );
     }
 
     @GetMapping("/facts")
     @ApiOperation("Get all facts")
     public ResponseEntity<List<Fact>> getAllFacts() {
-        List<Fact> ttt =service.findAllFacts();
         return ResponseEntity.ok(
-                ttt);
+                service.findAllFacts()
+                );
     }
 
     @PostMapping("/tax/{taxId}/rule")
@@ -73,7 +79,11 @@ public class RuleController {
         );
     }
 
-
-
+    @DeleteMapping("/tax/{taxId}/rule/{ruleId}")
+    @ApiOperation("Allow to remove a Rule.")
+    public HttpStatus remove(@PathVariable Integer ruleId) {
+        service.remove(ruleId);
+        return HttpStatus.OK;
+    }
 
 }

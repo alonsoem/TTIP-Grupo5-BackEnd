@@ -122,4 +122,8 @@ public class Tax {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public void removeRule(Rule rule) {
+        allRules.remove(rule);
+    }
 }

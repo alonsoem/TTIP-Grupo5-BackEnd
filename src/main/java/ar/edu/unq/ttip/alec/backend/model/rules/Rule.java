@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
+import ar.edu.unq.ttip.alec.backend.model.Tax;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -22,6 +23,10 @@ public class Rule {
     private String name;
     private String description;
     private Integer priority;
+
+    @ManyToOne
+    private Tax tax;
+
     @ElementCollection(targetClass=String.class)
     private List<String> whenBis;
     @ElementCollection(targetClass=String.class)
@@ -106,7 +111,13 @@ public class Rule {
         this.id = id;
     }
 
+    public Tax getTax() {
+        return tax;
+    }
 
+    public void setTax(Tax tax) {
+        this.tax = tax;
+    }
 }
 
 

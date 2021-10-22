@@ -66,9 +66,12 @@ public class TaxService {
         Tax tax = this.getTaxById(taxId);
         Broker broker = tax.getBroker();
         brokerService.removeTaxRule(broker,tax);
-        //repoBroker.save(broker);
         repo.delete(tax);
     }
 
 
+    public void removeRule(Tax tax, Rule rule) {
+        tax.removeRule(rule);
+        repo.save(tax);
+    }
 }

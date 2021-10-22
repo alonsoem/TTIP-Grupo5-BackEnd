@@ -146,8 +146,12 @@ INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','amount','Mo
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','apartado','Apartado afectado al calculo.',true,0);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','user','Usuario afectable al calculo',true,0);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais8','Tasa pais 8%',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais30','Tasa pais 30%',false,1);
 
 
-insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1)
+insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
 
 

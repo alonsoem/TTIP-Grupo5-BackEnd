@@ -66,6 +66,14 @@ public class BrokerController {
         );
     }
 
+    @DeleteMapping("/{brokerId}")
+    @ApiOperation("Allow to remove a Broker.")
+    public HttpStatus remove(@PathVariable Integer brokerId) {
+        service.remove(brokerId);
+        return HttpStatus.OK;
+    }
+
+
 
 
 

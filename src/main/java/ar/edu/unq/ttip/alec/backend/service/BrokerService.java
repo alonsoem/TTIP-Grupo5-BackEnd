@@ -68,6 +68,12 @@ public class BrokerService {
         return broker;
     }
 
+    @Transactional
+    public void remove(Integer id){
+        Broker broker = repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
+        repo.delete(broker);
+    }
+
 
 }
 

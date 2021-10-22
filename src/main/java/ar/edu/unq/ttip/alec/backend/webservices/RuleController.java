@@ -42,7 +42,9 @@ public class RuleController {
     @GetMapping("/facts")
     @ApiOperation("Get all facts")
     public ResponseEntity<List<Fact>> getAllFacts() {
-        return ResponseEntity.ok(service.findAllFacts());
+        List<Fact> ttt =service.findAllFacts();
+        return ResponseEntity.ok(
+                ttt);
     }
 
     @PostMapping("/tax/{taxId}/rule")

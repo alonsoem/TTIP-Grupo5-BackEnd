@@ -1,6 +1,7 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
 
+import ar.edu.unq.ttip.alec.backend.model.enumClasses.FactType;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.FactLoadFailedException;
 
 import javax.persistence.Entity;
@@ -14,8 +15,10 @@ public class ClassFact extends Fact {
         super(name,description);
         this.className=className;
         this.fixed=false;
+        this.type= FactType.ENUM;
     }
     protected ClassFact(){}
+
 
     public String getClassName() {
         return className;

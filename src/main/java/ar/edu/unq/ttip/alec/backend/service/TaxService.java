@@ -1,6 +1,5 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
-
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;

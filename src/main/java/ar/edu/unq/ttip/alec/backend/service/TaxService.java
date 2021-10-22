@@ -1,13 +1,13 @@
 package ar.edu.unq.ttip.alec.backend.service;
 
+import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
+import ar.edu.unq.ttip.alec.backend.repository.BrokerRepository;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,9 +23,6 @@ public class TaxService {
     @Autowired
     private TaxRepository repo;
 
-    @EventListener
-    public void appReady(ApplicationReadyEvent event) {}
-
     public Tax getTaxById(Integer id) {
         return repo.getTaxById(id).orElseThrow(() -> new NonExistentTaxException(id));
     }
@@ -37,7 +34,7 @@ public class TaxService {
     @Transactional
     public Tax createTax(Integer brokerId, TaxDTO request){
         Tax tax = request.toModel();
-        return brokerService.addTaxTule(brokerId, tax);
+        return brokerService.addTaxRule(brokerId, tax);
     }
 
     @Transactional
@@ -51,7 +48,8 @@ public class TaxService {
     @Transactional
     public Object addTax(Integer brokerId, Integer taxId) {
         Tax tax = getTaxById(taxId);
-        return brokerService.addTaxTule(brokerId, tax);
+        tax = brokerService.addTaxRule(brokerId, tax);
+        return tax;
     }
 
     @Transactional
@@ -62,4 +60,15 @@ public class TaxService {
         repo.save(tax);
         return tax;
     }
+
+    @Transactional
+    public void remove(Integer taxId){
+        Tax tax = this.getTaxById(taxId);
+        Broker broker = tax.getBroker();
+        brokerService.removeTaxRule(broker,tax);
+        //repoBroker.save(broker);
+        repo.delete(tax);
+    }
+
+
 }

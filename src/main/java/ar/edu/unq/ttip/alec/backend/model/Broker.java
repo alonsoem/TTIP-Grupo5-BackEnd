@@ -1,16 +1,13 @@
 package ar.edu.unq.ttip.alec.backend.model;
 
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
-import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
-import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.jeasy.rules.api.Facts;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,4 +76,7 @@ public class Broker {
         return jeassyFacts;
     }
 
+    public void removeTax(Tax tax) {
+        taxes.remove(tax);
+    }
 }

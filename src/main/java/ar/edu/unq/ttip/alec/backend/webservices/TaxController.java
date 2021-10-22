@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins ="*")
 @RestController
@@ -26,8 +27,13 @@ public class TaxController {
 
     @GetMapping
     @ApiOperation("Lists all Taxes.")
-    public ResponseEntity<List<Tax>> getAllTaxes() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<TaxDTO>> getAllTaxes() {
+        return ResponseEntity.ok(
+                service.findAll()
+                .stream()
+                .map(tax->TaxDTO.fromModel(tax))
+                .collect(Collectors.toList())
+        );
     }
 
     @GetMapping("/{taxId}")
@@ -57,6 +63,7 @@ public class TaxController {
                 HttpStatus.CREATED
         );
     }
+
     @PostMapping("/add/{taxId}")
     @ApiOperation("Allow to add existing Tax to existing Broker.")
     public ResponseEntity<TaxDTO> addTax(@PathVariable Integer brokerId, @PathVariable Integer taxId) {
@@ -64,6 +71,13 @@ public class TaxController {
                 service.addTax(brokerId, taxId),
                 HttpStatus.CREATED
         );
+    }
+
+    @DeleteMapping("/{taxId}")
+    @ApiOperation("Allow to remove a Tax.")
+    public HttpStatus remove(@PathVariable Integer taxId) {
+        service.remove(taxId);
+        return HttpStatus.OK;
     }
 
 

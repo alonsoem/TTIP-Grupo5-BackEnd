@@ -44,11 +44,18 @@ public class BrokerService {
     }
 
     @Transactional
-    public Tax addTaxTule(Integer brokerId, Tax tax) {
+    public Tax addTaxRule(Integer brokerId, Tax tax) {
         Broker broker = getBrokerById(brokerId);
+        tax.setBroker(broker);
         broker.add(tax);
         repo.save(broker);
         return tax;
+    }
+
+    @Transactional
+    public void removeTaxRule(Broker broker, Tax tax) {
+        broker.removeTax(tax);
+        repo.save(broker);
     }
 
     public Object calculate(BigDecimal amount, Apartado apartado, Integer brokerId) {

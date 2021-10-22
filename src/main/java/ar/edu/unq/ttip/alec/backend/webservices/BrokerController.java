@@ -57,11 +57,11 @@ public class BrokerController {
         );
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{brokerId}")
     @ApiOperation("Allow to update a Broker")
-    public ResponseEntity<BrokerDTO> update(@PathVariable Integer id, @RequestBody BrokerDTO request) {
+    public ResponseEntity<BrokerDTO> update(@PathVariable Integer brokerId, @RequestBody BrokerDTO request) {
         return new ResponseEntity(
-                service.update(id,request),
+                service.update(brokerId,request),
                 HttpStatus.CREATED
         );
     }

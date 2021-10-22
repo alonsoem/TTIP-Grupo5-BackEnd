@@ -51,6 +51,9 @@ public class Tax {
     private String name;
     private String url;
 
+    @ManyToOne
+    private Broker broker;
+
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Rule> allRules= new ArrayList<>();
 
@@ -58,7 +61,15 @@ public class Tax {
         allRules.add(rule);
     }
 
-    public Tax(String name,String url){
+    public void setBroker(Broker broker) {
+        this.broker = broker;
+    }
+
+    public Broker getBroker() {
+        return broker;
+    }
+
+    public Tax(String name, String url){
         this.name=name;
         this.url=url;
     }

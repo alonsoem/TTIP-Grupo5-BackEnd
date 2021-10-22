@@ -19,8 +19,8 @@ INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
 INSERT INTO broker (id, name) VALUES (1,'Broker pagos exterior');
 
-INSERT INTO tax (id, name,url) VALUES (1,'IMPUESTO PAIS', 'https://www.afip.gob.ar');
-INSERT INTO tax (id, name,url) VALUES (2,'IVA EXTERIOR','https://www.arba.gob.ar');
+INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'IMPUESTO PAIS', 'https://www.afip.gob.ar');
+INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA EXTERIOR','https://www.arba.gob.ar');
 
 insert into broker_taxes (broker_id, taxes_id) values (1, 1);
 insert into broker_taxes (broker_id, taxes_id) values (1, 2);
@@ -104,7 +104,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
 INSERT INTO broker (id, name) VALUES (2,'Broker Gravamen de emergencia sobre premios');
 
-INSERT INTO tax (id, name,url) VALUES (3,'Gravamen', 'https://www.afip.gob.ar');
+INSERT INTO tax (id,broker_id, name,url) VALUES (3,2,'Gravamen', 'https://www.afip.gob.ar');
 
 insert into broker_taxes (broker_id, taxes_id) values (2, 3);
 
@@ -116,7 +116,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (3,11);
 
 
 
-INSERT INTO tax (id, name) VALUES (4,'Adelanto al impuesto a las Ganancias y los Bienes Personales');
+INSERT INTO tax (id,broker_id, name) VALUES (4,1,'Adelanto al impuesto a las Ganancias y los Bienes Personales');
 insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, description, name, priority) values (12,'35% sobre el monto', 'petreaintaycinco', 1);
@@ -127,7 +127,7 @@ insert into rule_then_bis (rule_id,then_bis) values(12,'amount*35/100');
 insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 
 
-INSERT INTO tax (id, name) VALUES (5,'Percepción IIBB a los servicios digitales del exterior');
+INSERT INTO tax (id,broker_id, name) VALUES (5,1,'Percepción IIBB a los servicios digitales del exterior');
 insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
 insert into rule (id, description, name, priority) values (13,'35% sobre el monto', 'treintaycinco', 1);

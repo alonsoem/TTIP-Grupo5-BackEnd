@@ -43,7 +43,9 @@ public class RuleService {
     @Transactional
     public Rule create(Integer taxId, RuleDTO request){
         Rule rule = request.toModel();
-        return taxService.addRule(taxId, rule);
+        taxService.addRule(taxId, rule);
+        repo.save(rule);
+        return rule;
     }
 
     @Transactional

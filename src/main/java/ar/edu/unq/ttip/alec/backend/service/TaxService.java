@@ -41,6 +41,7 @@ public class TaxService {
     public Rule addRule(Integer taxId, Rule rule) {
         Tax tax= getTaxById(taxId);
         tax.addRule(rule);
+        rule.setTax(tax);
         repo.save(tax);
         return (rule);
     }

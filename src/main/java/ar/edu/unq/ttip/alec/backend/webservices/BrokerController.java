@@ -1,11 +1,9 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.service.BrokerService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

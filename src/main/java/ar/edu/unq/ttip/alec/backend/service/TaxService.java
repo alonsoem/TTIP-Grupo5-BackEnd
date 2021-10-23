@@ -3,7 +3,6 @@ package ar.edu.unq.ttip.alec.backend.service;
 import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
-import ar.edu.unq.ttip.alec.backend.repository.BrokerRepository;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
@@ -40,10 +39,13 @@ public class TaxService {
     @Transactional
     public Rule addRule(Integer taxId, Rule rule) {
         Tax tax= getTaxById(taxId);
-        tax.addRule(rule);
         rule.setTax(tax);
+        tax.addRule(rule);
+
         repo.save(tax);
+
         return (rule);
+
     }
 
     @Transactional
@@ -66,11 +68,11 @@ public class TaxService {
     public void remove(Integer taxId){
         Tax tax = this.getTaxById(taxId);
         Broker broker = tax.getBroker();
-        brokerService.removeTaxRule(broker,tax);
+        brokerService.removeTax(broker,tax);
         repo.delete(tax);
     }
 
-
+    @Transactional
     public void removeRule(Tax tax, Rule rule) {
         tax.removeRule(rule);
         repo.save(tax);

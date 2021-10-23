@@ -23,9 +23,6 @@
  */
 package ar.edu.unq.ttip.alec.backend.model;
 
-import ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado;
-import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
-import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.rules.RuleResult;
 import org.jeasy.rules.api.Facts;
@@ -54,7 +51,7 @@ public class Tax {
     @ManyToOne
     private Broker broker;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Rule> allRules= new ArrayList<>();
 
     public void addRule(Rule rule){

@@ -53,7 +53,7 @@ public class BrokerService {
     }
 
     @Transactional
-    public void removeTaxRule(Broker broker, Tax tax) {
+    public void removeTax(Broker broker, Tax tax) {
         broker.removeTax(tax);
         repo.save(broker);
     }

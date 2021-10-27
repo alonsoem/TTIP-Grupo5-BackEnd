@@ -6,7 +6,8 @@ INSERT INTO frontuser
   (3, 1, 1, 'User Tierra del fuego', 'e10adc3949ba59abbe56e057f20f883e', 20, 1, 'USER', 'user@alec.com'),
   (4, 1, 1, 'User No responsable inscripto', 'e10adc3949ba59abbe56e057f20f883e', 12, 0, 'USER', 'userNRI@alec.com'),
   (5, 1, 0, 'User No ganancias', 'e10adc3949ba59abbe56e057f20f883e', 5, 1, 'USER', 'userNG@alec.com'),
-  (6, 1, 0, 'API User', '1234', 0, 0, 'USER', 'apiuser@alec.com');
+  (6, 1, 0, 'API User', '1234', 0, 0, 'USER', 'apiuser@alec.com'),
+  (7, 1, 0, 'User No ganancias Tierra del fuego', 'e10adc3949ba59abbe56e057f20f883e', 20, 0, 'USER', 'userNGTF@alec.com');
 
   --Alicuotas
 

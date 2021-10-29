@@ -4,7 +4,7 @@ INSERT INTO frontuser
   (1, 1, 1, 'Enrique Alonso', 'e10adc3949ba59abbe56e057f20f883e', 23, 1, 'USER', 'alonso.em@gmail.com'),
   (2, 1, 1, 'Leandro Platero', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, 'USER', 'ljplatero@gmail.com'),
   (3, 1, 1, 'User Tierra del fuego', 'e10adc3949ba59abbe56e057f20f883e', 20, 1, 'USER', 'user@alec.com'),
-  (4, 1, 1, 'User No responsable inscripto', 'e10adc3949ba59abbe56e057f20f883e', 12, 0, 'USER', 'userNRI@alec.com'),
+  (4, 1, 0, 'User No responsable inscripto', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, 'USER', 'userNRI@alec.com'),
   (5, 1, 0, 'User No ganancias', 'e10adc3949ba59abbe56e057f20f883e', 5, 1, 'USER', 'userNG@alec.com'),
   (6, 1, 0, 'API User', '1234', 0, 0, 'USER', 'apiuser@alec.com'),
   (7, 1, 0, 'User No ganancias Tierra del fuego', 'e10adc3949ba59abbe56e057f20f883e', 20, 0, 'USER', 'userNGTF@alec.com');
@@ -20,8 +20,8 @@ INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
 INSERT INTO broker (id, name) VALUES (1,'Broker pagos exterior');
 
-INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'IMPUESTO PAIS', 'https://www.afip.gob.ar');
-INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA EXTERIOR','https://www.arba.gob.ar');
+INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'Impuesto país', 'https://www.afip.gob.ar/impuesto-pais/ayuda/normativa.asp');
+INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA servicios digitales internacionales','https://www.afip.gob.ar/iva/servicios-digitales/concepto.asp');
 
 insert into broker_taxes (broker_id, taxes_id) values (1, 1);
 insert into broker_taxes (broker_id, taxes_id) values (1, 2);
@@ -117,7 +117,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (3,11);
 
 
 
-INSERT INTO tax (id,broker_id, name) VALUES (4,1,'Adelanto al impuesto a las Ganancias y los Bienes Personales');
+INSERT INTO tax (id, broker_id, name, url) VALUES (4, 1, 'Adelanto al impuesto a las Ganancias y los Bienes Personales', 'https://www.afip.gob.ar/regimen-devolucion-percepciones/percepcion/que-es.asp');
 insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, tax_id, description, name, priority) values (12,4,'35% sobre el monto', 'petreaintaycinco', 1);
@@ -128,7 +128,7 @@ insert into rule_then_bis (rule_id,then_bis) values(12,'amount*35/100');
 insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 
 
-INSERT INTO tax (id,broker_id, name) VALUES (5,1,'Percepción IIBB a los servicios digitales del exterior');
+INSERT INTO tax (id, broker_id, name, url) VALUES (5, 1, 'Percepción IIBB a los servicios digitales del exterior', 'https://www.agip.gob.ar/normativa/resoluciones/2019/agip/-resolucion-n-312--agip--2019');
 insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
 insert into rule (id,tax_id, description, name, priority) values (13,5,'35% sobre el monto', 'treintaycinco', 1);

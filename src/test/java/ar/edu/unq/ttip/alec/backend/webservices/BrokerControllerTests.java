@@ -44,6 +44,7 @@ public class BrokerControllerTests {
 	private String tokenC;
 	private String tokenD;
 	private String tokenE;
+	private String tokenF;
 	private Map<String, String> mapNOAP = new HashMap<String, String>();
 	private Map<String, String> mapAPA = new HashMap<String, String>();
 	private Map<String, String> mapAPB1 = new HashMap<String, String>();
@@ -57,6 +58,7 @@ public class BrokerControllerTests {
         this.tokenC = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("alonso.em@gmail.com"));
         this.tokenD = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("userNG@alec.com"));
         this.tokenE = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("userNGTF@alec.com"));
+        this.tokenF = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("userNRI@alec.com"));
         this.mapNOAP.put("apartado", "NOAPARTADO");
         this.mapNOAP.put("taxId", "1");
         this.mapNOAP.put("amount", "100");
@@ -379,6 +381,68 @@ public class BrokerControllerTests {
         String responseBody = mvcResult.getResponse().getContentAsString();
         
         assertThat(responseBody).contains("1.08");
+	}
+	//
+	
+	// CABAIIBBNoGananciasNoRIUser
+	@Test
+	void whenCABAIIBBNoGananciasNoRIUserEntersNoApartado100_thenMainCalcReturns132() throws Exception {     
+        MvcResult mvcResult = mvc.perform(
+        	post("/broker/calculate")
+        		.header("Authorization", this.tokenF)
+        		.content(mapper.writeValueAsString(this.mapNOAP))
+        		.contentType(MediaType.APPLICATION_JSON)
+        )
+	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+	    	.andReturn();
+        String responseBody = mvcResult.getResponse().getContentAsString();
+        
+        assertThat(responseBody).contains("132");
+	}
+	
+	@Test
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoA100_thenMainCalcReturns131() throws Exception {     
+        MvcResult mvcResult = mvc.perform(
+        	post("/broker/calculate")
+        		.header("Authorization", this.tokenF)
+        		.content(mapper.writeValueAsString(this.mapAPA))
+        		.contentType(MediaType.APPLICATION_JSON)
+        )
+	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+	    	.andReturn();
+        String responseBody = mvcResult.getResponse().getContentAsString();
+        
+        assertThat(responseBody).contains("131");
+	}
+	
+	@Test
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB100_thenMainCalcReturns132() throws Exception {     
+        MvcResult mvcResult = mvc.perform(
+        	post("/broker/calculate")
+        		.header("Authorization", this.tokenF)
+        		.content(mapper.writeValueAsString(this.mapAPB100))
+        		.contentType(MediaType.APPLICATION_JSON)
+        )
+	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+	    	.andReturn();
+        String responseBody = mvcResult.getResponse().getContentAsString();
+        
+        assertThat(responseBody).contains("132");
+	}
+	
+	@Test
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB1_thenMainCalcReturns1Point31() throws Exception {     
+        MvcResult mvcResult = mvc.perform(
+        	post("/broker/calculate")
+        		.header("Authorization", this.tokenF)
+        		.content(mapper.writeValueAsString(this.mapAPB1))
+        		.contentType(MediaType.APPLICATION_JSON)
+        )
+	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+	    	.andReturn();
+        String responseBody = mvcResult.getResponse().getContentAsString();
+        
+        assertThat(responseBody).contains("1.31");
 	}
 	//
 }

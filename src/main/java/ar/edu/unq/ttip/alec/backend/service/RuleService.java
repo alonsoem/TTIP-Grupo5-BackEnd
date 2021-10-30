@@ -3,7 +3,9 @@ package ar.edu.unq.ttip.alec.backend.service;
 import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
+import ar.edu.unq.ttip.alec.backend.model.rules.GroupFact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
+import ar.edu.unq.ttip.alec.backend.repository.GroupFactRepository;
 import ar.edu.unq.ttip.alec.backend.repository.RuleRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentRuleException;
@@ -25,6 +27,9 @@ public class RuleService {
     @Autowired
     private FactService factService;
 
+    @Autowired
+    private GroupFactService groupFactService;
+
     @EventListener
     public void appReady(ApplicationReadyEvent event) {}
 
@@ -32,8 +37,8 @@ public class RuleService {
         return repo.findAll();
     }
 
-    public List<Fact> findAllFacts() {
-        return factService.findAll();
+    public List<GroupFact> findAllFacts() {
+        return groupFactService.findAll();
     }
 
     public Rule getRuleById(Integer id) {

@@ -139,19 +139,35 @@ insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
 
 --Facts
 
+
+
 INSERT INTO fact (dtype, name,description,class_name,fixed,type) VALUES ('ClassFact', 'provinceClass','Clase que agrupa las provincias disponibles en el sistema.','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province',false,2);
 INSERT INTO fact (dtype, name,description,class_name,fixed,type) VALUES ('ClassFact','apartadoClass','Clase que agrupa los apartados disponibles en el sistema.','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado',false,2);
+
+
+INSERT INTO group_fact (name,description) VALUES ('user','Usuario afectable al calculo');
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','province','Provincia del usuario',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','isPersonalAssets','Tributa Bienes personales',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','isEnrolledResponsable','Es Responsable inscripto',true,0);
+insert into group_fact_facts (group_fact_name,facts_name) values ('user','province');
+insert into group_fact_facts (group_fact_name,facts_name) values ('user','isPersonalAssets');
+insert into group_fact_facts (group_fact_name,facts_name) values ('user','isEnrolledResponsable');
+
+
+INSERT INTO group_fact (name,description) VALUES ('Core','Parametros basicos');
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','amount','Monto imponible',true,0);
---INSERT INTO fact (dtype,name,description,fixed) VALUES ('Fact','result',true);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','apartado','Apartado afectado al calculo.',true,0);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','user','Usuario afectable al calculo',true,0);
+insert into group_fact_facts (group_fact_name,facts_name) values ('Core','amount');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Core','apartado');
+
+
+INSERT INTO group_fact (name,description) VALUES ('Rates','Parametros de tass');
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva',false,1);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais8','Tasa pais 8%',false,1);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais30','Tasa pais 30%',false,1);
-
-
 insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
-
-
+insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','iva');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais8');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais30');

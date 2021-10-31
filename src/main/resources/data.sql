@@ -66,14 +66,14 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,5);
 
 
 insert into rule (id,tax_id, description, name, priority) values (6,2,'Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.', 'Es de tierra del fuego', 1);
-insert into rule_when_bis (rule_id,when_bis) values(6,'user.getProvince()==provinceClass.TIERRA_DEL_FUEGO');
+insert into rule_when_bis (rule_id,when_bis) values(6,'province==provinceClass.TIERRA_DEL_FUEGO');
 insert into rule_then_bis (rule_id,then_bis) values(6,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,6);
 
 
 insert into rule (id,tax_id, description, name, priority) values (7,2,'Verifica que Si el usuario es RI no aplica impuesto.', 'Es Responsable Inscripto', 2);
-insert into rule_when_bis (rule_id,when_bis) values(7,'user.isResponsableInscripto()');
+insert into rule_when_bis (rule_id,when_bis) values(7,'isEnrolledResponsable');
 insert into rule_then_bis (rule_id,then_bis) values(7,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
@@ -122,7 +122,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, tax_id, description, name, priority) values (12,4,'35% sobre el monto', 'petreaintaycinco', 1);
 
-insert into rule_when_bis (rule_id,when_bis) values(12,'user.isGananciasYBienesP()');
+insert into rule_when_bis (rule_id,when_bis) values(12,'isPersonalAssets');
 insert into rule_then_bis (rule_id,then_bis) values(12,'amount*35/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
@@ -133,7 +133,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
 insert into rule (id,tax_id, description, name, priority) values (13,5,'35% sobre el monto', 'treintaycinco', 1);
 
-insert into rule_when_bis (rule_id,when_bis) values(13,'user.getProvince()==provinceClass.CABA');
+insert into rule_when_bis (rule_id,when_bis) values(13,'province==provinceClass.CABA');
 insert into rule_then_bis (rule_id,then_bis) values(13,'amount*2/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (5,13);

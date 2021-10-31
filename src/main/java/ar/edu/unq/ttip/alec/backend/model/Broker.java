@@ -71,7 +71,6 @@ public class Broker {
         //No se persisten, asociados a parametros
         jeassyFacts.put("apartado", apartado);
         jeassyFacts.put("amount", amount);
-        //jeassyFacts.put("user", user);
         jeassyFacts.put("province", user.getProvince());
         jeassyFacts.put("isPersonalAssets", user.isGananciasYBienesP());
         jeassyFacts.put("isEnrolledResponsable", user.isResponsableInscripto());

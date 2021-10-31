@@ -27,6 +27,8 @@ public class BrokerService {
 
     @Autowired
     private FactService factService;
+    @Autowired
+    private GroupFactService groupFactService;
 
     public Broker getBrokerById(Integer id) {
         return repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
@@ -62,7 +64,8 @@ public class BrokerService {
         Broker broker = getBrokerById(brokerId);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
-        List<Fact> facts = factService.getAllByClass();
+        //List<Fact> facts = factService.getAllByClass();
+        List<Fact> facts = groupFactService.getFactsFromGroups();
         return broker.getResultsWith(amount,apartado,userDetails,facts);
 
     }

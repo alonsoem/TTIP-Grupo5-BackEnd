@@ -75,6 +75,7 @@ public class Broker {
         jeassyFacts.put("isPersonalAssets", user.isGananciasYBienesP());
         jeassyFacts.put("isEnrolledResponsable", user.isResponsableInscripto());
 
+
         return jeassyFacts;
     }
 

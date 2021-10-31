@@ -1,7 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.model.rules;
 
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.FactType;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
 
@@ -13,6 +12,8 @@ public class Fact {
     protected Boolean fixed=true;
     private String description;
     public FactType type;
+    @Transient
+    private Object value=null;
 
     public Fact(String name,String description){
         this.name=name;
@@ -34,7 +35,11 @@ public class Fact {
     }
 
     public Object getValue() {
-        return null;
+        return this.value;
     }
     public Boolean fixed(){return this.fixed;}
+
+    public void setValue(Object newValue) {
+        this.value=newValue;
+    }
 }

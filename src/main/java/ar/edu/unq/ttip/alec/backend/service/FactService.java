@@ -15,13 +15,11 @@ public class FactService {
     @Autowired
     private FactRepository repo;
 
-
     public List<Fact> findAll() {
         return repo.findAll();
     }
 
     public Fact getFactByName(String name){return repo.getFactByName(name).orElseThrow(()-> new NonExistentFactException(name));}
-
 
     public List<Fact> getAllByClass() {
         return repo.getFactsByFixedFalse();

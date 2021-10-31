@@ -25,7 +25,7 @@ public class GroupFact {
 
     public void addFact(Fact fact){ this.facts.add(fact);}
 
-    public List<Fact> getFacts() {
+    public List<Fact> getFacts() throws ClassNotFoundException {
         return facts;
     }
 

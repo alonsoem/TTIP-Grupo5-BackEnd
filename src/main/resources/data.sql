@@ -140,8 +140,8 @@ insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
 
 --Facts
 
-INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','provinces','Provincias disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
-INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','apartados','Apartados disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
+INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','provinces','Provincias disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
+INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','apartados','Apartados disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
 
 
 

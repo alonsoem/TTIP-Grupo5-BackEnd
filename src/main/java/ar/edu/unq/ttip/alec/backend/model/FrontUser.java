@@ -2,6 +2,8 @@ package ar.edu.unq.ttip.alec.backend.model;
 
 
 import ar.edu.unq.ttip.alec.backend.model.enumClasses.Province;
+import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,7 +16,7 @@ import java.util.List;
         name = "frontuser",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"userName"})}
 )
-
+@Setter
 public class FrontUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

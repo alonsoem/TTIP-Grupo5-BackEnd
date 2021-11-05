@@ -13,6 +13,9 @@ public class FrontUserDTO {
     private Province province;
     private Boolean isResponsableInscripto;
     private Boolean isgananciasYBienesP;
+    
+    public FrontUserDTO() {}
+    
     public FrontUserDTO(String username, String name, Province aProvince, boolean isResponsableInscripto, Boolean ganancias, Boolean active){
         this.username=username;
         this.name=name;

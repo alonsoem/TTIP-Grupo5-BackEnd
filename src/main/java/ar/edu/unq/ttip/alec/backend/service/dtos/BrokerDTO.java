@@ -10,6 +10,7 @@ public class BrokerDTO {
     private String name;
     private Integer id;
     private List<TaxDTO> taxes;
+    private Integer userId;
 
     public BrokerDTO(String name){ this.name=name;}
 
@@ -24,8 +25,10 @@ public class BrokerDTO {
         BrokerDTO dto = new BrokerDTO(broker.getName());
         dto.setId(broker.getId());
         dto.setTaxes(broker.getTaxes());
+        dto.setUserId(broker.getOwnerId());
         return dto;
     }
+
 
     private void setTaxes(List<Tax> taxes) {
         this.taxes=taxes.stream().map(tax->TaxDTO.fromModel(tax)).collect(Collectors.toList());
@@ -45,5 +48,13 @@ public class BrokerDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 }

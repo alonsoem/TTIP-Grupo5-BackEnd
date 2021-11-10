@@ -1,10 +1,8 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.service.dtos.AuthenticationRequest;
-import ar.edu.unq.ttip.alec.backend.service.dtos.AuthenticationResponse;
+import ar.edu.unq.ttip.alec.backend.model.FrontUser;
+import ar.edu.unq.ttip.alec.backend.service.dtos.*;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
-import ar.edu.unq.ttip.alec.backend.service.dtos.FrontUserDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.RegisterDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.UserAlreadyExistsException;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 
@@ -75,6 +73,7 @@ public class FrontUserController {
 
         final UserDetails userDetails = service.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+//        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthResponseDTO(((FrontUser) userDetails).getId(),new AuthenticationResponse(jwt).getJwt()));
     }
 }

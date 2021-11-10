@@ -34,8 +34,13 @@ public class BrokerService {
         return repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
     }
 
-    public List<Broker> findAll() {
-        return repo.findAll();
+    public List<Broker> findAll() {return repo.findAll();}
+
+    public List<Broker> filteredBrokers() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        FrontUser userDetails = (FrontUser) auth.getPrincipal();
+
+        return repo.findAllByIsPublicIsTrueOrOwner(userDetails.getUsername());
     }
 
     @Transactional

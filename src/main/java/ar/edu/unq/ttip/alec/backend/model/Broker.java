@@ -27,6 +27,8 @@ public class Broker {
     @ManyToOne
     private FrontUser owner;
 
+    private Boolean isPublic=true;
+
     public Broker(){}
     public Broker(String taxBrokerName){
         name=taxBrokerName;
@@ -88,5 +90,17 @@ public class Broker {
 
     public void setOwner(FrontUser userDetails) {
         this.owner=userDetails;
+    }
+
+    public String owner(){return this.owner.getUsername();}
+    public String getOwnerUsername(){return this.owner.getUsername();}
+
+
+    public Boolean isPublic() {
+        return isPublic;
+    }
+
+    public Integer getOwnerId() {
+        return this.owner.getId();
     }
 }

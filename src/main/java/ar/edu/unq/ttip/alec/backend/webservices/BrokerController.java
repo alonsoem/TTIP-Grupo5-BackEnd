@@ -30,7 +30,7 @@ public class BrokerController {
     @ApiOperation("List all Brokers")
     public ResponseEntity<List<BrokerDTO>> getAllBrokers() {
         return ResponseEntity.ok(
-                service.findAll()
+                service.filteredBrokers()
                         .stream()
                         .map(broker -> BrokerDTO.fromModel(broker))
                         .collect(Collectors.toList())

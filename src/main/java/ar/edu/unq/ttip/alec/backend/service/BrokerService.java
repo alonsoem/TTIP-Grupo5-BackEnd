@@ -41,6 +41,9 @@ public class BrokerService {
     @Transactional
     public Broker createBroker(BrokerDTO brokerDto){
         Broker broker = brokerDto.toModel();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        FrontUser userDetails = (FrontUser) auth.getPrincipal();
+        broker.setOwner(userDetails);
         repo.save(broker);
         return broker;
     }

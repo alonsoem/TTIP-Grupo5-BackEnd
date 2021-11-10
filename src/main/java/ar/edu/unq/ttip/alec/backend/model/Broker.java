@@ -24,6 +24,9 @@ public class Broker {
     private List<Tax> taxes= new ArrayList<>();
     private String name ="";
 
+    @ManyToOne
+    private FrontUser owner;
+
     public Broker(){}
     public Broker(String taxBrokerName){
         name=taxBrokerName;
@@ -81,5 +84,9 @@ public class Broker {
 
     public void removeTax(Tax tax) {
         taxes.remove(tax);
+    }
+
+    public void setOwner(FrontUser userDetails) {
+        this.owner=userDetails;
     }
 }

@@ -30,8 +30,9 @@ public class Broker {
     private Boolean isPublic=true;
 
     public Broker(){}
-    public Broker(String taxBrokerName){
-        name=taxBrokerName;
+    public Broker(String taxBrokerName,Boolean isPublic){
+        this.name=taxBrokerName;
+        this.isPublic=isPublic;
     }
 
     public void add(Tax rule){
@@ -102,5 +103,9 @@ public class Broker {
 
     public Integer getOwnerId() {
         return this.owner.getId();
+    }
+
+    public void setPublic(Boolean isPublic) {
+        this.isPublic=isPublic;
     }
 }

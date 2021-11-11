@@ -7,22 +7,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BrokerDTO {
+    private Boolean isPublic;
     private String name;
     private Integer id;
     private List<TaxDTO> taxes;
     private Integer userId;
 
-    public BrokerDTO(String name){ this.name=name;}
+    public BrokerDTO(String name,Boolean isPublic){
+        this.name=name;
+        this.isPublic=isPublic;
+    }
 
     public BrokerDTO(){}
 
 
     public Broker toModel(){
-        return new Broker(this.name);
+        return new Broker(this.name,this.isPublic);
     }
 
     public static BrokerDTO fromModel(Broker broker){
-        BrokerDTO dto = new BrokerDTO(broker.getName());
+        BrokerDTO dto = new BrokerDTO(broker.getName(),broker.isPublic());
         dto.setId(broker.getId());
         dto.setTaxes(broker.getTaxes());
         dto.setUserId(broker.getOwnerId());
@@ -52,6 +56,10 @@ public class BrokerDTO {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Boolean getIsPublic() {
+        return isPublic;
     }
 
     public Integer getUserId() {

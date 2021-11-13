@@ -44,19 +44,19 @@ public class RateControllerTests {
 	
 	// Ratelist tests
 	@Test
-	void whenNotAuthenticated_thenGetAllTaxReturns403() throws Exception {
+	void WhenNotAuthenticated_thenGetAllTaxReturns403() throws Exception {
 		mvc.perform(get("/rate"))
 	    	.andExpect(status().isForbidden());
 	}
 	
 	@Test
-	void whenValidRequest_thenGetAllTaxReturnsStatusCode200() throws Exception {
+	void WhenValidRequest_thenGetAllTaxReturnsStatusCode200() throws Exception {
 		mvc.perform(get("/rate").header("Authorization", this.token))
 	    	.andExpect(status().isOk());
 	}
 	
 	@Test
-	void whenValidRequest_thenGetAllTaxReturnsTheTaxesAsJSON() throws Exception {     
+	void WhenValidRequest_thenGetAllTaxReturnsTheTaxesAsJSON() throws Exception {
         MvcResult mvcResult = mvc.perform(get("/rate").header("Authorization", this.token))
 	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 	    	.andReturn();

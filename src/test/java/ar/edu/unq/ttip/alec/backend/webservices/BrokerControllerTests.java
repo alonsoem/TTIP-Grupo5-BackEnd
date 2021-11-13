@@ -77,7 +77,7 @@ public class BrokerControllerTests {
 	// NoTierraDelFuegoNoGananciasNoRIUser
 	@DisplayName("When user not from Tierra del Fuego, not Ganancias, not RI enters apartado NoApartado and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersNoApartado100_thenMainCalcReturns130() throws Exception {     
+	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersNoApartado100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenB)
@@ -90,7 +90,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user not from Tierra del Fuego, not Ganancias, not RI enters apartado ApartadoA and amount 100 then MainCalc returns total 129")
 	@Test
-	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoA100_thenMainCalcReturns129() throws Exception {     
+	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoA100ThenMainCalcReturns129() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenB)
@@ -103,7 +103,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user not from Tierra del Fuego, not Ganancias, not RI enters apartado ApartadoB and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoB100_thenMainCalcReturns130() throws Exception {     
+	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoB100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenB)
@@ -116,7 +116,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user not from Tierra del Fuego, not Ganancias, not RI enters apartado ApartadoB and amount 1 then MainCalc returns total 1.29")
 	@Test
-	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoB1_thenMainCalcReturns1Point29() throws Exception {     
+	void whenNoTierraDelFuegoNoGananciasNoRIUserEntersApartadoB1ThenMainCalcReturns1Point29() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenB)
@@ -131,7 +131,7 @@ public class BrokerControllerTests {
 	// TierraDelFuegoAndGananciasUser
 	@DisplayName("When user from Tierra del Fuego and Ganancias enters apartado NoApartado and amount 100 then MainCalc returns total 165")
 	@Test
-	void whenTierraDelFuegoAndGananciasUserEntersNoApartado100_thenMainCalcReturns165() throws Exception {     
+	void whenTierraDelFuegoAndGananciasUserEntersNoApartado100ThenMainCalcReturns165() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenA)
@@ -144,7 +144,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and Ganancias enters apartado ApartadoA and amount 100 then MainCalc returns total 143")
 	@Test
-	void whenTierraDelFuegoAndGananciasUserEntersApartadoA100_thenMainCalcReturns143() throws Exception {     
+	void whenTierraDelFuegoAndGananciasUserEntersApartadoA100ThenMainCalcReturns143() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenA)
@@ -157,7 +157,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and Ganancias enters apartado ApartadoB and amount 100 then MainCalc returns total 165")
 	@Test
-	void whenTierraDelFuegoAndGananciasUserEntersApartadoB100_thenMainCalcReturns165() throws Exception {     
+	void whenTierraDelFuegoAndGananciasUserEntersApartadoB100ThenMainCalcReturns165() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenA)
@@ -185,7 +185,7 @@ public class BrokerControllerTests {
 	// TierraDelFuegoAndNoGananciasUser
 	@DisplayName("When user from Tierra del Fuego and not Ganancias enters apartado NoApartado and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenTierraDelFuegoAndNoGananciasUserEntersNoApartado100_thenMainCalcReturns130() throws Exception {     
+	void whenTierraDelFuegoAndNoGananciasUserEntersNoApartado100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenE)
@@ -198,7 +198,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and not Ganancias enters apartado ApartadoA and amount 100 then MainCalc returns total 108")
 	@Test
-	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoA100_thenMainCalcReturns108() throws Exception {     
+	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoA100ThenMainCalcReturns108() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenE)
@@ -211,7 +211,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and not Ganancias enters apartado ApartadoB and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoB100_thenMainCalcReturns130() throws Exception {     
+	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoB100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenE)
@@ -224,7 +224,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and not Ganancias enters apartado ApartadoB and amount 1 then MainCalc returns total 1.08")
 	@Test
-	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoB1_thenMainCalcReturns1Point08() throws Exception {     
+	void whenTierraDelFuegoAndNoGananciasUserEntersApartadoB1ThenMainCalcReturns1Point08() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenE)
@@ -239,7 +239,7 @@ public class BrokerControllerTests {
 	// RIAndGananciasUser
 	@DisplayName("When RI and Ganancias user enters apartado NoApartado and amount 100 then MainCalc returns total 165")
 	@Test
-	void whenRIAndGananciasUserEntersNoApartado100_thenMainCalcReturns165() throws Exception {     
+	void whenRIAndGananciasUserEntersNoApartado100ThenMainCalcReturns165() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenC)
@@ -252,7 +252,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and Ganancias user enters apartado ApartadoA and amount 100 then MainCalc returns total 143")
 	@Test
-	void whenRIAndGananciasUserEntersApartadoA100_thenMainCalcReturns143() throws Exception {     
+	void whenRIAndGananciasUserEntersApartadoA100ThenMainCalcReturns143() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenC)
@@ -265,7 +265,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and Ganancias user enters apartado ApartadoB and amount 100 then MainCalc returns total 165")
 	@Test
-	void whenRIAndGananciasUserEntersApartadoB100_thenMainCalcReturns165() throws Exception {     
+	void whenRIAndGananciasUserEntersApartadoB100ThenMainCalcReturns165() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenC)
@@ -278,7 +278,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and Ganancias user enters apartado ApartadoB and amount 1 then MainCalc returns total 1.43")
 	@Test
-	void whenRIAndGananciasUserEntersApartadoB1_thenMainCalcReturns1Point43() throws Exception {     
+	void whenRIAndGananciasUserEntersApartadoB1ThenMainCalcReturns1Point43() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenC)
@@ -293,7 +293,7 @@ public class BrokerControllerTests {
 	// RIAndNoGananciasUser
 	@DisplayName("When RI and not Ganancias user enters apartado NoApartado and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenRIAndNoGananciasUserEntersNoApartado100_thenMainCalcReturns130() throws Exception {     
+	void whenRIAndNoGananciasUserEntersNoApartado100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenD)
@@ -306,7 +306,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and not Ganancias user enters apartado ApartadoA and amount 100 then MainCalc returns total 108")
 	@Test
-	void whenRIAndNoGananciasUserEntersApartadoA100_thenMainCalcReturns108() throws Exception {     
+	void whenRIAndNoGananciasUserEntersApartadoA100ThenMainCalcReturns108() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenD)
@@ -319,7 +319,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and not Ganancias user enters apartado ApartadoB and amount 100 then MainCalc returns total 130")
 	@Test
-	void whenRIAndNoGananciasUserEntersApartadoB100_thenMainCalcReturns130() throws Exception {     
+	void whenRIAndNoGananciasUserEntersApartadoB100ThenMainCalcReturns130() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenD)
@@ -332,7 +332,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When RI and not Ganancias user enters apartado ApartadoB and amount 1 then MainCalc returns total 1.08")
 	@Test
-	void whenRIAndNoGananciasUserEntersApartadoB1_thenMainCalcReturns1Point08() throws Exception {     
+	void whenRIAndNoGananciasUserEntersApartadoB1ThenMainCalcReturns1Point08() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenD)
@@ -347,7 +347,7 @@ public class BrokerControllerTests {
 	// CABAIIBBNoGananciasNoRIUser
 	@DisplayName("When user from CABA and not Ganancias and not RI enters apartado NoApartado and amount 100 then MainCalc returns total 132")
 	@Test
-	void whenCABAIIBBNoGananciasNoRIUserEntersNoApartado100_thenMainCalcReturns132() throws Exception {
+	void whenCABAIIBBNoGananciasNoRIUserEntersNoApartado100ThenMainCalcReturns132() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenF)
@@ -360,7 +360,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from CABA and not Ganancias and not RI enters apartado ApartadoA and amount 100 then MainCalc returns total 131")
 	@Test
-	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoA100_thenMainCalcReturns131() throws Exception {
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoA100ThenMainCalcReturns131() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenF)
@@ -373,7 +373,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from CABA and not Ganancias and not RI enters apartado ApartadoB and amount 100 then MainCalc returns total 132")
 	@Test
-	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB100_thenMainCalcReturns132() throws Exception {
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB100ThenMainCalcReturns132() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenF)
@@ -386,7 +386,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from CABA and not Ganancias and not RI enters apartado ApartadoB and amount 1 then MainCalc returns total 1.31")
 	@Test
-	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB1_thenMainCalcReturns1Point31() throws Exception {
+	void whenCABAIIBBNoGananciasNoRIUserEntersApartadoB1ThenMainCalcReturns1Point31() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenF)

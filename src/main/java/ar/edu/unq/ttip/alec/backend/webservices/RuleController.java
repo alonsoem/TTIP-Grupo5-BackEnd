@@ -1,9 +1,6 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import ar.edu.unq.ttip.alec.backend.model.Broker;
-import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.GroupFact;
-import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.service.RuleService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;

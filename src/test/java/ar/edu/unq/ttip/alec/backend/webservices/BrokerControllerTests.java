@@ -170,7 +170,7 @@ public class BrokerControllerTests {
 	
 	@DisplayName("When user from Tierra del Fuego and Ganancias enters apartado ApartadoB and amount 1 then MainCalc returns total 1.43")
 	@Test
-	void whenTierraDelFuegoAndGananciasUserEntersApartadoB1_thenMainCalcReturns1Point43() throws Exception {     
+	void whenTierraDelFuegoAndGananciasUserEntersApartadoB1ThenMainCalcReturns1Point43() throws Exception {
         mvc.perform(
         	post("/broker/calculate")
         		.header("Authorization", this.tokenA)

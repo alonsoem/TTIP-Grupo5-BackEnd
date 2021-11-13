@@ -26,8 +26,6 @@ public class BrokerService {
     private BrokerRepository repo;
 
     @Autowired
-    private FactService factService;
-    @Autowired
     private GroupFactService groupFactService;
 
     public Broker getBrokerById(Integer id) {

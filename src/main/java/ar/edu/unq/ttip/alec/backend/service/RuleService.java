@@ -24,8 +24,6 @@ public class RuleService {
     private RuleRepository repo;
     @Autowired
     private TaxService taxService;
-    @Autowired
-    private FactService factService;
 
     @Autowired
     private GroupFactService groupFactService;

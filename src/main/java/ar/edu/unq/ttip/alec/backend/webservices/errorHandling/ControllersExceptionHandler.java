@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import ar.edu.unq.ttip.alec.backend.service.exceptions.*;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +26,7 @@ public class ControllersExceptionHandler {
     //@ExceptionHandler({NullPointerException.class, HttpMessageNotReadableException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ResponseEntity<Object> NullPointerAndOtherExceptions(Exception ex) {
+    public ResponseEntity<Object> nullPointerAndOtherExceptions(Exception ex) {
         List<String> details = new ArrayList<String>();
         details.add(ex.getMessage());
         ApiError err = new ApiError(LocalDateTime.now(),HttpStatus.BAD_REQUEST,"Malformation Errors",details);
@@ -39,7 +38,7 @@ public class ControllersExceptionHandler {
     @ExceptionHandler({NonExistentTaxException.class,NonExistentResponsableException.class,NonExistentProvinciaException.class,NonExistentBrokerException.class,NonExistentRuleException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ResponseEntity<Object> NonExistentExceptions
+    public ResponseEntity<Object> nonExistentExceptions
             (Exception ex) {
         List<String> details = new ArrayList<String>();
         details.add(ex.getMessage());

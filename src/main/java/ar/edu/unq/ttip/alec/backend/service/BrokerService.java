@@ -6,8 +6,11 @@ import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
+import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.BrokerRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,9 +24,14 @@ import java.util.List;
 @Service
 public class BrokerService {
 
-
     @Autowired
     private BrokerRepository repo;
+
+    @Autowired
+    private TaxService taxService;
+
+    @Autowired
+    private RuleService ruleService;
 
     @Autowired
     private GroupFactService groupFactService;
@@ -89,6 +97,23 @@ public class BrokerService {
     public void remove(Integer id){
         Broker broker = repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
         repo.delete(broker);
+    }
+
+    @Transactional
+    public BrokerDTO copyBroker(Integer brokerId) {
+        Broker existentBroker= getBrokerById(brokerId);
+        Broker newBroker = createBroker(BrokerDTO.fromModel(existentBroker));
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        FrontUser user = (FrontUser) auth.getPrincipal();
+        newBroker.setOwner(user);
+        newBroker.setPublic(false);
+
+
+        taxService.copyTaxes(existentBroker,newBroker);
+
+        repo.save(newBroker);
+        return BrokerDTO.fromModel(newBroker);
     }
 
 

@@ -18,7 +18,7 @@ INSERT INTO rate (id,name,rate) VALUES (4, 'IVA 10,5%', 10.5);
 INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
 
-INSERT INTO broker (id, name,owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior',7,1);
+INSERT INTO broker (id, name,owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'Impuesto país', 'https://www.afip.gob.ar/impuesto-pais/ayuda/normativa.asp');
 INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA servicios digitales internacionales','https://www.afip.gob.ar/iva/servicios-digitales/concepto.asp');

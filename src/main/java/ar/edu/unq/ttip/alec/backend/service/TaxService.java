@@ -4,6 +4,7 @@ import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.repository.TaxRepository;
+import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentTaxException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -18,6 +20,9 @@ public class TaxService {
 
     @Autowired
     private BrokerService brokerService;
+
+    @Autowired
+    private RuleService ruleService;
 
     @Autowired
     private TaxRepository repo;
@@ -34,6 +39,7 @@ public class TaxService {
     public Tax createTax(Integer brokerId, TaxDTO request){
         Tax tax = request.toModel();
         return brokerService.addTaxRule(brokerId, tax);
+
     }
 
     @Transactional
@@ -41,7 +47,6 @@ public class TaxService {
         Tax tax= getTaxById(taxId);
         rule.setTax(tax);
         tax.addRule(rule);
-
         repo.save(tax);
 
         return (rule);
@@ -77,4 +82,39 @@ public class TaxService {
         tax.removeRule(rule);
         repo.save(tax);
     }
+
+    @Transactional
+    public void copyTaxes(Broker existentBroker, Broker newBroker) {
+        existentBroker.getTaxes().stream().forEach(existentTax ->{
+            Tax taxNew = TaxDTO.fromModel(existentTax).toModel();
+            taxNew.setId(null);
+            taxNew.setBroker(newBroker);
+            Tax taxCopy = copyRules(existentTax,taxNew);
+            newBroker.add(taxCopy);
+
+        });
+    }
+
+    private Tax copyRules(Tax existentTax, Tax taxCopy) {
+        existentTax.getRules().stream().forEach(existentRule ->
+                {
+                    Rule newRule = copyRule(existentRule);
+                    newRule.setTax(taxCopy);
+                    taxCopy.addRule(newRule);
+                }
+
+        );
+        return taxCopy;
+    }
+
+
+    private Rule copyRule(Rule rule){
+        return new Rule(rule.getName(),
+                        rule.getDescription(),
+                        rule.getPriority(),
+                        rule.getWhen().stream().map(eachWhen->new String(eachWhen)).collect(Collectors.toList()),
+                        rule.getThen().stream().map(eachThen->new String(eachThen)).collect(Collectors.toList())
+        );
+    }
 }
+

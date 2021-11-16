@@ -28,7 +28,7 @@ public class TaxDTO {
                             tax.getName(),
                             tax.getUrl(),
                             tax.getRules().stream().map(e->RuleDTO.fromModel(e)).collect(Collectors.toList()));
-        dto.setId(tax.getId());
+                            dto.setId(tax.getId());
         return dto;
     }
 

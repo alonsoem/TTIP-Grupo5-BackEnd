@@ -55,6 +55,15 @@ public class BrokerController {
         );
     }
 
+    @PostMapping("/copy/{brokerId}")
+    @ApiOperation("Allow to copy a Broker from user to another")
+    public ResponseEntity<BrokerDTO> copyBroker(@PathVariable Integer brokerId) {
+        return new ResponseEntity(
+                service.copyBroker(brokerId),
+                HttpStatus.CREATED
+        );
+    }
+
     @PostMapping("/calculate")
     @ApiOperation("Allow to calculate a Rate aplication.")
     public ResponseEntity<CalcResultDTO> calculate(@RequestBody CalculationDTO request) {

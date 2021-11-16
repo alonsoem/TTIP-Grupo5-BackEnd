@@ -108,6 +108,7 @@ public class BrokerService {
         FrontUser user = (FrontUser) auth.getPrincipal();
         newBroker.setOwner(user);
         newBroker.setPublic(false);
+        newBroker.setName(newBroker.getName() + " (C)" );
 
 
         taxService.copyTaxes(existentBroker,newBroker);

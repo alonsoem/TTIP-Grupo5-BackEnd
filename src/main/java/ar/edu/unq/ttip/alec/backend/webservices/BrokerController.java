@@ -4,6 +4,7 @@ import ar.edu.unq.ttip.alec.backend.service.BrokerService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalculationDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.SearchRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,16 @@ public class BrokerController {
         return ResponseEntity.ok(
                 BrokerDTO.fromModel(service.getBrokerById(brokerId))
         );
+    }
+
+    @GetMapping("/search")
+    @ApiOperation("Get Brokers containing description")
+    public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter) {
+        return ResponseEntity.ok(
+                service.getBrokerByDescription(filter).stream().map(each->
+                                BrokerDTO.fromModel(each)
+                        ).collect(Collectors.toList())
+                );
     }
 
     @PostMapping("/create")

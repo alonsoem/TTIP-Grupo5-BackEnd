@@ -7,9 +7,11 @@ import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
 import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
+import ar.edu.unq.ttip.alec.backend.repository.BrokerCriteriaRepository;
 import ar.edu.unq.ttip.alec.backend.repository.BrokerRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.SearchRequest;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class BrokerService {
 
     @Autowired
     private BrokerRepository repo;
+
+    @Autowired
+    private BrokerCriteriaRepository criteria;
 
     @Autowired
     private TaxService taxService;
@@ -118,5 +123,9 @@ public class BrokerService {
     }
 
 
+    public List<Broker> getBrokerByDescription(SearchRequest request) {
+        //return repo.findAllByNameContaining(request.getFilters());
+        return criteria.findAllWithFilters(request.getWords());
+    }
 }
 

@@ -47,7 +47,8 @@ public class BrokerController {
         );
     }
 
-    @GetMapping("/search")
+
+    @PostMapping("/search")
     @ApiOperation("Get Brokers containing description")
     public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter) {
         return ResponseEntity.ok(

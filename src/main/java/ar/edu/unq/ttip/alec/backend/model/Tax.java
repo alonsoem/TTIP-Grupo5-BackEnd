@@ -36,7 +36,9 @@ import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Entity
@@ -97,7 +99,8 @@ public class Tax {
     }
 
     public List<Rule> getRules(){
-        return this.allRules;
+        return this.allRules.stream().sorted(Comparator.comparingInt(Rule::getPriority))
+                .collect(Collectors.toList());
     }
 
     public String getName() {

@@ -12,7 +12,6 @@ public interface TaxRepository extends JpaRepository<Tax, Integer> {
 
     List<Tax> findAll();
     Optional<Tax> getTaxById(Integer id);
-
 }
 
 

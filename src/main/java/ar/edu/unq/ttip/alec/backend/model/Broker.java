@@ -82,6 +82,8 @@ public class Broker {
         jeassyFacts.put("isPersonalAssets", user.isGananciasYBienesP());
         jeassyFacts.put("isEnrolledResponsable", user.isResponsableInscripto());
 
+        //palabra reservada No expuesta
+        jeassyFacts.put("always", true);
 
         return jeassyFacts;
     }

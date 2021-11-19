@@ -70,7 +70,7 @@ public class RuleController {
     }
 
     @PutMapping("/tax/{taxId}/rule/{ruleId}")
-    @ApiOperation("Allow to update Tax.")
+    @ApiOperation("Allow to update Rule.")
     public ResponseEntity<TaxDTO> update(@PathVariable Integer ruleId, @RequestBody RuleDTO request) {
         return new ResponseEntity(
                 service.update(ruleId, request),

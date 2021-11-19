@@ -71,4 +71,5 @@ public class RuleDTO {
     public Integer getId() {
         return id;
     }
+
 }

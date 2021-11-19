@@ -18,7 +18,7 @@ INSERT INTO rate (id,name,rate) VALUES (4, 'IVA 10,5%', 10.5);
 INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
 
-INSERT INTO broker (id, name,owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior',1,1);
+INSERT INTO broker (id, name, description, owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior','Esta calculadora permite el calculo impositivo por los recargos a las compras de servicios en el exterior en dólares',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'Impuesto país', 'https://www.afip.gob.ar/impuesto-pais/ayuda/normativa.asp');
 INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA servicios digitales internacionales','https://www.afip.gob.ar/iva/servicios-digitales/concepto.asp');
@@ -103,7 +103,7 @@ insert into rule_then_bis (rule_id,then_bis) values(10,'amount*21/100');
 insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
 
-INSERT INTO broker (id, name,owner_id,is_public) VALUES (2,'Gravamen de emergencia sobre premios',7,1);
+INSERT INTO broker (id, name,description, owner_id,is_public) VALUES (2,'Gravamen de emergencia sobre premios','Calcula el impuesto especial sobre premios por sorteos de juegos de azar',7,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (3,2,'Gravamen', 'https://www.afip.gob.ar');
 
@@ -173,7 +173,7 @@ insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais8
 insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais30');
 
 
-INSERT INTO broker (id, name,owner_id,is_public) VALUES (3,'IVA 21%',1,1);
+INSERT INTO broker (id, name,description,owner_id,is_public) VALUES (3,'IVA 21%','Calcula el impuesto del iva a consumidor final',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (6,1,'Impuesto Iva 21%', 'https://www.afip.gob.ar/');
 
@@ -181,7 +181,7 @@ insert into broker_taxes (broker_id, taxes_id) values (3, 6);
 
 
 insert into rule (id, tax_id, description, name, priority) values (14,6,'Aplica siempre el 21%', '21% Siempre', 1);
-insert into rule_when_bis (rule_id,when_bis) values(14,'1==1');
+insert into rule_when_bis (rule_id,when_bis) values(14,'always');
 insert into rule_then_bis (rule_id,then_bis) values(14,'amount*iva/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (6,14);

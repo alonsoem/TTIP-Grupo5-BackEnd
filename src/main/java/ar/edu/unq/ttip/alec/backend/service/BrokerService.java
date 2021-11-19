@@ -93,6 +93,7 @@ public class BrokerService {
     public Broker update(Integer id, BrokerDTO brokerDto){
         Broker broker = repo.getBrokerById(id).orElseThrow(() -> new NonExistentBrokerException(id));
         broker.setName(brokerDto.getName());
+        broker.setDescription(brokerDto.getDescription());
         broker.setPublic(brokerDto.getIsPublic());
         repo.save(broker);
         return broker;

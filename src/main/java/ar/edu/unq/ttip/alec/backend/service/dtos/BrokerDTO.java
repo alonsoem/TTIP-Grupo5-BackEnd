@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 public class BrokerDTO {
     private Boolean isPublic;
     private String name;
+    private String description;
     private Integer id;
     private List<TaxDTO> taxes;
     private Integer userId;
 
-    public BrokerDTO(String name,Boolean isPublic){
+    public BrokerDTO(String name,String description, Boolean isPublic){
         this.name=name;
+        this.description=description;
         this.isPublic=isPublic;
     }
 
@@ -22,11 +24,11 @@ public class BrokerDTO {
 
 
     public Broker toModel(){
-        return new Broker(this.name,this.isPublic);
+        return new Broker(this.name,this.description,this.isPublic);
     }
 
     public static BrokerDTO fromModel(Broker broker){
-        BrokerDTO dto = new BrokerDTO(broker.getName(),broker.isPublic());
+        BrokerDTO dto = new BrokerDTO(broker.getName(),broker.getDescription(), broker.isPublic());
         dto.setId(broker.getId());
         dto.setTaxes(broker.getTaxes());
         dto.setUserId(broker.getOwnerId());
@@ -64,5 +66,9 @@ public class BrokerDTO {
 
     public Integer getUserId() {
         return userId;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 }

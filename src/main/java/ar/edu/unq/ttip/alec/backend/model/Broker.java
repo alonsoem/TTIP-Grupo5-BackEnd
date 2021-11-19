@@ -22,6 +22,7 @@ public class Broker {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Tax> taxes= new ArrayList<>();
     private String name ="";
+    private String description="";
 
     @ManyToOne
     private FrontUser owner;
@@ -29,9 +30,10 @@ public class Broker {
     private Boolean isPublic=true;
 
     public Broker(){}
-    public Broker(String taxBrokerName,Boolean isPublic){
+    public Broker(String taxBrokerName,String description, Boolean isPublic){
         this.name=taxBrokerName;
         this.isPublic=isPublic;
+        this.description=description;
     }
 
     public void add(Tax rule){
@@ -106,5 +108,13 @@ public class Broker {
 
     public void setPublic(Boolean isPublic) {
         this.isPublic=isPublic;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description=description;
     }
 }

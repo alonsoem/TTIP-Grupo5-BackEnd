@@ -36,6 +36,7 @@ import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -125,5 +126,19 @@ public class Tax {
 
     public void removeRule(Rule rule) {
         allRules.remove(rule);
+    }
+
+    public Integer getMaxPriority(){
+        Integer priority=1;
+        if (allRules.size()>0){
+            priority = allRules.stream().max(Comparator.comparingInt(Rule::getPriority)).get().getPriority()+1;
+        }
+        return priority;
+    }
+
+    public List<Rule> swapRules(Integer ruleIdFrom, Integer ruleIdTo) {
+        return allRules.stream()
+                .filter(r->r.getId()==ruleIdFrom || r.getId()==ruleIdTo)
+                .collect(Collectors.toList());
     }
 }

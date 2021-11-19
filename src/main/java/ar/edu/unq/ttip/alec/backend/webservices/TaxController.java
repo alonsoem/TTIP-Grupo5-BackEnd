@@ -2,6 +2,7 @@ package ar.edu.unq.ttip.alec.backend.webservices;
 
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.service.TaxService;
+import ar.edu.unq.ttip.alec.backend.service.dtos.SwapRulesDto;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -79,6 +80,7 @@ public class TaxController {
         service.remove(taxId);
         return HttpStatus.OK;
     }
+
 
 
 }

@@ -16,13 +16,14 @@ public class RuleDTO {
 
     public RuleDTO(){    }
 
-    public RuleDTO (String name, String description, Integer priority, List<String> then, List<String> when){
+
+    public RuleDTO (String name, String description, List<String> then, List<String> when){
         this.name=name;
         this.description=description;
-        this.priority=priority;
         this.when=when;
         this.then=then;
     }
+
 
     public void setId(Integer id){this.id=id;}
 
@@ -57,9 +58,14 @@ public class RuleDTO {
     }
 
     public static RuleDTO fromModel(Rule rule){
-        RuleDTO dto = new RuleDTO(rule.getName(),rule.getDescription(),rule.getPriority(),rule.getThen(),rule.getWhen());
+        RuleDTO dto = new RuleDTO(rule.getName(),rule.getDescription(),rule.getThen(),rule.getWhen());
         dto.setId(rule.getId());
+        dto.setPriority(rule.getPriority());
         return dto;
+    }
+
+    private void setPriority(Integer priority) {
+        this.priority=priority;
     }
 
     public Integer getId() {

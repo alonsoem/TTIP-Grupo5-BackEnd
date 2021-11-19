@@ -3,6 +3,7 @@ package ar.edu.unq.ttip.alec.backend.webservices;
 import ar.edu.unq.ttip.alec.backend.model.rules.GroupFact;
 import ar.edu.unq.ttip.alec.backend.service.RuleService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
+import ar.edu.unq.ttip.alec.backend.service.dtos.SwapRulesDto;
 import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -82,6 +83,15 @@ public class RuleController {
     public HttpStatus remove(@PathVariable Integer ruleId) {
         service.remove(ruleId);
         return HttpStatus.OK;
+    }
+
+    @PutMapping("/tax/{taxId}/rule/orderChange")
+    @ApiOperation("Allow to swap prorities between two rules.")
+    public ResponseEntity swapPriority(@PathVariable Integer taxId, @RequestBody SwapRulesDto request) {
+        return new ResponseEntity(
+                service.swap(taxId, request.getRuleIdFrom(), request.getRuleIdTo()),
+                HttpStatus.CREATED
+        );
     }
 
 }

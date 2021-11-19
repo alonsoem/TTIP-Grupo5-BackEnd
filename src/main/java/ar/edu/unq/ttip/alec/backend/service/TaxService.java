@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,10 +47,10 @@ public class TaxService {
     @Transactional
     public Rule addRule(Integer taxId, Rule rule) {
         Tax tax= getTaxById(taxId);
+        rule.setPriority(tax.getMaxPriority());
         rule.setTax(tax);
         tax.addRule(rule);
         repo.save(tax);
-
         return (rule);
 
     }
@@ -115,6 +117,13 @@ public class TaxService {
                         rule.getWhen().stream().map(eachWhen->new String(eachWhen)).collect(Collectors.toList()),
                         rule.getThen().stream().map(eachThen->new String(eachThen)).collect(Collectors.toList())
         );
+    }
+
+
+    public Object swap(Integer taxId, Integer ruleIdFrom, Integer ruleIdTo) {
+        Tax tax = getTaxById(taxId);
+        return tax.swapRules(ruleIdFrom,ruleIdTo);
+
     }
 }
 

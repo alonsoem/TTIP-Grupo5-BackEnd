@@ -165,10 +165,16 @@ INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Rates','Par
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva',false,1);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais8','Tasa pais 8%',false,1);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais30','Tasa pais 30%',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva2','Alicuota Iva 10.5%',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','ivaExterior','Iva Compras en el exterior',false,1);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('iva2',4);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('ivaExterior',5);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
 insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','iva');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','iva2');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','ivaExterior');
 insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais8');
 insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais30');
 

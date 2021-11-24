@@ -48,6 +48,12 @@ public class FrontUserController {
     public ResponseEntity<FrontUserDTO> getFrontUser(@RequestParam(value = "username") String userName) {
         return ResponseEntity.ok(FrontUserDTO.fromModel(service.loadUserByUsername(userName)));
     }
+
+    @GetMapping("/frontuser/{userId}")
+    @ApiOperation("Get one User by username")
+    public ResponseEntity<UserDTO> getFrontUser(@PathVariable("userId") Integer userId) {
+        return ResponseEntity.ok(UserDTO.fromModel(service.getUserMinDetails(userId)));
+    }
     
     @PostMapping("/frontuser")
     @ApiOperation("Update User")

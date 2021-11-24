@@ -126,7 +126,6 @@ public class BrokerService {
 
 
     public List<Broker> getBrokerByDescription(SearchRequest request) {
-        //return repo.findAllByNameContaining(request.getFilters());
         return criteria.findAllWithFilters(request.getWords());
     }
 

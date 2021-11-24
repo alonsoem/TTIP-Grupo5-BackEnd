@@ -13,6 +13,7 @@ public class BrokerDTO {
     private Integer id;
     private List<TaxDTO> taxes;
     private Integer userId;
+    private String userFullName;
 
     public BrokerDTO(String name,String description, Boolean isPublic){
         this.name=name;
@@ -32,6 +33,7 @@ public class BrokerDTO {
         dto.setId(broker.getId());
         dto.setTaxes(broker.getTaxes());
         dto.setUserId(broker.getOwnerId());
+        dto.setUserFullName(broker.getOwnerFullName());
         return dto;
     }
 
@@ -58,6 +60,14 @@ public class BrokerDTO {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
     }
 
     public Boolean getIsPublic() {

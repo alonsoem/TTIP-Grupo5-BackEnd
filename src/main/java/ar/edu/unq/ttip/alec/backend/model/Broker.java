@@ -119,4 +119,8 @@ public class Broker {
     public void setDescription(String description) {
         this.description=description;
     }
+
+    public String getOwnerFullName() {
+        return this.owner.getName();
+    }
 }

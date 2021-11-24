@@ -71,4 +71,10 @@ public class FrontUserService implements UserDetailsService {
 		
 		return user;
 	}
+
+    public FrontUser getUserMinDetails(Integer userId) {
+        Optional<FrontUser> frontUser = frontUserRepo.findById(userId);
+        frontUser.orElseThrow(() ->  new UsernameNotFoundException("Not Found: " + userId));
+        return frontUser.get();
+    }
 }

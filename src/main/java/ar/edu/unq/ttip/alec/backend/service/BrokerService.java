@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -127,6 +128,10 @@ public class BrokerService {
     public List<Broker> getBrokerByDescription(SearchRequest request) {
         //return repo.findAllByNameContaining(request.getFilters());
         return criteria.findAllWithFilters(request.getWords());
+    }
+
+    public List<Broker> getAllUserBrokers(Integer userId) {
+        return repo.findAllPublicByUser(userId);
     }
 }
 

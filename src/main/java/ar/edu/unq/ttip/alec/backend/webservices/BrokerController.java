@@ -35,7 +35,17 @@ public class BrokerController {
                         .stream()
                         .map(broker -> BrokerDTO.fromModel(broker))
                         .collect(Collectors.toList())
+        );
+    }
 
+    @GetMapping("/byUser/{userId}")
+    @ApiOperation("List all User Brokers")
+    public ResponseEntity<List<BrokerDTO>> getAllUserBrokers(@PathVariable Integer userId) {
+        return ResponseEntity.ok(
+                service.getAllUserBrokers(userId)
+                        .stream()
+                        .map(broker -> BrokerDTO.fromModel(broker))
+                        .collect(Collectors.toList())
         );
     }
 

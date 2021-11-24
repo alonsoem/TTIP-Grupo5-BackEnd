@@ -77,10 +77,10 @@ public class Broker {
         });
         //No se persisten, asociados a parametros
         jeassyFacts.put("apartado", apartado);
-        jeassyFacts.put("amount", amount);
-        jeassyFacts.put("province", user.getProvince());
-        jeassyFacts.put("isPersonalAssets", user.isGananciasYBienesP());
-        jeassyFacts.put("isEnrolledResponsable", user.isResponsableInscripto());
+        jeassyFacts.put("importe", amount);
+        jeassyFacts.put("provincia", user.getProvince());
+        jeassyFacts.put("ganancias", user.isGananciasYBienesP());
+        jeassyFacts.put("ri", user.isResponsableInscripto());
 
         //palabra reservada No expuesta
         jeassyFacts.put("always", true);

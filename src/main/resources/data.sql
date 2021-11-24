@@ -29,7 +29,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 2);
 
 insert into rule (id, tax_id, description, name, priority) values (1,1,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
 insert into rule_when_bis (rule_id,when_bis) values(1,'apartado==NOAPARTADO');
-insert into rule_then_bis (rule_id,then_bis) values(1,'amount*30/100');
+insert into rule_then_bis (rule_id,then_bis) values(1,'importe*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
@@ -37,22 +37,22 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
 insert into rule (id,tax_id, description, name, priority) values (2,1,'Verifica que apartado sea igual A y aplica 21%', 'Es Apartado A', 1);
 INSERT into rule_when_bis (rule_id,when_bis) values(2,'apartado==APARTADOA');
-INSERT into rule_then_bis (rule_id,then_bis) values(2,'amount*8/100');
+INSERT into rule_then_bis (rule_id,then_bis) values(2,'importe*8/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,2);
 
 insert into rule (id,tax_id, description, name, priority) values (3,1, 'Verifica que apartado sea igual B y aplica 8%', 'Es Apartado B y monto menor a 10', 2);
 INSERT into rule_when_bis (rule_id,when_bis) values(3,'apartado==APARTADOB');
-INSERT into rule_when_bis (rule_id,when_bis) values(3,'amount<10');
-INSERT into rule_then_bis (rule_id,then_bis) values(3,'amount*8/100');
+INSERT into rule_when_bis (rule_id,when_bis) values(3,'importe<10');
+INSERT into rule_then_bis (rule_id,then_bis) values(3,'importe*8/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 
 
 insert into rule (id,tax_id, description, name, priority) values (4,1, 'Verifica que apartado sea igual B y aplica 30%', 'Es Apartado B y monto mayor a 10', 3);
 INSERT into rule_when_bis (rule_id,when_bis) values(4,'apartado==APARTADOB');
-INSERT into rule_when_bis (rule_id,when_bis) values(4,'amount>=10');
-INSERT into rule_then_bis (rule_id,then_bis) values(4,'amount*30/100');
+INSERT into rule_when_bis (rule_id,when_bis) values(4,'importe>=10');
+INSERT into rule_then_bis (rule_id,then_bis) values(4,'importe*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,4);
 
@@ -66,14 +66,14 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,5);
 
 
 insert into rule (id,tax_id, description, name, priority) values (6,2,'Verifica que Si el usuario es de Tierra del fuego no aplica impuesto.', 'Es de tierra del fuego', 1);
-insert into rule_when_bis (rule_id,when_bis) values(6,'province==TIERRA_DEL_FUEGO');
+insert into rule_when_bis (rule_id,when_bis) values(6,'provincia==TIERRA_DEL_FUEGO');
 insert into rule_then_bis (rule_id,then_bis) values(6,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,6);
 
 
 insert into rule (id,tax_id, description, name, priority) values (7,2,'Verifica que Si el usuario es RI no aplica impuesto.', 'Es Responsable Inscripto', 2);
-insert into rule_when_bis (rule_id,when_bis) values(7,'isEnrolledResponsable');
+insert into rule_when_bis (rule_id,when_bis) values(7,'ri');
 insert into rule_then_bis (rule_id,then_bis) values(7,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
@@ -81,14 +81,14 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
 
 insert into rule (id,tax_id, description, name, priority) values (8,2,'Verifica que si el apartado es A y aplica 21%.', 'Apartado A IVA', 3);
 insert into rule_when_bis (rule_id,when_bis) values(8,'apartado==APARTADOA');
-insert into rule_then_bis (rule_id,then_bis) values(8,'amount*21/100');
+insert into rule_then_bis (rule_id,then_bis) values(8,'importe*21/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,8);
 
 
 insert into rule (id,tax_id, description, name, priority) values (9,2,'Verifica que si el apartado es B y monto >= 10 aplica 0%.', 'Apartado B mayor a 10', 3);
 insert into rule_when_bis (rule_id,when_bis) values(9,'apartado==APARTADOB');
-insert into rule_when_bis (rule_id,when_bis) values(9,'amount>=10');
+insert into rule_when_bis (rule_id,when_bis) values(9,'importe>=10');
 insert into rule_then_bis (rule_id,then_bis) values(9,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
@@ -97,8 +97,8 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,9);
 
 insert into rule (id,tax_id, description, name, priority) values (10,2,'Verifica que si el apartado es B y monto < 10 aplica 21%.', 'Apartado B menor a 10', 4);
 insert into rule_when_bis (rule_id,when_bis) values(10,'apartado==APARTADOB');
-insert into rule_when_bis (rule_id,when_bis) values(10,'amount<10');
-insert into rule_then_bis (rule_id,then_bis) values(10,'amount*21/100');
+insert into rule_when_bis (rule_id,when_bis) values(10,'importe<10');
+insert into rule_then_bis (rule_id,then_bis) values(10,'importe*21/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
@@ -111,7 +111,7 @@ insert into broker_taxes (broker_id, taxes_id) values (2, 3);
 
 insert into rule (id,tax_id, description, name, priority) values (11,3,'Aplica el 30% sobre el 90% del premio', 'gravamenPremios', 1);
 insert into rule_when_bis (rule_id,when_bis) values(11,'1==1');
-insert into rule_then_bis (rule_id,then_bis) values(11,'amount*90/100*30/100');
+insert into rule_then_bis (rule_id,then_bis) values(11,'importe*90/100*30/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (3,11);
 
@@ -122,8 +122,8 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 4);
 
 insert into rule (id, tax_id, description, name, priority) values (12,4,'35% sobre el monto', 'petreaintaycinco', 1);
 
-insert into rule_when_bis (rule_id,when_bis) values(12,'isPersonalAssets');
-insert into rule_then_bis (rule_id,then_bis) values(12,'amount*35/100');
+insert into rule_when_bis (rule_id,when_bis) values(12,'ganancias');
+insert into rule_then_bis (rule_id,then_bis) values(12,'importe*35/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 
@@ -133,44 +133,44 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
 insert into rule (id,tax_id, description, name, priority) values (13,5,'35% sobre el monto', 'treintaycinco', 1);
 
-insert into rule_when_bis (rule_id,when_bis) values(13,'province==CABA');
-insert into rule_then_bis (rule_id,then_bis) values(13,'amount*2/100');
+insert into rule_when_bis (rule_id,when_bis) values(13,'provincia==CABA');
+insert into rule_then_bis (rule_id,then_bis) values(13,'importe*2/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (5,13);
 
 --Facts
 
-INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','provinces','Provincias disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
-INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','apartados','Apartados disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
+INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','Provincias','Provincias disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Province');
+INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFact','Apartados','Apartados disponibles','ar.edu.unq.ttip.alec.backend.model.enumClasses.Apartado');
 
 
 
-INSERT INTO group_fact (dtype, name,description) VALUES ('GroupFact','user','Usuario afectable al calculo');
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','province','Provincia del usuario',true,0);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','isPersonalAssets','Tributa Bienes personales',true,0);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','isEnrolledResponsable','Es Responsable inscripto',true,0);
-insert into group_fact_facts (group_fact_name,facts_name) values ('user','province');
-insert into group_fact_facts (group_fact_name,facts_name) values ('user','isPersonalAssets');
-insert into group_fact_facts (group_fact_name,facts_name) values ('user','isEnrolledResponsable');
+INSERT INTO group_fact (dtype, name,description) VALUES ('GroupFact','Usuario','Usuario afectable al cálculo');
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','provincia','Provincia del usuario',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','ganancias','Tributa Ganancias o Bienes personales',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','ri','Es Responsable inscripto',true,0);
+insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','provincia');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','ganancias');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','ri');
 
 
-INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Core','Parametros basicos');
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','amount','Monto imponible',true,0);
+INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Principales','Parámetros básicos');
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','importe','Monto imponible',true,0);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','apartado','Apartado afectado al calculo.',true,0);
-insert into group_fact_facts (group_fact_name,facts_name) values ('Core','amount');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Core','apartado');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Principales','importe');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Principales','apartado');
 
 
-INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Rates','Parametros de tass');
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva',false,1);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais8','Tasa pais 8%',false,1);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais30','Tasa pais 30%',false,1);
+INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Tasas','Parámetros de tasas');
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva: 21',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais','Tasa País: 8',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','ley975','Tasa Ley Nacional 975: 30',false,1);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1);
-insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
-insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
-insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','iva');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais8');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Rates','pais30');
+insert into rel_facts_rates (fk_fact,fk_rate) values ('pais',2);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('ley975',3);
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','iva');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','ley975');
 
 
 INSERT INTO broker (id, name,description,owner_id,is_public) VALUES (3,'IVA 21%','Calcula el impuesto del iva a consumidor final',1,1);
@@ -182,7 +182,7 @@ insert into broker_taxes (broker_id, taxes_id) values (3, 6);
 
 insert into rule (id, tax_id, description, name, priority) values (14,6,'Aplica siempre el 21%', '21% Siempre', 1);
 insert into rule_when_bis (rule_id,when_bis) values(14,'always');
-insert into rule_then_bis (rule_id,then_bis) values(14,'amount*iva/100');
+insert into rule_then_bis (rule_id,then_bis) values(14,'importe*iva/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (6,14);
 

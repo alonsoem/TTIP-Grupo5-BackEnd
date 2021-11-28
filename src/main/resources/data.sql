@@ -73,7 +73,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,6);
 
 
 insert into rule (id,tax_id, description, name, priority) values (7,2,'Verifica que Si el usuario es RI no aplica impuesto.', 'Es Responsable Inscripto', 2);
-insert into rule_when_bis (rule_id,when_bis) values(7,'ri');
+insert into rule_when_bis (rule_id,when_bis) values(7,'respInsc');
 insert into rule_then_bis (rule_id,then_bis) values(7,'0');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (2,7);
@@ -148,29 +148,39 @@ INSERT INTO group_fact (dtype,name,description,class_name) VALUES ('GroupClassFa
 INSERT INTO group_fact (dtype, name,description) VALUES ('GroupFact','Usuario','Usuario afectable al cálculo');
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','provincia','Provincia del usuario',true,0);
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','ganancias','Tributa Ganancias o Bienes personales',true,0);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','ri','Es Responsable inscripto',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','respInsc','Es Responsable inscripto',true,0);
 insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','provincia');
 insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','ganancias');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','ri');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Usuario','respInsc');
 
 
 INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Principales','Parámetros básicos');
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','importe','Monto imponible',true,0);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','apartado','Apartado afectado al calculo.',true,0);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('Fact','apartado','Apartado afectado al cálculo.',true,0);
 insert into group_fact_facts (group_fact_name,facts_name) values ('Principales','importe');
 insert into group_fact_facts (group_fact_name,facts_name) values ('Principales','apartado');
 
 
+
 INSERT INTO group_fact (dtype,name,description) VALUES ('GroupFact','Tasas','Parámetros de tasas');
+
 INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva','Tasa Iva: 21',false,1);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais','Tasa País: 8',false,1);
-INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','ley975','Tasa Ley Nacional 975: 30',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais8','Tasa País: 8',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','pais30','Tasa País: 30',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','iva2','Alícuota Iva: 10.5',false,1);
+INSERT INTO fact (dtype,name,description,fixed,type) VALUES ('RateFact','ivaExterior','Iva Compras en el exterior',false,1);
+
 insert into rel_facts_rates (fk_fact,fk_rate) values ('iva',1);
-insert into rel_facts_rates (fk_fact,fk_rate) values ('pais',2);
-insert into rel_facts_rates (fk_fact,fk_rate) values ('ley975',3);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('iva2',4);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('ivaExterior',5);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
+insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
+
 insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','iva');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','ley975');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','iva2');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','ivaExterior');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais8');
+insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais30');
 
 
 INSERT INTO broker (id, name,description,owner_id,is_public) VALUES (3,'IVA 21%','Calcula el impuesto del iva a consumidor final',1,1);

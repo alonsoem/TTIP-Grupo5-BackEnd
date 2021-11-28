@@ -80,7 +80,7 @@ public class Broker {
         jeassyFacts.put("importe", amount);
         jeassyFacts.put("provincia", user.getProvince());
         jeassyFacts.put("ganancias", user.isGananciasYBienesP());
-        jeassyFacts.put("ri", user.isResponsableInscripto());
+        jeassyFacts.put("respInsc", user.isResponsableInscripto());
 
         //palabra reservada No expuesta
         jeassyFacts.put("always", true);
@@ -118,5 +118,9 @@ public class Broker {
 
     public void setDescription(String description) {
         this.description=description;
+    }
+
+    public String getOwnerFullName() {
+        return this.owner.getName();
     }
 }

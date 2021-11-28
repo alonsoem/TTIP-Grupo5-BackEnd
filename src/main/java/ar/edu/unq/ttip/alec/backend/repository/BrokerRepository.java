@@ -23,8 +23,12 @@ public interface BrokerRepository extends JpaRepository<Broker, Integer> {
 
     Optional<Broker> getBrokerById(Integer id);
 
-
-
+    @Query(
+            value = "SELECT * FROM broker b INNER JOIN frontuser u " +
+                    "ON u.id = b.owner_id " +
+                    "WHERE b.is_public=true and u.id = ?1",
+            nativeQuery = true)
+    List<Broker> findAllPublicByUser(Integer userId);
 
 
 }

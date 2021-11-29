@@ -28,8 +28,19 @@ public class BrokerController {
     private BrokerService service;
 
     @GetMapping
-    @ApiOperation("List all Brokers")
-    public ResponseEntity<List<BrokerDTO>> getAllBrokers() {
+    @ApiOperation("List all Public Brokers")
+    public ResponseEntity<List<BrokerDTO>> getAllPublicBrokers() {
+        return ResponseEntity.ok(
+                service.listAllPublicBrokers()
+                        .stream()
+                        .map(broker -> BrokerDTO.fromModel(broker))
+                        .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("/myBrokers")
+    @ApiOperation("List Logged User Brokers")
+    public ResponseEntity<List<BrokerDTO>> getLoggerUserBrokers() {
         return ResponseEntity.ok(
                 service.filteredBrokers()
                         .stream()
@@ -49,23 +60,33 @@ public class BrokerController {
         );
     }
 
+    @PostMapping("/search")
+    @ApiOperation("Get Brokers containing description")
+    public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter) {
+        return ResponseEntity.ok(
+                service.getBrokersByDescription(filter).stream().map(each->
+                        BrokerDTO.fromModel(each)
+                ).collect(Collectors.toList())
+        );
+    }
+
+    @PostMapping("/search/{userId}")
+    @ApiOperation("Get Brokers containing description")
+    public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter,
+                                                                   @PathVariable Integer userId) {
+        return ResponseEntity.ok(
+                service.getUserBrokersByDescription(filter,userId).stream().map(each->
+                        BrokerDTO.fromModel(each)
+                ).collect(Collectors.toList())
+        );
+    }
+
     @GetMapping("/{brokerId}")
     @ApiOperation("Get One Broker")
     public ResponseEntity<BrokerDTO> getBrokerById(@PathVariable Integer brokerId) {
         return ResponseEntity.ok(
                 BrokerDTO.fromModel(service.getBrokerById(brokerId))
         );
-    }
-
-
-    @PostMapping("/search")
-    @ApiOperation("Get Brokers containing description")
-    public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter) {
-        return ResponseEntity.ok(
-                service.getBrokerByDescription(filter).stream().map(each->
-                                BrokerDTO.fromModel(each)
-                        ).collect(Collectors.toList())
-                );
     }
 
     @PostMapping("/create")
@@ -110,11 +131,5 @@ public class BrokerController {
         service.remove(brokerId);
         return HttpStatus.OK;
     }
-
-
-
-
-
-
 
 }

@@ -20,7 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -52,7 +51,11 @@ public class BrokerService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
 
-        return repo.findAllByIsPublicIsTrueOrOwner(userDetails.getUsername());
+        return repo.findAllByOwner(userDetails.getUsername());
+    }
+
+    public List<Broker> listAllPublicBrokers() {
+        return repo.findAllByIsPublicIsTrue();
     }
 
     @Transactional
@@ -125,8 +128,21 @@ public class BrokerService {
     }
 
 
-    public List<Broker> getBrokerByDescription(SearchRequest request) {
-        return criteria.findAllWithFilters(request.getWords());
+    public List<Broker> getBrokersByDescription(SearchRequest request) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        FrontUser user = (FrontUser) auth.getPrincipal();
+        return criteria.findAllWithFilters(request.getWords(),user.getId());
+    }
+
+    public List<Broker> getUserBrokersByDescription(SearchRequest request,Integer userId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        FrontUser user = (FrontUser) auth.getPrincipal();
+        if (user.getId()==userId){
+            return criteria.findAllPublicWithFilters(request.getWords(),userId);
+        }else{
+            return criteria.findAllWithFilters(request.getWords(),userId);
+        }
+
     }
 
     public List<Broker> getAllUserBrokers(Integer userId) {

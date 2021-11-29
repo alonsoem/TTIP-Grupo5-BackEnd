@@ -27,20 +27,35 @@ public class BrokerCriteriaRepository {
         this.criteriaBuilder = entityManager.getCriteriaBuilder();
     }
 
-    public List<Broker> findAllWithFilters(List<String> filter){
+    public List<Broker> findAllPublicWithFilters(List<String> filter,Integer userId){
+        return coreFilter(filter,userId,true);
+    }
+
+    public List<Broker> findAllWithFilters(List<String> filter,Integer userId){
+       return coreFilter(filter,userId,false);
+    }
+
+    public List<Broker> coreFilter(List<String> filter,Integer userId, Boolean showOnlyPublic){
 
         CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
         Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
-        Predicate predicate = getPredicate(filter, brokerRoot);
-        criteriaQuery.where(predicate);
+        List<Predicate> predicates = new ArrayList<>();
+
+        predicates.add(baseFilterPredicates(filter, brokerRoot));
+        predicates.add(this.isOwner(brokerRoot,userId));
+
+        if (showOnlyPublic){ predicates.add(this.isPublicPredicate(brokerRoot));}
+
+        criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
 
         TypedQuery<Broker> consulta = entityManager.createQuery(criteriaQuery);
-
         List<Broker> results = consulta.getResultList();
         return results;
     }
 
-    private Predicate getPredicate(List<String> filter, Root<Broker> brokerRoot) {
+
+
+    private Predicate baseFilterPredicates(List<String> filter, Root<Broker> brokerRoot) {
         List<Predicate> predicates = new ArrayList<>();
 
         filter.forEach(eachFilter->{
@@ -50,6 +65,14 @@ public class BrokerCriteriaRepository {
         );
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+    }
+
+    private Predicate isPublicPredicate(Root<Broker> brokerRoot){
+        return criteriaBuilder.isTrue(brokerRoot.get("public"));
+    }
+
+    private Predicate isOwner(Root<Broker> brokerRoot,Integer userId){
+        return criteriaBuilder.equal(brokerRoot.get("owner").get("id"),userId);
     }
 
 

@@ -2,6 +2,7 @@ package ar.edu.unq.ttip.alec.backend.repository;
 
 
 import ar.edu.unq.ttip.alec.backend.model.Broker;
+import com.google.common.base.Predicates;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
 
@@ -27,28 +28,47 @@ public class BrokerCriteriaRepository {
         this.criteriaBuilder = entityManager.getCriteriaBuilder();
     }
 
+    public List<Broker> findAllPublicWithFilters(List<String> filter){
+        CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
+        Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add (this.baseFilterPredicates(filter, brokerRoot));
+        predicates.add (this.isPublicPredicate(brokerRoot));
+
+        return coreFilter(criteriaQuery, predicates);
+    }
+
     public List<Broker> findAllPublicWithFilters(List<String> filter,Integer userId){
-        return coreFilter(filter,userId,true);
+        CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
+        Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add (this.baseFilterPredicates(filter, brokerRoot));
+        predicates.add (this.isPublicPredicate(brokerRoot));
+        predicates.add (this.isOwner(brokerRoot,userId));
+
+
+        return coreFilter(criteriaQuery,predicates);
     }
 
     public List<Broker> findAllWithFilters(List<String> filter,Integer userId){
-       return coreFilter(filter,userId,false);
-    }
-
-    public List<Broker> coreFilter(List<String> filter,Integer userId, Boolean showOnlyPublic){
-
         CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
         Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
+
         List<Predicate> predicates = new ArrayList<>();
+        predicates.add (baseFilterPredicates(filter, brokerRoot));
+        predicates.add (isOwner(brokerRoot,userId));
 
-        predicates.add(baseFilterPredicates(filter, brokerRoot));
-        predicates.add(this.isOwner(brokerRoot,userId));
 
-        if (showOnlyPublic){ predicates.add(this.isPublicPredicate(brokerRoot));}
+        return coreFilter(criteriaQuery,predicates);
+    }
 
-        criteriaQuery.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
+    public List<Broker> coreFilter(CriteriaQuery<Broker> query, List<Predicate> predicates){
 
-        TypedQuery<Broker> consulta = entityManager.createQuery(criteriaQuery);
+        query.where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
+
+        TypedQuery<Broker> consulta = entityManager.createQuery(query);
         List<Broker> results = consulta.getResultList();
         return results;
     }
@@ -68,7 +88,7 @@ public class BrokerCriteriaRepository {
     }
 
     private Predicate isPublicPredicate(Root<Broker> brokerRoot){
-        return criteriaBuilder.isTrue(brokerRoot.get("public"));
+        return criteriaBuilder.isTrue(brokerRoot.get("isPublic"));
     }
 
     private Predicate isOwner(Root<Broker> brokerRoot,Integer userId){

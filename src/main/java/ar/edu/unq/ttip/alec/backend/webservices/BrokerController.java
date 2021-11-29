@@ -27,11 +27,11 @@ public class BrokerController {
     @Autowired
     private BrokerService service;
 
-    @GetMapping
+    @PostMapping
     @ApiOperation("List all Public Brokers")
-    public ResponseEntity<List<BrokerDTO>> getAllPublicBrokers() {
+    public ResponseEntity<List<BrokerDTO>> getAllPublicBrokers(@RequestBody SearchRequest request ) {
         return ResponseEntity.ok(
-                service.listAllPublicBrokers()
+                service.listAllPublicBrokers(request.getWords())
                         .stream()
                         .map(broker -> BrokerDTO.fromModel(broker))
                         .collect(Collectors.toList())

@@ -54,8 +54,9 @@ public class BrokerService {
         return repo.findAllByOwner(userDetails.getUsername());
     }
 
-    public List<Broker> listAllPublicBrokers() {
-        return repo.findAllByIsPublicIsTrue();
+    public List<Broker> listAllPublicBrokers(List<String> filter) {
+        //return repo.findAllByIsPublicIsTrue();
+        return criteria.findAllPublicWithFilters(filter);
     }
 
     @Transactional

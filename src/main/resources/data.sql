@@ -185,7 +185,7 @@ insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais3
 
 INSERT INTO broker (id, name,description,owner_id,is_public) VALUES (3,'IVA 21%','Calcula el impuesto del iva a consumidor final',1,1);
 
-INSERT INTO tax (id,broker_id, name,url) VALUES (6,1,'Impuesto Iva 21%', 'https://www.afip.gob.ar/');
+INSERT INTO tax (id,broker_id, name,url) VALUES (6,3,'Impuesto Iva 21%', 'https://www.afip.gob.ar/');
 
 insert into broker_taxes (broker_id, taxes_id) values (3, 6);
 

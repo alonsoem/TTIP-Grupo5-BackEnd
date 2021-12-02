@@ -51,7 +51,7 @@ public class FrontUserService implements UserDetailsService {
     }
 
     @Transactional
-	public FrontUser updateUser(FrontUserDTO updateRequest) throws UsernameNotFoundException {
+	public FrontUser updateUser(FrontUserDTO updateRequest, String newEmail) throws UsernameNotFoundException {
 		FrontUser user = this.loadUserByUsername(updateRequest.getUsername());
 		
 		Province prov = updateRequest.getProvince();
@@ -65,6 +65,13 @@ public class FrontUserService implements UserDetailsService {
 		Boolean gybp = updateRequest.getIsgananciasYBienesP();
 		if (!Objects.isNull(gybp)) {
 			user.setGananciasYBienesP(gybp);
+		}
+		String newName = updateRequest.getName();
+		if (!newName.isEmpty()) {
+			user.setName(newName);
+		}
+		if (!Objects.isNull(newEmail)) {
+			user.setUserName(newEmail);
 		}
 		
 		frontUserRepo.save(user);

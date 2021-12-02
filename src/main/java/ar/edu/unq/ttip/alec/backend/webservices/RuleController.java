@@ -60,14 +60,14 @@ public class RuleController {
                 HttpStatus.CREATED
         );
     }
-    @PostMapping("/tax/{taxId}/rule/add/{ruleId}")
+    /*@PostMapping("/tax/{taxId}/rule/add/{ruleId}")
     @ApiOperation("Allow to add existing Rule to existing Rate")
     public ResponseEntity<RuleDTO> add(@PathVariable Integer taxId, @PathVariable Integer ruleId) {
         return new ResponseEntity(
                 service.add(taxId, ruleId),
                 HttpStatus.CREATED
         );
-    }
+    }*/
 
     @PutMapping("/tax/{taxId}/rule/{ruleId}")
     @ApiOperation("Allow to update Rule.")

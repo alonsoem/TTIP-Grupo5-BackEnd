@@ -65,14 +65,14 @@ public class TaxController {
         );
     }
 
-    @PostMapping("/add/{taxId}")
+    /*@PostMapping("/add/{taxId}")
     @ApiOperation("Allow to add existing Tax to existing Broker.")
     public ResponseEntity<TaxDTO> addTax(@PathVariable Integer brokerId, @PathVariable Integer taxId) {
         return new ResponseEntity(
                 service.addTax(brokerId, taxId),
                 HttpStatus.CREATED
         );
-    }
+    }*/
 
     @DeleteMapping("/{taxId}")
     @ApiOperation("Allow to remove a Tax.")

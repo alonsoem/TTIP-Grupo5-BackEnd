@@ -28,7 +28,7 @@ public class BrokerController {
     private BrokerService service;
 
     @PostMapping
-    @ApiOperation("List all Public Brokers")
+    @ApiOperation("List all Public Calculators.")
     public ResponseEntity<List<BrokerDTO>> getAllPublicBrokers(@RequestBody SearchRequest request ) {
         return ResponseEntity.ok(
                 service.listAllPublicBrokers(request.getWords())
@@ -39,7 +39,7 @@ public class BrokerController {
     }
 
     @GetMapping("/myBrokers")
-    @ApiOperation("List Logged User Brokers")
+    @ApiOperation("List all Calculators for logged user.")
     public ResponseEntity<List<BrokerDTO>> getLoggerUserBrokers() {
         return ResponseEntity.ok(
                 service.filteredBrokers()
@@ -50,7 +50,7 @@ public class BrokerController {
     }
 
     @GetMapping("/byUser/{userId}")
-    @ApiOperation("List all User Brokers")
+    @ApiOperation("List all public Calculators from user.")
     public ResponseEntity<List<BrokerDTO>> getAllUserBrokers(@PathVariable Integer userId) {
         return ResponseEntity.ok(
                 service.getAllUserBrokers(userId)
@@ -61,7 +61,7 @@ public class BrokerController {
     }
 
     @PostMapping("/search")
-    @ApiOperation("Get Brokers containing description")
+    @ApiOperation("Get Logged user Calculators filtered by description.")
     public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter) {
         return ResponseEntity.ok(
                 service.getBrokersByDescription(filter).stream().map(each->
@@ -71,7 +71,7 @@ public class BrokerController {
     }
 
     @PostMapping("/search/{userId}")
-    @ApiOperation("Get Brokers containing description")
+    @ApiOperation("List all public Calculators from user filtered by description.")
     public ResponseEntity<List<BrokerDTO>> getBrokersByDescription(@RequestBody SearchRequest filter,
                                                                    @PathVariable Integer userId) {
         return ResponseEntity.ok(
@@ -82,7 +82,7 @@ public class BrokerController {
     }
 
     @GetMapping("/{brokerId}")
-    @ApiOperation("Get One Broker")
+    @ApiOperation("Get a Calculator by Id.")
     public ResponseEntity<BrokerDTO> getBrokerById(@PathVariable Integer brokerId) {
         return ResponseEntity.ok(
                 BrokerDTO.fromModel(service.getBrokerById(brokerId))
@@ -90,7 +90,7 @@ public class BrokerController {
     }
 
     @PostMapping("/create")
-    @ApiOperation("Allow to create a Broker")
+    @ApiOperation("Allow to create a new Calculator.")
     public ResponseEntity<BrokerDTO> createBroker(@RequestBody BrokerDTO request) {
         return new ResponseEntity(
                 service.createBroker(request),
@@ -99,7 +99,7 @@ public class BrokerController {
     }
 
     @PostMapping("/copy/{brokerId}")
-    @ApiOperation("Allow to copy a Broker from user to another")
+    @ApiOperation("Allow to copy a Broker from user to another.")
     public ResponseEntity<BrokerDTO> copyBroker(@PathVariable Integer brokerId) {
         return new ResponseEntity(
                 service.copyBroker(brokerId),
@@ -108,7 +108,7 @@ public class BrokerController {
     }
 
     @PostMapping("/calculate")
-    @ApiOperation("Allow to calculate a Rate aplication.")
+    @ApiOperation("Allow to use Calculator.")
     public ResponseEntity<CalcResultDTO> calculate(@RequestBody CalculationDTO request) {
         return new ResponseEntity(
                 service.calculate(request.getAmount(),request.getApartado(),request.getTaxId()),
@@ -117,7 +117,7 @@ public class BrokerController {
     }
 
     @PutMapping("/{brokerId}")
-    @ApiOperation("Allow to update a Broker")
+    @ApiOperation("Allow to update a Calculator.")
     public ResponseEntity<BrokerDTO> update(@PathVariable Integer brokerId, @RequestBody BrokerDTO request) {
         return new ResponseEntity(
                 service.update(brokerId,request),
@@ -126,7 +126,7 @@ public class BrokerController {
     }
 
     @DeleteMapping("/{brokerId}")
-    @ApiOperation("Allow to remove a Broker.")
+    @ApiOperation("Allow to remove a Calculator.")
     public HttpStatus remove(@PathVariable Integer brokerId) {
         service.remove(brokerId);
         return HttpStatus.OK;

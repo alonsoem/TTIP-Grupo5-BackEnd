@@ -1,7 +1,5 @@
 package ar.edu.unq.ttip.alec.backend.service.dtos;
 
-import lombok.Getter;
-
 import java.util.List;
 
 

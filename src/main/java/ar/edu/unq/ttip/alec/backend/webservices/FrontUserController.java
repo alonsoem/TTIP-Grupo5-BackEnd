@@ -38,19 +38,20 @@ public class FrontUserController {
     private FrontUserService service;
     
     @GetMapping("/frontusers")
-    @ApiOperation("Get all Front Users")
+    @ApiOperation("Get all Users")
     public ResponseEntity<List<FrontUserDTO>> getAllFrontUsers() {
         return ResponseEntity.ok(service.findAll().stream().map(user-> FrontUserDTO.fromModel(user)).collect(Collectors.toList()));
     }
     
     @GetMapping("/frontuser")
-    @ApiOperation("Get one User by username")
+    @ApiOperation("Get a User by username")
     public ResponseEntity<FrontUserDTO> getFrontUser(@RequestParam(value = "username") String userName) {
         return ResponseEntity.ok(FrontUserDTO.fromModel(service.loadUserByUsername(userName)));
     }
 
     @GetMapping("/frontuser/{userId}")
     @ApiOperation("Get one User by username")
+    @ResponseBody
     public ResponseEntity<UserDTO> getFrontUser(@PathVariable("userId") Integer userId) {
         return ResponseEntity.ok(UserDTO.fromModel(service.getUserMinDetails(userId)));
     }
@@ -79,7 +80,6 @@ public class FrontUserController {
 
         final UserDetails userDetails = service.loadUserByUsername(authenticationRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-//        return ResponseEntity.ok(new AuthenticationResponse(jwt));
         return ResponseEntity.ok(new AuthResponseDTO(((FrontUser) userDetails).getId(),new AuthenticationResponse(jwt).getJwt()));
     }
 }

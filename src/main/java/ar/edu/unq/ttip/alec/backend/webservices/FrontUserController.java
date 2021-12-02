@@ -57,8 +57,11 @@ public class FrontUserController {
     
     @PostMapping("/frontuser")
     @ApiOperation("Update User")
-    public ResponseEntity<FrontUserDTO> updateFrontUser(@RequestBody FrontUserDTO updateRequest) {
-        return ResponseEntity.ok(FrontUserDTO.fromModel(service.updateUser(updateRequest)));
+    public ResponseEntity<FrontUserDTO> updateFrontUser(
+    	@RequestBody FrontUserDTO updateRequest,
+		@RequestParam(value = "email", required = false) String newEmail
+	) {
+        return ResponseEntity.ok(FrontUserDTO.fromModel(service.updateUser(updateRequest, newEmail)));
     }
 
     @PostMapping("/register")

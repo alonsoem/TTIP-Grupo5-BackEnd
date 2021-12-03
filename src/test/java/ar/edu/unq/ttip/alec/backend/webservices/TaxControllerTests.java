@@ -19,9 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import springfox.documentation.spring.web.json.Json;
 
-import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
 
@@ -108,6 +106,7 @@ public class TaxControllerTests {
 						.content(json)
 						.contentType(MediaType.APPLICATION_JSON)
 				)
+				.andExpect(status().isCreated())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andReturn();
 		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
@@ -116,8 +115,8 @@ public class TaxControllerTests {
 
 		assertEquals(newNameValue, taxUpdated.getName());
 		assertEquals(newUrlValue, taxUpdated.getUrl());
-//		assertEquals(3,(int) taxUpdated.getId());
-//		assertEquals(1,taxUpdated.getRules().size());
+		assertEquals(3,(int) taxUpdated.getId());
+		assertEquals(1,taxUpdated.getRules().size());
 	}
 
 

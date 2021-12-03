@@ -1,12 +1,15 @@
 package ar.edu.unq.ttip.alec.backend.webservices;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -39,19 +43,24 @@ public class BrokerControllerTests {
 	private ObjectMapper mapper;
 	@Autowired
 	private MockMvc mvc;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+
+
 	private String tokenA;
 	private String tokenB;
 	private String tokenC;
 	private String tokenD;
 	private String tokenE;
 	private String tokenF;
-	private Map<String, String> mapNOAP = new HashMap<String, String>();
-	private Map<String, String> mapAPA = new HashMap<String, String>();
-	private Map<String, String> mapAPB1 = new HashMap<String, String>();
-	private Map<String, String> mapAPB100 = new HashMap<String, String>();
+	private Map<String, String> mapNOAP = new HashMap<>();
+	private Map<String, String> mapAPA = new HashMap<>();
+	private Map<String, String> mapAPB1 = new HashMap<>();
+	private Map<String, String> mapAPB100 = new HashMap<>();
 	
 	@BeforeAll
-	public void setUp() {
+	private void setUp() {
         String pfx = "Bearer ";
         this.tokenA = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("user@alec.com"));
         this.tokenB = pfx + jwtTokenUtil.generateToken(userservice.loadUserByUsername("apiuser@alec.com"));
@@ -71,6 +80,7 @@ public class BrokerControllerTests {
         this.mapAPB100.put("apartado", "APARTADOB");
         this.mapAPB100.put("taxId", "1");
         this.mapAPB100.put("amount", "100");
+
 	}
 	
 	// MainCalc tests
@@ -396,5 +406,84 @@ public class BrokerControllerTests {
 	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 	    	.andExpect(jsonPath("$.totalAmount").value("1.31"));
 	}
-	//
+
+	@DisplayName("When copy a broker gets a new broker with new id but same properties")
+	@Test
+	void WhenCopyABrokerGetsANewBrokerWithNewIdButSameProperties() throws Exception {
+		MockHttpServletResponse original= mvc.perform(get("/broker/3")
+				.header("Authorization", this.tokenF))
+				.andExpect(status().isOk()).andReturn().getResponse();
+
+		MockHttpServletResponse copyResponse= mvc.perform(
+				post("/broker/copy/3")
+						.header("Authorization", this.tokenF)
+				)
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andExpect(status().isCreated()).andReturn().getResponse();
+
+		BrokerDTO originalR= objectMapper.readValue(original.getContentAsString(), BrokerDTO.class);
+		BrokerDTO response = objectMapper.readValue(copyResponse.getContentAsString(), BrokerDTO.class);
+
+
+		assertEquals(originalR.getName() + " (C)",response.getName());
+		assertEquals(originalR.getTaxes().size(),response.getTaxes().size());
+		assertNotEquals(originalR.getIsPublic(),response.getIsPublic());
+		assertEquals(originalR.getDescription(),response.getDescription());
+		assertNotEquals(originalR.getUserId(),response.getUserId());
+		assertEquals(originalR.getId()+1,response.getId());
+
+	}
+
+	@DisplayName("When trying delete a broker with unexistent id gets exception")
+	@Test
+	void WhenDeleteBrokerWithNotPersistedId() throws Exception {
+		MockHttpServletResponse result = mvc.perform(
+				delete("/broker/222")
+						.header("Authorization", this.tokenF)
+				)
+				.andExpect(status().isBadRequest()).andReturn().getResponse();
+
+		ApiErrorTest errorResponse = objectMapper.readValue(result.getContentAsString(), ApiErrorTest.class);
+
+		assertEquals(errorResponse.getStatus(),"BAD_REQUEST");
+		assertEquals(errorResponse.getMessage(),"Validation Errors");
+		assertThat(errorResponse.getErrors().contains("Non existent broker with id 222"));
+
+	}
+
+	@DisplayName("get all brokers for User alonso.em@gmail.com and get 2 items.")
+	@Test
+	void getAllBrokersForUseralonsoEmGmailDotComAndGet2Items() throws Exception {
+		MockHttpServletResponse brokerList = mvc.perform(get("/broker/myBrokers")
+				.header("Authorization", this.tokenC))
+				.andExpect(status().isOk()).andReturn().getResponse();
+
+		assertThat(brokerList.getContentAsString().contains("Pago Servicios Digitales en el Exterior"));
+		assertThat(brokerList.getContentAsString().contains("Adelanto al impuesto a las Ganancias y los Bienes Personales"));
+	}
+
+	@DisplayName("When delete a broker get a list of brokers and get one broker less")
+	@Test
+	void WhenDeleteBrokerGetAListOfBrokersAndGetsOneLess() throws Exception {
+		MockHttpServletResponse brokerListBefore= mvc.perform(get("/broker/myBrokers")
+				.header("Authorization", this.tokenF))
+				.andExpect(status().isOk()).andReturn().getResponse();
+
+		mvc.perform(
+				delete("/broker/2")
+						.header("Authorization", this.tokenF)
+				)
+				.andExpect(status().isOk()).andReturn();
+
+		MockHttpServletResponse brokerListAfter= mvc.perform(get("/broker/myBrokers")
+				.header("Authorization", this.tokenF))
+				.andExpect(status().isOk()).andReturn().getResponse();
+
+
+		assertThat(brokerListBefore.getContentLength()>=brokerListAfter.getContentLength()+1);
+
+	}
+
+
+
 }

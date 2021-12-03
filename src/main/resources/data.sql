@@ -105,6 +105,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (2,10);
 
 INSERT INTO broker (id, name,description, owner_id,is_public) VALUES (2,'Gravamen de emergencia sobre premios','Calcula el impuesto especial sobre premios por sorteos de juegos de azar',7,1);
 
+
 INSERT INTO tax (id,broker_id, name,url) VALUES (3,2,'Gravamen', 'https://www.afip.gob.ar');
 
 insert into broker_taxes (broker_id, taxes_id) values (2, 3);

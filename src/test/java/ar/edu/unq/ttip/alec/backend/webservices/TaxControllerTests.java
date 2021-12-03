@@ -108,15 +108,14 @@ public class TaxControllerTests {
 						.content(json)
 						.contentType(MediaType.APPLICATION_JSON)
 				)
-				.andExpect(status().isCreated())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andReturn();
 		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
 
 		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
 
-		assertEquals(newNameValue,taxUpdated.getName());
-		assertEquals(newUrlValue,taxUpdated.getUrl());
+		assertEquals(newNameValue, taxUpdated.getName());
+		assertEquals(newUrlValue, taxUpdated.getUrl());
 //		assertEquals(3,(int) taxUpdated.getId());
 //		assertEquals(1,taxUpdated.getRules().size());
 	}

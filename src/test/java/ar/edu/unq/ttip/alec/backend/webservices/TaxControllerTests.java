@@ -112,8 +112,8 @@ public class TaxControllerTests {
 
 		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
 
-		assertEquals(newNameValue, taxUpdated.getName());
-		assertEquals(newUrlValue, taxUpdated.getUrl());
+		assertThat(newNameValue==taxUpdated.getName());
+		assertThat(newUrlValue==taxUpdated.getUrl());
 		assertEquals(3,(int) taxUpdated.getId());
 		assertEquals(1,taxUpdated.getRules().size());
 	}

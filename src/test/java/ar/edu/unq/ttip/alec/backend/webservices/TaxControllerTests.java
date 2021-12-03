@@ -106,7 +106,6 @@ public class TaxControllerTests {
 						.content(json)
 						.contentType(MediaType.APPLICATION_JSON)
 				)
-				.andExpect(status().isCreated())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 				.andReturn();
 		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();

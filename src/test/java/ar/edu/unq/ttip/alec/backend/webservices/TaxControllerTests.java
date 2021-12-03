@@ -98,7 +98,9 @@ public class TaxControllerTests {
 	@Test
 	void updateTaxAndGetUpdatedTax() throws Exception {
 
-		TaxDTO  updateTax = new TaxDTO("Gravamen Modificado", "http://urlmodificada.com",null);
+		String newNameValue="Gravamen Modificado";
+		String newUrlValue="http://urlmodificada.com";
+		TaxDTO  updateTax = new TaxDTO(newNameValue, newUrlValue,new ArrayList<>());
 		String json = objectMapper.writeValueAsString(updateTax);
 
 		MvcResult resultUpdate = mvc.perform(put("/broker/1/tax/3")
@@ -113,10 +115,10 @@ public class TaxControllerTests {
 
 		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
 
-		assertEquals(taxUpdated.getName(),"Gravamen Modificado");
-		assertEquals(taxUpdated.getUrl(),"http://urlmodificada.com");
-		assertEquals((int) taxUpdated.getId(),3);
-		assertEquals(taxUpdated.getRules().size(),1);
+		assertEquals(newNameValue,taxUpdated.getName());
+		assertEquals(newUrlValue,taxUpdated.getUrl());
+		assertEquals(3,(int) taxUpdated.getId());
+		assertEquals(1,taxUpdated.getRules().size());
 	}
 
 

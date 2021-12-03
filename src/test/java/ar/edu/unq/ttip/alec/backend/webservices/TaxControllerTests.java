@@ -27,7 +27,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
@@ -114,10 +113,10 @@ public class TaxControllerTests {
 		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
 
 		assertTrue(responseBodyUpdate.contains("Gravamen Modificado"));
-		assertEquals("Gravamen Modificado", taxUpdated.getName());
-		assertEquals("http://urlmodificada.com", taxUpdated.getUrl());
-		assertEquals(3,(int) taxUpdated.getId());
-		assertEquals(1,taxUpdated.getRules().size());
+		assertTrue("Gravamen Modificado"== taxUpdated.getName());
+		assertTrue("http://urlmodificada.com"== taxUpdated.getUrl());
+		assertTrue(3== taxUpdated.getId());
+		assertTrue(1==taxUpdated.getRules().size());
 	}
 
 

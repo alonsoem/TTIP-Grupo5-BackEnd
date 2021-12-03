@@ -81,19 +81,19 @@ public class RuleControllerTests {
 	@DisplayName("When request one rule get this rule")
 	@Test
 	void whenGetOneRuleGetThisRule() throws Exception {
-        MvcResult result = mvc.perform(get("/rule/1").header("Authorization", this.token))
+        MvcResult result = mvc.perform(get("/rule/2").header("Authorization", this.token))
 	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 	    	.andReturn();
         String responseBody = result.getResponse().getContentAsString();
 
 		RuleDTO rule= objectMapper.readValue(responseBody, RuleDTO.class);
 
-        assertEquals(rule.getName(),"New name rule");
-		assertEquals(rule.getDescription(),"nueva descripcion");
-		assertEquals((int) rule.getId(),1);
-		assertEquals((int) rule.getPriority(),1);
-		assertEquals(new ArrayList<String>(),rule.getWhen());
-		assertEquals(new ArrayList<String>(), rule.getThen());
+        assertEquals("Es Apartado A", rule.getName());
+		assertEquals("Verifica que apartado sea igual A y aplica 21%",rule.getDescription());
+		assertEquals(2,(int) rule.getId());
+		assertEquals(1,(int) rule.getPriority());
+		assertEquals("apartado==APARTADOA",rule.getWhen().get(0));
+		assertEquals("importe*8/100", rule.getThen().get(0));
 	}
 
 	@DisplayName("When updates a Rule you get a Rule with same id and different values")

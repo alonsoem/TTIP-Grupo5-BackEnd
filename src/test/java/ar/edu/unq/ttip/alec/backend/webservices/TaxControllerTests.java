@@ -81,17 +81,17 @@ public class TaxControllerTests {
 	@DisplayName("When request one tax get this tax")
 	@Test
 	void whenGetOneTaxGetThisTax() throws Exception {
-        MvcResult result = mvc.perform(get("/broker/1/tax/3").header("Authorization", this.token))
+        MvcResult result = mvc.perform(get("/broker/1/tax/2").header("Authorization", this.token))
 	    	.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
 	    	.andReturn();
         String responseBody = result.getResponse().getContentAsString();
 
 		TaxDTO tax= objectMapper.readValue(responseBody, TaxDTO.class);
 
-        assertEquals(tax.getName(),"Gravamen Modificado");
-		assertEquals(tax.getUrl(),"http://urlmodificada.com");
-		assertEquals((int) tax.getId(),3);
-		assertEquals(tax.getRules().size(),1);
+        assertEquals("IVA servicios digitales internacionales", tax.getName());
+		assertEquals("https://www.afip.gob.ar/iva/servicios-digitales/concepto.asp", tax.getUrl());
+		assertEquals(2,(int) tax.getId());
+		assertEquals(6,tax.getRules().size());
 	}
 
 	@DisplayName("When updates a Tax you get a tax with same id and different values")

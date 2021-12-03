@@ -92,31 +92,6 @@ public class TaxControllerTests {
 		assertEquals(6,tax.getRules().size());
 	}
 
-	@DisplayName("When updates a Tax you get a tax with same id and different values")
-	@Test
-	void updateTaxAndGetUpdatedTax() throws Exception {
-
-		String newNameValue="Gravamen Modificado";
-		String newUrlValue="http://urlmodificada.com";
-		TaxDTO  updateTax = new TaxDTO(newNameValue, newUrlValue,new ArrayList<>());
-		String json = objectMapper.writeValueAsString(updateTax);
-
-		MvcResult resultUpdate = mvc.perform(put("/broker/1/tax/3")
-						.header("Authorization", this.token)
-						.content(json)
-						.contentType(MediaType.APPLICATION_JSON)
-				)
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andReturn();
-		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
-
-		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
-
-		assertEquals(newNameValue, taxUpdated.getName());
-		assertEquals(newUrlValue, taxUpdated.getUrl());
-		assertEquals(3,(int) taxUpdated.getId());
-		assertEquals(1,taxUpdated.getRules().size());
-	}
 
 
 

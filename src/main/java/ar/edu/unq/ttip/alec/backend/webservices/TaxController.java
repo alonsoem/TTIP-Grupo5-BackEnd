@@ -51,7 +51,7 @@ public class TaxController {
     @ApiOperation("Allow to update Tax.")
     public ResponseEntity<TaxDTO> update(@PathVariable Integer taxId, @RequestBody TaxDTO request) {
         return new ResponseEntity(
-                service.update(taxId, request),
+                TaxDTO.fromModel(service.update(taxId, request)),
                 HttpStatus.CREATED
         );
     }

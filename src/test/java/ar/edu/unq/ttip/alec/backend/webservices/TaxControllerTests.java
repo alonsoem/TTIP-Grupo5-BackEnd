@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -92,6 +93,32 @@ public class TaxControllerTests {
 		assertEquals(6,tax.getRules().size());
 	}
 
+	@DisplayName("When updates a Tax you get a tax with same id and different values")
+	@Test
+	void updateTaxAndGetUpdatedTax() throws Exception {
+
+		String newNameValue="Gravamen Modificado";
+		String newUrlValue="http://urlmodificada.com";
+		TaxDTO  updateTax = new TaxDTO(newNameValue, newUrlValue,new ArrayList<>());
+		String json = objectMapper.writeValueAsString(updateTax);
+
+		MvcResult resultUpdate = mvc.perform(put("/broker/1/tax/3")
+						.header("Authorization", this.token)
+						.content(json)
+						.contentType(MediaType.APPLICATION_JSON)
+				)
+				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+				.andReturn();
+		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
+
+		TaxDTO taxUpdated= objectMapper.readValue(responseBodyUpdate, TaxDTO.class);
+
+
+		assertTrue(newNameValue==taxUpdated.getName());
+		assertTrue(newUrlValue==taxUpdated.getUrl());
+		assertEquals(3,(int) taxUpdated.getId());
+		assertEquals(1,taxUpdated.getRules().size());
+	}
 
 
 

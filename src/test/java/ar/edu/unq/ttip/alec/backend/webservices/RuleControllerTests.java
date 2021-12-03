@@ -3,7 +3,6 @@ package ar.edu.unq.ttip.alec.backend.webservices;
 import ar.edu.unq.ttip.alec.backend.SystemPropertyActiveProfileResolver;
 import ar.edu.unq.ttip.alec.backend.service.FrontUserService;
 import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.util.JwtUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,8 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-
-import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;

@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 import org.jeasy.rules.mvel.MVELRule;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,13 +46,20 @@ public class Rule {
     }
 
     public MVELRule toMVEL(){
+
         MVELRule rule= new MVELRule()
                 .name(name)
                 .description(description)
                 .priority(priority);
-        whenBis.stream().forEach(each -> rule.when(each));
+
+
+        rule.when(this.collectWhenConditions(whenBis));
         thenBis.stream().forEach(each -> rule.then("result.value=" + each + ";"));
         return rule;
+    }
+
+    private String collectWhenConditions(List<String> whens){
+        return String.join(" && ", whens);
     }
 
     public String getName() {

@@ -88,37 +88,38 @@ public class RuleControllerTests {
         assertEquals("Es Apartado A", rule.getName());
 		assertEquals("Verifica que apartado sea igual A y aplica 21%",rule.getDescription());
 		assertEquals(2,(int) rule.getId());
-		assertEquals(1,(int) rule.getPriority());
+		assertEquals(2,(int) rule.getPriority());
 		assertEquals("apartado==APARTADOA",rule.getWhen().get(0));
 		assertEquals("importe*8/100", rule.getThen().get(0));
 	}
 
-	@DisplayName("When updates a Rule you get a Rule with same id and different values")
-	@Test
-	void updateRuleAndGetUpdatedRule() throws Exception {
+    @DisplayName("When updates a Rule you get a Rule with same id and different values")
+    @Test
+    void updateRuleAndGetUpdatedRule() throws Exception {
 
-		RuleDTO ruleNewValues= new RuleDTO("New name rule","nueva descripcion",null,null);
-		String json = objectMapper.writeValueAsString(ruleNewValues);
+        RuleDTO ruleNewValues= new RuleDTO("New name rule","nueva descripcion",null,null);
+        String json = objectMapper.writeValueAsString(ruleNewValues);
 
-		MvcResult resultUpdate = mvc.perform(put("/tax/1/rule/1")
-						.header("Authorization", this.token)
-						.content(json)
-						.contentType(MediaType.APPLICATION_JSON)
-				)
-				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(status().isCreated())
-				.andReturn();
-		String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
+        MvcResult resultUpdate = mvc.perform(put("/tax/1/rule/14")
+                .header("Authorization", this.token)
+                .content(json)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated())
+                .andReturn();
+        String responseBodyUpdate = resultUpdate.getResponse().getContentAsString();
 
-		RuleDTO updatedRule= objectMapper.readValue(responseBodyUpdate, RuleDTO.class);
+        RuleDTO updatedRule= objectMapper.readValue(responseBodyUpdate, RuleDTO.class);
 
-		assertEquals(updatedRule.getName(),"New name rule");
-		assertEquals(updatedRule.getDescription(),"nueva descripcion");
-		assertEquals((int) updatedRule.getId(),1);
-		assertEquals((int) updatedRule.getPriority(),1);
-		assertEquals(updatedRule.getWhen(),null);
-		assertEquals(updatedRule.getThen(),null);
-	}
+        assertEquals(updatedRule.getName(),"New name rule");
+        assertEquals(updatedRule.getDescription(),"nueva descripcion");
+        assertEquals((int) updatedRule.getId(),14);
+        assertEquals((int) updatedRule.getPriority(),1);
+        assertEquals(updatedRule.getWhen(),null);
+        assertEquals(updatedRule.getThen(),null);
+    }
+
 
 
 

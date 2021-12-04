@@ -6,13 +6,10 @@ import ar.edu.unq.ttip.alec.backend.model.Broker;
 import ar.edu.unq.ttip.alec.backend.model.FrontUser;
 import ar.edu.unq.ttip.alec.backend.model.Tax;
 import ar.edu.unq.ttip.alec.backend.model.rules.Fact;
-import ar.edu.unq.ttip.alec.backend.model.rules.Rule;
 import ar.edu.unq.ttip.alec.backend.repository.BrokerCriteriaRepository;
 import ar.edu.unq.ttip.alec.backend.repository.BrokerRepository;
 import ar.edu.unq.ttip.alec.backend.service.dtos.BrokerDTO;
-import ar.edu.unq.ttip.alec.backend.service.dtos.RuleDTO;
 import ar.edu.unq.ttip.alec.backend.service.dtos.SearchRequest;
-import ar.edu.unq.ttip.alec.backend.service.dtos.TaxDTO;
 import ar.edu.unq.ttip.alec.backend.service.exceptions.NonExistentBrokerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -36,9 +33,6 @@ public class BrokerService {
     private TaxService taxService;
 
     @Autowired
-    private RuleService ruleService;
-
-    @Autowired
     private GroupFactService groupFactService;
 
     public Broker getBrokerById(Integer id) {
@@ -55,7 +49,6 @@ public class BrokerService {
     }
 
     public List<Broker> listAllPublicBrokers(List<String> filter) {
-        //return repo.findAllByIsPublicIsTrue();
         return criteria.findAllPublicWithFilters(filter);
     }
 
@@ -88,7 +81,7 @@ public class BrokerService {
         Broker broker = getBrokerById(brokerId);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         FrontUser userDetails = (FrontUser) auth.getPrincipal();
-        //List<Fact> facts = factService.getAllByClass();
+
         List<Fact> facts = groupFactService.getFactsFromGroups();
         return broker.getResultsWith(amount,apartado,userDetails,facts);
 

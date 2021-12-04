@@ -17,7 +17,6 @@ INSERT INTO rate (id,name,rate) VALUES (3, 'PAIS 30%', 30);
 INSERT INTO rate (id,name,rate) VALUES (4, 'IVA 10,5%', 10.5);
 INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
-
 INSERT INTO broker (id, name, description, owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior','Esta calculadora permite el calculo impositivo por los recargos a las compras de servicios en el exterior en dólares',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'Impuesto país', 'https://www.afip.gob.ar/impuesto-pais/ayuda/normativa.asp');
@@ -27,7 +26,7 @@ insert into broker_taxes (broker_id, taxes_id) values (1, 1);
 insert into broker_taxes (broker_id, taxes_id) values (1, 2);
 
 
-insert into rule (id, tax_id, description, name, priority) values (1,1,'Verifica que apartado sea ninguno y aplica 0%', 'Sin Apartado', 1);
+insert into rule (id, tax_id, description, name, priority) values (1,1,'Verifica que no tenga apartado y aplica 30%', 'Sin Apartado', 1);
 insert into rule_when_bis (rule_id,when_bis) values(1,'apartado==NOAPARTADO');
 insert into rule_then_bis (rule_id,then_bis) values(1,'importe*30/100');
 
@@ -35,13 +34,13 @@ insert into tax_all_rules(tax_id,all_rules_id) values (1,1);
 
 
 
-insert into rule (id,tax_id, description, name, priority) values (2,1,'Verifica que apartado sea igual A y aplica 21%', 'Es Apartado A', 1);
+insert into rule (id,tax_id, description, name, priority) values (2,1,'Verifica que apartado sea igual A y aplica 21%', 'Es Apartado A', 2);
 INSERT into rule_when_bis (rule_id,when_bis) values(2,'apartado==APARTADOA');
 INSERT into rule_then_bis (rule_id,then_bis) values(2,'importe*8/100');
 
 insert into tax_all_rules(tax_id,all_rules_id) values (1,2);
 
-insert into rule (id,tax_id, description, name, priority) values (3,1, 'Verifica que apartado sea igual B y aplica 8%', 'Es Apartado B y monto menor a 10', 2);
+insert into rule (id,tax_id, description, name, priority) values (3,1, 'Verifica que apartado sea igual B y aplica 8%', 'Es Apartado B y monto menor a 10', 3);
 INSERT into rule_when_bis (rule_id,when_bis) values(3,'apartado==APARTADOB');
 INSERT into rule_when_bis (rule_id,when_bis) values(3,'importe<10');
 INSERT into rule_then_bis (rule_id,then_bis) values(3,'importe*8/100');
@@ -49,7 +48,7 @@ INSERT into rule_then_bis (rule_id,then_bis) values(3,'importe*8/100');
 insert into tax_all_rules(tax_id,all_rules_id) values (1,3);
 
 
-insert into rule (id,tax_id, description, name, priority) values (4,1, 'Verifica que apartado sea igual B y aplica 30%', 'Es Apartado B y monto mayor a 10', 3);
+insert into rule (id,tax_id, description, name, priority) values (4,1, 'Verifica que apartado sea igual B y aplica 30%', 'Es Apartado B y monto mayor a 10', 4);
 INSERT into rule_when_bis (rule_id,when_bis) values(4,'apartado==APARTADOB');
 INSERT into rule_when_bis (rule_id,when_bis) values(4,'importe>=10');
 INSERT into rule_then_bis (rule_id,then_bis) values(4,'importe*30/100');
@@ -177,23 +176,38 @@ insert into rel_facts_rates (fk_fact,fk_rate) values ('ivaExterior',5);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais8',2);
 insert into rel_facts_rates (fk_fact,fk_rate) values ('pais30',3);
 
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','iva');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','iva2');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','ivaExterior');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais8');
-insert into group_fact_facts (group_fact_name,facts_name) values ('Tasas','pais30');
+INSERT INTO group_fact_facts (group_fact_name,facts_name) VALUES ('Tasas','iva');
+INSERT INTO group_fact_facts (group_fact_name,facts_name) VALUES ('Tasas','iva2');
+INSERT INTO group_fact_facts (group_fact_name,facts_name) VALUES ('Tasas','ivaExterior');
+INSERT INTO group_fact_facts (group_fact_name,facts_name) VALUES ('Tasas','pais8');
+INSERT INTO group_fact_facts (group_fact_name,facts_name) VALUES ('Tasas','pais30');
 
 
 INSERT INTO broker (id, name,description,owner_id,is_public) VALUES (3,'IVA 21%','Calcula el impuesto del iva a consumidor final',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (6,3,'Impuesto Iva 21%', 'https://www.afip.gob.ar/');
 
-insert into broker_taxes (broker_id, taxes_id) values (3, 6);
+INSERT INTO broker_taxes (broker_id, taxes_id) VALUES (3, 6);
 
 
-insert into rule (id, tax_id, description, name, priority) values (14,6,'Aplica siempre el 21%', '21% Siempre', 1);
-insert into rule_when_bis (rule_id,when_bis) values(14,'always');
-insert into rule_then_bis (rule_id,then_bis) values(14,'importe*iva/100');
+INSERT INTO rule (id, tax_id, description, name, priority) VALUES  (14,6,'Aplica siempre el 21%', '21% Siempre', 1);
+INSERT INTO rule_when_bis (rule_id,when_bis) VALUES (14,'always');
+INSERT INTO rule_then_bis (rule_id,then_bis) VALUES (14,'importe*iva/100');
 
-insert into tax_all_rules(tax_id,all_rules_id) values (6,14);
+INSERT INTO tax_all_rules(tax_id,all_rules_id) VALUES (6,14);
+
+
+
+--Test Case Demo
+--INSERT INTO broker (id, name, description, owner_id, is_public) VALUES (100,'Prueba','Calculadora de prueba',1,1);
+--INSERT INTO tax (id, broker_id, name, url) VALUES (101,100,'Impuesto de prueba', 'http://www.qrits.com.ar');
+--INSERT INTO broker_taxes (broker_id, taxes_id) VALUES (100, 101);
+
+--INSERT INTO rule (id, tax_id, description, name, priority) VALUES (99,101,'Aplica siempre el 21%', '21% Siempre', 1);
+--INSERT INTO rule_when_bis (rule_id,when_bis) VALUES (99,'importe>100');
+--INSERT INTO rule_when_bis (rule_id,when_bis) VALUES (99,'provincia==CABA');
+--INSERT INTO rule_then_bis (rule_id,then_bis) VALUES (99,'importe*iva/100');
+
+--INSERT INTO tax_all_rules(tax_id,all_rules_id) VALUES (101,99);
+
 

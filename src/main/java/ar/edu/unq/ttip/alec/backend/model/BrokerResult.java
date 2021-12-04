@@ -1,6 +1,5 @@
 package ar.edu.unq.ttip.alec.backend.model;
 
-import ar.edu.unq.ttip.alec.backend.model.TaxResult;
 import ar.edu.unq.ttip.alec.backend.service.dtos.CalcResultDTO;
 
 import java.math.BigDecimal;

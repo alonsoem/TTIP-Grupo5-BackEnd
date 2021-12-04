@@ -17,7 +17,7 @@ INSERT INTO rate (id,name,rate) VALUES (3, 'PAIS 30%', 30);
 INSERT INTO rate (id,name,rate) VALUES (4, 'IVA 10,5%', 10.5);
 INSERT INTO rate (id,name,rate) VALUES (5, 'IVA EXTERIOR', 21);
 
-INSERT INTO broker (id, name, description, owner_id,is_public) VALUES (1,'Pago Servicios Digitales en el Exterior','Esta calculadora permite el calculo impositivo por los recargos a las compras de servicios en el exterior en dólares',1,1);
+INSERT INTO broker (id, name, description, owner_id,is_public) VALUES (1,'Pago de Servicios Digitales en el Exterior','Esta calculadora permite el cálculo impositivo por los recargos a las compras de servicios en el exterior en dólares',1,1);
 
 INSERT INTO tax (id,broker_id, name,url) VALUES (1,1,'Impuesto país', 'https://www.afip.gob.ar/impuesto-pais/ayuda/normativa.asp');
 INSERT INTO tax (id,broker_id, name,url) VALUES (2,1,'IVA servicios digitales internacionales','https://www.afip.gob.ar/iva/servicios-digitales/concepto.asp');
@@ -131,7 +131,7 @@ insert into tax_all_rules(tax_id,all_rules_id) values (4,12);
 INSERT INTO tax (id, broker_id, name, url) VALUES (5, 1, 'Percepción IIBB a los servicios digitales del exterior', 'https://www.agip.gob.ar/normativa/resoluciones/2019/agip/-resolucion-n-312--agip--2019');
 insert into broker_taxes (broker_id, taxes_id) values (1, 5);
 
-insert into rule (id,tax_id, description, name, priority) values (13,5,'35% sobre el monto', 'treintaycinco', 1);
+insert into rule (id,tax_id, description, name, priority) values (13,5,'35% sobre el monto', '35% del importe siempre', 1);
 
 insert into rule_when_bis (rule_id,when_bis) values(13,'provincia==CABA');
 insert into rule_then_bis (rule_id,then_bis) values(13,'importe*2/100');

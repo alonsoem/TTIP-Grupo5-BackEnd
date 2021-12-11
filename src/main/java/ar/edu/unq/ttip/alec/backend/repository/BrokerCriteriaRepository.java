@@ -2,6 +2,7 @@ package ar.edu.unq.ttip.alec.backend.repository;
 
 
 import ar.edu.unq.ttip.alec.backend.model.Broker;
+import ar.edu.unq.ttip.alec.backend.model.Statistics;
 import com.google.common.base.Predicates;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Repository;
@@ -9,10 +10,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,11 +30,30 @@ public class BrokerCriteriaRepository {
         CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
         Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
 
+        //Join<Broker, Statistics> joinStats= brokerRoot.join("id", JoinType.LEFT);
+
+        //Predicate predicadoStats= criteriaBuilder.equal(joinStats.get("brokerId"),brokerRoot.get("id"));
+
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add (this.baseFilterPredicates(filter, brokerRoot));
+        predicates.add (this.isPublicPredicate(brokerRoot));
+        //predicates.add (predicadoStats);
+
+        return coreFilter(criteriaQuery, predicates);
+    }
+
+    public List<Broker> findAllPublicWithFiltersByStatistics(List<String> filter){
+        CriteriaQuery<Broker> criteriaQuery = criteriaBuilder.createQuery(Broker.class);
+        Root<Broker> brokerRoot = criteriaQuery.from(Broker.class);
+
         List<Predicate> predicates = new ArrayList<>();
         predicates.add (this.baseFilterPredicates(filter, brokerRoot));
         predicates.add (this.isPublicPredicate(brokerRoot));
 
         return coreFilter(criteriaQuery, predicates);
+
+
+
     }
 
     public List<Broker> findAllPublicWithFilters(List<String> filter,Integer userId){

@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -50,6 +51,10 @@ public class BrokerService {
 
     public List<Broker> listAllPublicBrokers(List<String> filter) {
         return criteria.findAllPublicWithFilters(filter);
+    }
+
+    public List<Broker> listTopPublicBrokers() {
+        return repo.getTop10BrokersByStatistics();
     }
 
     @Transactional
@@ -142,5 +147,7 @@ public class BrokerService {
     public List<Broker> getAllUserBrokers(Integer userId) {
         return repo.findAllPublicByUser(userId);
     }
+
+
 }
 

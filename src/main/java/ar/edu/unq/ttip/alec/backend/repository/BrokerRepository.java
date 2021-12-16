@@ -34,6 +34,16 @@ public interface BrokerRepository extends JpaRepository<Broker, Integer> {
     List<Broker> findAllByIsPublicIsTrue();
 
 
+    @Query(
+            value = "select b.*, s.invocations from broker b " +
+                    "left join statistics s on b.id=s.broker_id " +
+                    "Where b.is_public=true " +
+                    "order by s.invocations desc " +
+                    "limit 10",
+            nativeQuery = true)
+    List<Broker> getTop10BrokersByStatistics();
+
+
 }
 
 

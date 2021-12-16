@@ -37,6 +37,16 @@ public class BrokerController {
                         .collect(Collectors.toList())
         );
     }
+    @GetMapping("/top")
+    @ApiOperation("List Top Public Calculators.")
+    public ResponseEntity<List<BrokerDTO>> getTopPublicBrokers() {
+        return ResponseEntity.ok(
+                service.listTopPublicBrokers()
+                        .stream()
+                        .map(broker -> BrokerDTO.fromModel(broker))
+                        .collect(Collectors.toList())
+        );
+    }
 
     @GetMapping("/myBrokers")
     @ApiOperation("List all Calculators for logged user.")
